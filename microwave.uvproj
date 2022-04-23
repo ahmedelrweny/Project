@@ -425,6 +425,11 @@
               <FileType>1</FileType>
               <FilePath>.\Tiva.c</FilePath>
             </File>
+            <File>
+              <FileName>Microwave.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Microwave.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
