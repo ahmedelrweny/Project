@@ -1,3 +1,8 @@
-void microwave_Init(){
+void microwave_Init()
+{
+<<<<<<< Updated upstream
+	//flip off switch
+=======
 	
+>>>>>>> Stashed changes
 }
