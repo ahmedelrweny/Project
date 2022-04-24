@@ -430,6 +430,16 @@
               <FileType>1</FileType>
               <FilePath>.\Microwave.c</FilePath>
             </File>
+            <File>
+              <FileName>LCD.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\LCD.c</FilePath>
+            </File>
+            <File>
+              <FileName>Keypad.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Keypad.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
