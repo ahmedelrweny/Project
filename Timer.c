@@ -1,8 +1,5 @@
 #include "defines.h"
-#define NVIC_ST_CTRL_R     (*((volatile unsigned long *)0xE000E010))
-#define NVIC_ST_RELOAD_R   (*((volatile unsigned long *)0xE000E014))
-#define NVIC_ST_CURRENT_R  (*((volatile unsigned long *)0xE000E018))
-
+#include <inttypes.h>
 
 void Systick_Wait_1ms(void)
 {
@@ -18,23 +15,5 @@ void Systick_Wait_ms(unsigned int time)
 	for(j=0;j<time;j++)
 	{
 		Systick_Wait_1ms();
-	}
-}
-
-void Systick_Wait_1s(void)
-{
-	unsigned int j;
-	for(j=0;j<1000;j++)
-	{
-		Systick_Wait_1ms();
-	}
-}
-
-void Systick_Wait_s(unsigned int time)
-{
-	unsigned int j;
-	for(j=0;j<time;j++)
-	{
-		Systick_Wait_1s();
 	}
 }

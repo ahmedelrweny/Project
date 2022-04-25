@@ -1,4 +1,3 @@
-void microwave_Init()
-{
+void microwave_Init(){
 	
 }

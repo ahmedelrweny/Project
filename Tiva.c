@@ -1,4 +1,5 @@
 #include "defines.h"
+#include <inttypes.h>
 
 void SystemInit(){	
 		SYSCTL_RCGCGPIO_R  |= 0x20;

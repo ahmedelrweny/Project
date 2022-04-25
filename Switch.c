@@ -1,4 +1,5 @@
 #include "defines.h"
+#include <inttypes.h>
 
 void SW1_Init(){
 		GPIO_PORTF_LOCK_R = 0x4C4F434B;
