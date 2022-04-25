@@ -28,12 +28,11 @@ void SW2_Init(void){
 
 void SW3_Init(void){
 	
-		GPIO_PORTE_CR_R |= 0x01; 						//repeat without unlocking
+		GPIO_PORTE_CR_R |= 0x01; 						//repeat neither unlocking nor pullup
 		GPIO_PORTE_AMSEL_R &= ~0x01;
 		GPIO_PORTE_PCTL_R &= ~0x0000000F;
 		GPIO_PORTE_AFSEL_R &= ~0x01;
 		GPIO_PORTE_DIR_R &= ~0x01;
-		GPIO_PORTE_PUR_R |= 0x01;
 		GPIO_PORTE_DEN_R |=0x01;
 }
 
