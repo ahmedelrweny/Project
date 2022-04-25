@@ -17,11 +17,11 @@ int main(void){
 	
 	while(1){
 		
-		//SW1 = SW1_Input();
+		SW1 = SW1_Input();
 		//SW2 = SW2_Input();	
 		SW3 = SW3_Input();
 		
-		if(SW3 != 0x01){
+		if(SW3 != 0x01 || SW1 != 0x10 ){
 			BlueOn();
 		}
 	}
