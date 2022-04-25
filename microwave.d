@@ -1,0 +1,1 @@
+.\microwave.o: Microwave.c

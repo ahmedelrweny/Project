@@ -1,0 +1,1 @@
+.\buzzer.o: Buzzer.c
