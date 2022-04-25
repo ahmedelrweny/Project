@@ -1,7 +1,7 @@
 #include "Tiva.h"
 #include "Switch.h"
 #include "Buzzer.h"
-
+#include "LED.h"
 
 unsigned char SW1;
 unsigned char SW2;
@@ -11,6 +11,7 @@ int main(void){
 	
 	System_Init();
 	buzzer_Init();
+	LED_Init();
 	
 	SW1_Init();
 	SW2_Init();
@@ -24,6 +25,7 @@ int main(void){
 		
 		if(SW3 != 0x01){
 			beep();
+			BlueOn();
 		}
 	}
 		
