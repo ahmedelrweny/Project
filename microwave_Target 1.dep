@@ -3,7 +3,7 @@ F (.\startup_TM4C123.s)(0x626716C6)(--cpu Cortex-M4 --pd "__EVAL SETA 1" -g --ap
 F (.\main.c)(0x626718E2)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\main.o --omf_browse .\main.crf --depend .\main.d)
 I (Tiva.h)(0x626718E2)
 I (Switch.h)(0x626716C6)
-I (Buzzer.h)(0x626718FD)
+I (Buzzer.h)(0x6267192D)
 F (.\Switch.c)(0x626718E2)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\switch.o --omf_browse .\switch.crf --depend .\switch.d)
 I (defines.h)(0x6266B688)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
