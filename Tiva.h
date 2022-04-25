@@ -1,5 +1,5 @@
-#ifndef Tiva_H_
-#define Tiva_H_
+#ifndef Tiva_H
+#define Tiva_H
 
 void System_Init(void);
 

@@ -1,4 +1,4 @@
---cpu Cortex-M4.fp
+--cpu Cortex-M4
 ".\startup_tm4c123.o"
 ".\main.o"
 ".\switch.o"

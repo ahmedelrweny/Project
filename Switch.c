@@ -51,5 +51,5 @@ unsigned char SW2_Input(void){
 
 unsigned char SW3_Input(void){
 	
-		return GPIO_PORTC_DATA_R & 0x01;
+		return GPIO_PORTE_DATA_R & 0x01;
 }

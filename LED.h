@@ -1,5 +1,5 @@
-#ifndef LED_H_
-#define LED_H_
+#ifndef LED_H
+#define LED_H
 
 void LED_Init(void);
 void LED_Clear(void);

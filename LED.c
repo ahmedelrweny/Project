@@ -17,7 +17,6 @@ void LED_Clear(void){
 }
 
 void RedOn(void){
-	
 		LED_Clear();
 		GPIO_PORTF_DATA_R ^= 0x2;
 }
