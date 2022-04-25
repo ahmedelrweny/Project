@@ -1242,9 +1242,10 @@ ARM Macro Assembler    Page 20
               00000200 
               00000000 
 Command Line: --debug --xref --cpu=Cortex-M4 --apcs=interwork --depend=.\startu
-p_tm4c123.d -o.\startup_tm4c123.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\In
-clude -IC:\Keil\ARM\Inc\TI\TM4C123 --predefine="__EVAL SETA 1" --list=.\startup
-_tm4c123.lst startup_TM4C123.s
+p_tm4c123.d -o.\startup_tm4c123.o -I"D:\FML (At Death's Door)\Keil\ARM\RV31\INC
+" -I"D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include" -I"D:\FML (At Death's Doo
+r)\Keil\ARM\Inc\TI\TM4C123" --predefine="__EVAL SETA 1" --list=.\startup_tm4c12
+3.lst startup_TM4C123.s
 
 
 
