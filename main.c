@@ -3,28 +3,24 @@
 #include "Buzzer.h"
 
 
-unsigned char SW1;
-unsigned char SW2;
-unsigned char SW3;
-
 int main(void){
-	
-	System_Init();
-	buzzer_Init();
-	
-	SW1_Init();
-	SW2_Init();
-	SW3_Init();
-	
 	while(1){
-		
-		//SW1 = SW1_Input();
-		//SW2 = SW2_Input();	
-		SW3 = SW3_Input();
-		
-		if(SW3 != 0x01){
-			beep();
-		}
-	}
-		
+		/*switch(input){
+		case 1:
+			cook_Popcorn();
+			break;
+		case 2:
+			cook_Chiken();
+			break;
+		case 3:
+			cook_Beef();
+			break;
+		case 4:
+			cook_Time();
+			break;
+		default:
+			LCD_Show("Please enter a choice");
+			break;
+		}*/
+	}	
 }

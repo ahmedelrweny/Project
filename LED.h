@@ -8,4 +8,8 @@ void RedOn(void);
 void GreenOn(void);
 void BlueOn(void);
 
+void RedToggle(void);
+void BlueToggle(void);
+void GreenToggle(void);
+
 #endif
