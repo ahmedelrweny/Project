@@ -209,17 +209,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-<<<<<<< HEAD
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
-=======
-      <ColumnNumber>2</ColumnNumber>
-      <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>5</TopLine>
-      <CurrentLine>12</CurrentLine>
->>>>>>> origin/Taman
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -232,17 +225,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-<<<<<<< HEAD
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>7</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
-=======
-      <ColumnNumber>78</ColumnNumber>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>27</TopLine>
-      <CurrentLine>31</CurrentLine>
->>>>>>> origin/Taman
+      <TopLine>20</TopLine>
+      <CurrentLine>32</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Switch.c</PathWithFileName>
       <FilenameWithoutPath>Switch.c</FilenameWithoutPath>
@@ -258,11 +244,7 @@
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-<<<<<<< HEAD
-      <CurrentLine>1</CurrentLine>
-=======
       <CurrentLine>8</CurrentLine>
->>>>>>> origin/Taman
       <bDave2>0</bDave2>
       <PathWithFileName>.\Tiva.c</PathWithFileName>
       <FilenameWithoutPath>Tiva.c</FilenameWithoutPath>
@@ -277,13 +259,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-<<<<<<< HEAD
-      <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
-=======
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
->>>>>>> origin/Taman
       <bDave2>0</bDave2>
       <PathWithFileName>.\Microwave.c</PathWithFileName>
       <FilenameWithoutPath>Microwave.c</FilenameWithoutPath>
@@ -298,13 +275,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-<<<<<<< HEAD
-      <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
-=======
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
->>>>>>> origin/Taman
       <bDave2>0</bDave2>
       <PathWithFileName>.\LCD.c</PathWithFileName>
       <FilenameWithoutPath>LCD.c</FilenameWithoutPath>
@@ -319,13 +291,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-<<<<<<< HEAD
-      <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
-=======
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
->>>>>>> origin/Taman
       <bDave2>0</bDave2>
       <PathWithFileName>.\Keypad.c</PathWithFileName>
       <FilenameWithoutPath>Keypad.c</FilenameWithoutPath>
@@ -338,17 +305,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-<<<<<<< HEAD
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
-=======
-      <ColumnNumber>78</ColumnNumber>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>6</CurrentLine>
->>>>>>> origin/Taman
+      <CurrentLine>13</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Buzzer.c</PathWithFileName>
       <FilenameWithoutPath>Buzzer.c</FilenameWithoutPath>
@@ -361,15 +321,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>16</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-<<<<<<< HEAD
-      <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
-=======
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
->>>>>>> origin/Taman
       <bDave2>0</bDave2>
       <PathWithFileName>.\Timer.c</PathWithFileName>
       <FilenameWithoutPath>Timer.c</FilenameWithoutPath>
@@ -379,29 +334,16 @@
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>10</FileNumber>
-<<<<<<< HEAD
-      <FileType>5</FileType>
+      <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Keypad.h</PathWithFileName>
-      <FilenameWithoutPath>Keypad.h</FilenameWithoutPath>
-=======
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>44</ColumnNumber>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>6</CurrentLine>
+      <TopLine>6</TopLine>
+      <CurrentLine>30</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\LED.c</PathWithFileName>
       <FilenameWithoutPath>LED.c</FilenameWithoutPath>
->>>>>>> origin/Taman
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
