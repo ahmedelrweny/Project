@@ -445,6 +445,11 @@
               <FileType>1</FileType>
               <FilePath>.\Buzzer.c</FilePath>
             </File>
+            <File>
+              <FileName>Timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Timer.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
