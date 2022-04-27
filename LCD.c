@@ -6,6 +6,7 @@
 #define RW 0x02 //Bit 1 in Port A
 #define EN 0x01 //Bit 0 in Port A
 
+
 void LCD_Init(){
 
     System_Init(); // Port A - B
