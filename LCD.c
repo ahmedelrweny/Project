@@ -23,6 +23,10 @@ void LCD_Init(){
 		GPIO_PORTB_AFSEL_R &= ~0xFF;
 		GPIO_PORTB_DIR_R |= 0xFF;						
 		GPIO_PORTB_DEN_R |= 0xFF;	
+
+		LCD_Clear_Display();
+		LCD_CMD(0x38); // Enable 8 bit mode
+		LCD_CMD(0x0F); // Turn on Display
 }
 //LCD Control
 void LCD_CMD(unsigned char signal){
@@ -35,4 +39,8 @@ void LCD_CMD(unsigned char signal){
 		Commands above that Requires 40 microsec to be sure they are executed*/
 		if(signal < 4) SysTick_Wait(160000); // 2ms
 		else SysTick_Wait(3200); // 40 micro sec
+}
+void LCD_Clear_Display(){
+	LCD_CMD(0x01);//Remove Chars
+	LCD_CMD(0x02);//Return cursor to zero position
 }
