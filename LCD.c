@@ -29,6 +29,7 @@ void LCD_Init(){
 		LCD_Clear_Display();
 		LCD_CMD(0x06); //Increment from left to right
 }
+
 //LCD Control
 void LCD_CMD(unsigned char signal){
 		GPIO_PORTA_DATA_R = 0x00; //Set RS,RW to 0 to Enable write
@@ -41,10 +42,12 @@ void LCD_CMD(unsigned char signal){
 		if(signal < 4) SysTick_Wait(160000); // 2ms
 		else SysTick_Wait(3200); // 40 micro sec
 }
+
 void LCD_Clear_Display(){
 	LCD_CMD(0x01);//Remove Chars
 	LCD_CMD(0x02);//Return cursor to zero position
 }
+
 void SetCursorToRight(){
 	LCD_CMD(0x80);
 	for (int i = 0; i < 16; i++)
@@ -52,6 +55,7 @@ void SetCursorToRight(){
 		LCD_CMD(0x14);
 	}
 }
+
 void ShiftDisplayLeft(){
 	LCD_CMD(0x07);//used to Handle Time Entry Required in Project from Right To Left
 }	
