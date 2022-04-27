@@ -27,7 +27,7 @@
     <TargetOption>
       <CLKADS>16000000</CLKADS>
       <OPTTT>
-        <gFlags>1</gFlags>
+        <gFlags>0</gFlags>
         <BeepAtEnd>1</BeepAtEnd>
         <RunSim>1</RunSim>
         <RunTarget>0</RunTarget>
@@ -94,8 +94,8 @@
         </Book>
       </Books>
       <DebugOpt>
-        <uSim>0</uSim>
-        <uTrg>1</uTrg>
+        <uSim>1</uSim>
+        <uTrg>0</uTrg>
         <sLdApp>1</sLdApp>
         <sGomain>1</sGomain>
         <sRbreak>1</sRbreak>
@@ -113,10 +113,10 @@
         <tRtrace>1</tRtrace>
         <sRSysVw>1</sRSysVw>
         <tRSysVw>1</tRSysVw>
-        <tPdscDbg>0</tPdscDbg>
+        <tPdscDbg>1</tPdscDbg>
         <sRunDeb>0</sRunDeb>
         <sLrtime>0</sLrtime>
-        <nTsel>3</nTsel>
+        <nTsel>1</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -127,19 +127,9 @@
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
         <tIfile></tIfile>
-        <pMon>BIN\lmidk-agdi.dll</pMon>
+        <pMon>BIN\UL2CM3.DLL</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>DLGDARM</Key>
-          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)(1012=-1,-1,-1,-1,0)</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>ARMDBGFLAGS</Key>
-          <Name>-T0</Name>
-        </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>UL2CM3</Key>
@@ -153,12 +143,12 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>1</periodic>
-        <aLwin>1</aLwin>
+        <aLwin>0</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
         <aPa>0</aPa>
-        <viewmode>1</viewmode>
+        <viewmode>0</viewmode>
         <vrSel>0</vrSel>
         <aSym>0</aSym>
         <aTbox>0</aTbox>
@@ -195,8 +185,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\startup_TM4C123.s</PathWithFileName>
       <FilenameWithoutPath>startup_TM4C123.s</FilenameWithoutPath>
@@ -209,10 +199,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>34</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>8</TopLine>
-      <CurrentLine>24</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -225,10 +215,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>40</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>28</TopLine>
-      <CurrentLine>44</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Switch.c</PathWithFileName>
       <FilenameWithoutPath>Switch.c</FilenameWithoutPath>
@@ -241,10 +231,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>39</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>7</CurrentLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Tiva.c</PathWithFileName>
       <FilenameWithoutPath>Tiva.c</FilenameWithoutPath>
@@ -289,10 +279,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>10</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>2</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Keypad.c</PathWithFileName>
       <FilenameWithoutPath>Keypad.c</FilenameWithoutPath>
@@ -307,8 +297,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Buzzer.c</PathWithFileName>
       <FilenameWithoutPath>Buzzer.c</FilenameWithoutPath>
@@ -321,10 +311,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>16</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Timer.c</PathWithFileName>
       <FilenameWithoutPath>Timer.c</FilenameWithoutPath>
@@ -334,16 +324,16 @@
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>10</FileNumber>
-      <FileType>1</FileType>
+      <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>9</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>4</CurrentLine>
+      <CurrentLine>5</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\LED.c</PathWithFileName>
-      <FilenameWithoutPath>LED.c</FilenameWithoutPath>
+      <PathWithFileName>.\Keypad.h</PathWithFileName>
+      <FilenameWithoutPath>Keypad.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
