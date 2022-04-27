@@ -12,7 +12,7 @@ void LCD_Init(){
 		GPIO_PORTA_AFSEL_R &= ~0x07;
 		GPIO_PORTA_DIR_R |= 0x07;						
 		GPIO_PORTA_DEN_R |= 0x07;	
-		//Enable port B bits 0-7 for
+		//Enable port B bits 0-7 for LCD Data
 		GPIO_PORTB_CR_R |= 0xFF;
 		GPIO_PORTB_AMSEL_R &= ~0xFF;
 		GPIO_PORTB_PCTL_R &= ~0xFFFFFFFF;
