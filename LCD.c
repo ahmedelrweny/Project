@@ -44,3 +44,6 @@ void LCD_Clear_Display(){
 	LCD_CMD(0x01);//Remove Chars
 	LCD_CMD(0x02);//Return cursor to zero position
 }
+void ShiftCursorRight(){
+	LCD_CMD(0x06);	//Shift Cursor One Position Right 
+}
