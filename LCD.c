@@ -24,9 +24,10 @@ void LCD_Init(){
 		GPIO_PORTB_DIR_R |= 0xFF;						
 		GPIO_PORTB_DEN_R |= 0xFF;	
 
-		LCD_Clear_Display();
 		LCD_CMD(0x38); // Enable 8 bit mode
 		LCD_CMD(0x0F); // Turn on Display
+		LCD_Clear_Display();
+		LCD_CMD(0x06); //Increment from left to right
 }
 //LCD Control
 void LCD_CMD(unsigned char signal){
@@ -44,6 +45,13 @@ void LCD_Clear_Display(){
 	LCD_CMD(0x01);//Remove Chars
 	LCD_CMD(0x02);//Return cursor to zero position
 }
-void ShiftCursorRight(){
-	LCD_CMD(0x06);	//Shift Cursor One Position Right 
+void SetCursorToRight(){
+	LCD_CMD(0x80);
+	for (int i = 0; i < 16; i++)
+	{
+		LCD_CMD(0x14);
+	}
 }
+void ShiftDisplayLeft(){
+	LCD_CMD(0x07);//used to Handle Time Entry Required in Project from Right To Left
+}	
