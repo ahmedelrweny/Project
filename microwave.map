@@ -123,11 +123,11 @@ Removing Unused input sections from the image.
 
     Removing microwave.o(.text), (2 bytes).
     Removing lcd.o(.text), (2 bytes).
-    Removing keypad.o(.text), (380 bytes).
+    Removing keypad.o(.text), (340 bytes).
     Removing keypad.o(.data), (16 bytes).
     Removing timer.o(.text), (80 bytes).
 
-5 unused section(s) (total 480 bytes) removed from the image.
+5 unused section(s) (total 440 bytes) removed from the image.
 
 ==============================================================================
 
