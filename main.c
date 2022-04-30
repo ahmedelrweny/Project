@@ -12,10 +12,6 @@ int main(void){
 	
 	while(1){
 		LCD_Write('h');
-		LCD_Write('e');
-		LCD_Write('l');
-		LCD_Write('l');
-		LCD_Write('o');
 		Systick_Wait_ms(30000);
 		/*switch(input){
 		case 1:
