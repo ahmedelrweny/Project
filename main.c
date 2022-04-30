@@ -11,8 +11,8 @@ int main(void){
 	LCD_Init();
 	
 	while(1){
-		LCD_Write('h');
-		Systick_Wait_ms(30000);
+		LCD_String("HELLO");
+		Systick_Wait_ms(10000);
 		/*switch(input){
 		case 1:
 			cook_Popcorn();

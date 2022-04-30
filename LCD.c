@@ -66,7 +66,7 @@ void LCD_Write(unsigned char Data){
 	GPIO_PORTA_DATA_R = 0x10;  //which means RS=1, RW=0, EN=0 to control that the entered is data not command
 	GPIO_PORTB_DATA_R = Data;  //LCD has the data entered on port B 
 	GPIO_PORTA_DATA_R |= 0x04; //which means RS=1, RW=0, EN=1 to secure data entered 
-	GPIO_PORTA_DATA_R = 0x00;  //which means RS=0, RW=0, EN=0 to stop changing data on LCD after writing the desired data
+	GPIO_PORTA_DATA_R &= ~0x10;//which means RS=0, RW=0, EN=1 to stop changing data on LCD after writing the desired data
 	SysTick_Wait(80);          // 1 us
 }
 
