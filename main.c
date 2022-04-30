@@ -11,7 +11,7 @@ int main(void){
 	LCD_Init();
 	
 	while(1){
-		LCD_String("HELLO");
+		LCD_String("small");
 		Systick_Wait_ms(10000);
 		/*switch(input){
 		case 1:
