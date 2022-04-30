@@ -3,15 +3,15 @@
 #include "tiva.h"
 #include "Timer.h"
 #include <string.h>
-#define RS 0x04 //Bit 2 in Port A
-#define RW 0x02 //Bit 1 in Port A
-#define EN 0x01 //Bit 0 in Port A
+#define RS 0x10 //Pin 4 in Port A
+#define RW 0x08 //Pin 3 in Port A
+#define EN 0x04 //Pin 2 in Port A
 
 //LCD Control
 void LCD_CMD(unsigned char signal){
 		GPIO_PORTA_DATA_R = 0x00; //Set RS,RW to 0 to Enable write
 		GPIO_PORTB_DATA_R = signal; //Set Data of PortB
-		GPIO_PORTA_DATA_R |= EN; //Enable write data
+		GPIO_PORTA_DATA_R |= 0x04; //Enable write data
 		SysTick_Wait(80);        //waits 1 micro sec
 		GPIO_PORTA_DATA_R = 0x00; //To Disable changes for LCD
 		/*Commands of code 0000 --> 0111 Requires 2ms to be sure they are executed
@@ -28,12 +28,12 @@ void LCD_Clear_Display(void){
 void LCD_Init(void){
 
     //Enable PortA bits 0-2 for Rs Rw Enable
-    GPIO_PORTA_CR_R |= 0x07;
-		GPIO_PORTA_AMSEL_R &= ~0x07;
-		GPIO_PORTA_PCTL_R &= ~0x0000FFF;
-		GPIO_PORTA_AFSEL_R &= ~0x07;
-		GPIO_PORTA_DIR_R |= 0x07;						
-		GPIO_PORTA_DEN_R |= 0x07;	
+    GPIO_PORTA_CR_R |= 0x1C;
+		GPIO_PORTA_AMSEL_R &= ~0x1C;
+		GPIO_PORTA_PCTL_R &= ~0x00FFF00;
+		GPIO_PORTA_AFSEL_R &= ~0x1C;
+		GPIO_PORTA_DIR_R |= 0x1C;						
+		GPIO_PORTA_DEN_R |= 0x1C;	
 		//Enable port B bits 0-7 for
 		GPIO_PORTB_CR_R |= 0xFF;
 		GPIO_PORTB_AMSEL_R &= ~0xFF;
@@ -63,9 +63,9 @@ void ShiftDisplayLeft(void){
 
 //LCD_Write a function that writes character on LCD
 void LCD_Write(unsigned char Data){
-	GPIO_PORTA_DATA_R = 0x04;  //which means RS=1, RW=0, EN=0 to control that the entered is data not command
+	GPIO_PORTA_DATA_R = 0x10;  //which means RS=1, RW=0, EN=0 to control that the entered is data not command
 	GPIO_PORTB_DATA_R = Data;  //LCD has the data entered on port B 
-	GPIO_PORTA_DATA_R |= 0x01; //which means RS=1, RW=0, EN=1 to secure data entered 
+	GPIO_PORTA_DATA_R |= 0x04; //which means RS=1, RW=0, EN=1 to secure data entered 
 	GPIO_PORTA_DATA_R = 0x00;  //which means RS=0, RW=0, EN=0 to stop changing data on LCD after writing the desired data
 	SysTick_Wait(80);          // 1 us
 }
