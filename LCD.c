@@ -11,6 +11,7 @@
 void LCD_CMD(unsigned char signal){
 		GPIO_PORTA_DATA_R = 0x00; //Set RS,RW to 0 to Enable write
 		GPIO_PORTA_DATA_R |= 0x04; //Enable write data
+		GPIO_PORTA_DATA_R &= ~0x04; //Disable write data
 	  GPIO_PORTB_DATA_R = signal; //Set Data of PortB
 		SysTick_Wait(80);        //waits 1 micro sec
 		GPIO_PORTA_DATA_R = 0x00; //To Disable changes for LCD
@@ -63,7 +64,8 @@ void ShiftDisplayLeft(void){
 //LCD_Write a function that writes character on LCD
 void LCD_Write(unsigned char Data){
 	GPIO_PORTA_DATA_R = 0x10;  //which means RS=1, RW=0, EN=0 to control that the entered is data not command
-	GPIO_PORTA_DATA_R |= 0x04; //which means RS=1, RW=0, EN=1 to secure data entered 
+	GPIO_PORTA_DATA_R |= 0x04; //which means RS=1, RW=0, EN=1 to secure data entered
+	GPIO_PORTA_DATA_R &= ~0x04; //Disable write data	
 	GPIO_PORTB_DATA_R = Data;  //LCD has the data entered on port B 
 	LCD_CMD(0x06);             //Increment from left to right
 	GPIO_PORTA_DATA_R = 0x00;  //which means RS=0, RW=0, EN=0 to stop changing data on LCD after writing the desired data
