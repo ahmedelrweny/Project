@@ -27,10 +27,10 @@ void LCD_Clear_Display(void){
 
 void LCD_Init(void){
 
-    //Enable PortA bits 0-2 for Rs Rw Enable
+    //Enable PortA bits 2-4 for Rs Rw Enable
     GPIO_PORTA_CR_R |= 0x1C;
 		GPIO_PORTA_AMSEL_R &= ~0x1C;
-		GPIO_PORTA_PCTL_R &= ~0x00FFF00;
+		GPIO_PORTA_PCTL_R &= ~0x000FFF00;
 		GPIO_PORTA_AFSEL_R &= ~0x1C;
 		GPIO_PORTA_DIR_R |= 0x1C;						
 		GPIO_PORTA_DEN_R |= 0x1C;	

@@ -8,10 +8,9 @@
 int main(void){
 	System_Init();
 	LCD_Init();
-	keypad_Init();
 	
 	while(1){
-		LCD_String("Hello");
+		LCD_Write('F');
 		/*switch(input){
 		case 1:
 			cook_Popcorn();
