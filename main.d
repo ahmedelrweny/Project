@@ -4,3 +4,4 @@
 .\main.o: Buzzer.h
 .\main.o: keypad.h
 .\main.o: LCD.h
+.\main.o: Timer.h

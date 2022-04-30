@@ -3,6 +3,7 @@
 #include "Buzzer.h"
 #include "keypad.h"
 #include "LCD.h"
+#include "Timer.h"
 
 
 int main(void){
@@ -10,7 +11,8 @@ int main(void){
 	LCD_Init();
 	
 	while(1){
-		LCD_Write('F');
+		LCD_String("Hello");
+		Systick_Wait_ms(30000);
 		/*switch(input){
 		case 1:
 			cook_Popcorn();
