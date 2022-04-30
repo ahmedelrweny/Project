@@ -17,11 +17,12 @@ void LCD_CMD(unsigned char signal){
 		Commands above that Requires 40 microsec to be sure they are executed*/
 		if(signal < 4) SysTick_Wait(160000); // 2ms
 		else SysTick_Wait(3200); // 40 micro sec
+		GPIO_PORTA_DATA_R &= ~0x04; //Enable write data
 }
 
 void LCD_Clear_Display(void){
-	LCD_CMD(0x01);             //Remove Chars
-	LCD_CMD(0x02);             //Return cursor to zero position
+		LCD_CMD(0x01);             //Remove Chars
+		LCD_CMD(0x02);             //Return cursor to zero position
 }
 
 void LCD_Init(void){
@@ -64,6 +65,7 @@ void LCD_Write(unsigned char Data){
 	GPIO_PORTA_DATA_R = 0x10;  //which means RS=1, RW=0, EN=0 to control that the entered is data not command
 	GPIO_PORTA_DATA_R |= 0x04; //which means RS=1, RW=0, EN=1 to secure data entered	
 	GPIO_PORTB_DATA_R = Data;  //LCD has the data entered on port B 
+	GPIO_PORTA_DATA_R &= ~0x04; //Enable write data
 	LCD_CMD(0x06);             //Increment from left to right
 	SysTick_Wait(80);          // 1 us
 }
