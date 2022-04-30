@@ -1,6 +1,6 @@
 Dependencies for Project 'microwave', Target 'Target 1': (DO NOT MODIFY !)
 F (.\startup_TM4C123.s)(0x626716C6)(--cpu Cortex-M4 --pd "__EVAL SETA 1" -g --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"--list .\startup_tm4c123.lst --xref -o .\startup_tm4c123.o --depend .\startup_tm4c123.d)
-F (.\main.c)(0x626DC0E2)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+F (.\main.c)(0x626DAA6C)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\main.o --omf_browse .\main.crf --depend .\main.d)
 I (Tiva.h)(0x626718E2)
 I (Switch.h)(0x626716C6)
 I (Buzzer.h)(0x6267192D)
@@ -16,7 +16,7 @@ I (defines.h)(0x6266B688)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
 F (.\Microwave.c)(0x626850D1)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\microwave.o --omf_browse .\microwave.crf --depend .\microwave.d)
-F (.\LCD.c)(0x626DC0E2)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\lcd.o --omf_browse .\lcd.crf --depend .\lcd.d)
+F (.\LCD.c)(0x626DBF73)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\lcd.o --omf_browse .\lcd.crf --depend .\lcd.d)
 I (defines.h)(0x6266B688)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
