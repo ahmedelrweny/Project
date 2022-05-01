@@ -25,6 +25,7 @@ void keypad_Init(){
 	GPIO_PORTE_DATA_R&=~0x1E;              //Intializaion of PORTE
 }
 char KayScan(){
+	while(1){
 	int i;
 	int j;
 	for (i=0;i<4;i++){ // set colums 
@@ -34,5 +35,4 @@ char KayScan(){
 			return symbol[j][i];
 		
 	}}}
-	return '\0' ;
-}
+}}

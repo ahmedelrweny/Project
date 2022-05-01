@@ -14,19 +14,17 @@ int main(void){
 	LED_Init();
 	
 	SW1_Init();
-	SW2_Init();
+  SW2_Init();
 	SW3_Init();
 	
-	while(1){
+while(1){
 		
-		//SW1 = SW1_Input();
-		//SW2 = SW2_Input();	
-		SW3 = SW3_Input();
+	SW1 = SW1_Input();
+	SW2 = SW2_Input();	
+	SW3 = SW3_Input();
 		
-		if(SW3 != 0x01){
+if(SW3 != 0x01){
 			beep();
-			BlueOn();
-		}
-	}
+			BlueOn();		}	}
 		
 }

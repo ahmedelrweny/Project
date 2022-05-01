@@ -425,7 +425,7 @@ ARM Macro Assembler    Page 7
   232 00000000                 EXPORT           Reset_Handler             [WEAK
 ]
   233 00000000                 IMPORT           __main
-  234 00000000 483E            LDR              R0, =__main
+  234 00000000 483B            LDR              R0, =__main
   235 00000002 4700            BX               R0
   236 00000004                 ENDP
   237 00000004         
@@ -1214,37 +1214,21 @@ ARM Macro Assembler    Page 19
   936 000000F0         ; User Initial Stack & Heap
   937 000000F0         
   938 000000F0                 IF               :DEF:__MICROLIB
-  945 000000F0         
-  946 000000F0                 IMPORT           __use_two_region_memory
-  947 000000F0                 EXPORT           __user_initial_stackheap
-  948 000000F0         __user_initial_stackheap
-  949 000000F0         
-  950 000000F0 4803            LDR              R0, =  Heap_Mem
-  951 000000F2 4904            LDR              R1, =(Stack_Mem + Stack_Size)
-  952 000000F4 4A02            LDR              R2, = (Heap_Mem +  Heap_Size)
-  953 000000F6 4B04            LDR              R3, = Stack_Mem
-  954 000000F8 4770            BX               LR
-  955 000000FA         
-  956 000000FA 00 00           ALIGN
-  957 000000FC         
-  958 000000FC                 ENDIF
-  959 000000FC         
-  960 000000FC         
-  961 000000FC                 END
-              00000000 
-              00000000 
-
-
-
-ARM Macro Assembler    Page 20 
-
-
-              00000200 
+  939 000000F0         
+  940 000000F0                 EXPORT           __initial_sp
+  941 000000F0                 EXPORT           __heap_base
+  942 000000F0                 EXPORT           __heap_limit
+  943 000000F0         
+  944 000000F0                 ELSE
+  958                          ENDIF
+  959 000000F0         
+  960 000000F0         
+  961 000000F0                 END
               00000000 
 Command Line: --debug --xref --cpu=Cortex-M4.fp --apcs=interwork --depend=.\sta
 rtup_tm4c123.d -o.\startup_tm4c123.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS
-\Include -IC:\Keil\ARM\Inc\TI\TM4C123 --predefine="__EVAL SETA 1" --list=.\star
-tup_tm4c123.lst startup_TM4C123.s
+\Include -IC:\Keil\ARM\Inc\TI\TM4C123 --predefine="__EVAL SETA 1" --predefine="
+__MICROLIB SETA 1" --list=.\startup_tm4c123.lst startup_TM4C123.s
 
 
 
@@ -1265,9 +1249,8 @@ Symbol: Stack_Mem
    Definitions
       At line 36 in file startup_TM4C123.s
    Uses
-      At line 951 in file startup_TM4C123.s
-      At line 953 in file startup_TM4C123.s
-
+      None
+Comment: Stack_Mem unused
 __initial_sp 00000200
 
 Symbol: __initial_sp
@@ -1275,7 +1258,8 @@ Symbol: __initial_sp
       At line 37 in file startup_TM4C123.s
    Uses
       At line 63 in file startup_TM4C123.s
-Comment: __initial_sp used once
+      At line 940 in file startup_TM4C123.s
+
 3 symbols
 
 
@@ -1297,25 +1281,24 @@ Symbol: Heap_Mem
    Definitions
       At line 48 in file startup_TM4C123.s
    Uses
-      At line 950 in file startup_TM4C123.s
-      At line 952 in file startup_TM4C123.s
-
+      None
+Comment: Heap_Mem unused
 __heap_base 00000000
 
 Symbol: __heap_base
    Definitions
       At line 47 in file startup_TM4C123.s
    Uses
-      None
-Comment: __heap_base unused
+      At line 941 in file startup_TM4C123.s
+Comment: __heap_base used once
 __heap_limit 00000000
 
 Symbol: __heap_limit
    Definitions
       At line 49 in file startup_TM4C123.s
    Uses
-      None
-Comment: __heap_limit unused
+      At line 942 in file startup_TM4C123.s
+Comment: __heap_limit used once
 4 symbols
 
 
@@ -2534,15 +2517,7 @@ Symbol: WTIMER5B_Handler
       At line 187 in file startup_TM4C123.s
       At line 755 in file startup_TM4C123.s
 
-__user_initial_stackheap 000000F0
-
-Symbol: __user_initial_stackheap
-   Definitions
-      At line 948 in file startup_TM4C123.s
-   Uses
-      At line 947 in file startup_TM4C123.s
-Comment: __user_initial_stackheap used once
-120 symbols
+119 symbols
 
 
 
@@ -2556,8 +2531,7 @@ Symbol: Heap_Size
       At line 44 in file startup_TM4C123.s
    Uses
       At line 48 in file startup_TM4C123.s
-      At line 952 in file startup_TM4C123.s
-
+Comment: Heap_Size used once
 Stack_Size 00000200
 
 Symbol: Stack_Size
@@ -2565,8 +2539,7 @@ Symbol: Stack_Size
       At line 33 in file startup_TM4C123.s
    Uses
       At line 36 in file startup_TM4C123.s
-      At line 951 in file startup_TM4C123.s
-
+Comment: Stack_Size used once
 __Vectors_Size 0000026C
 
 Symbol: __Vectors_Size
@@ -2590,13 +2563,5 @@ Symbol: __main
    Uses
       At line 234 in file startup_TM4C123.s
 Comment: __main used once
-__use_two_region_memory 00000000
-
-Symbol: __use_two_region_memory
-   Definitions
-      At line 946 in file startup_TM4C123.s
-   Uses
-      None
-Comment: __use_two_region_memory unused
-2 symbols
-471 symbols in table
+1 symbol
+468 symbols in table
