@@ -18,8 +18,8 @@ void keypad_Init(void){
 	GPIO_PORTE_AMSEL_R&=~(0x1E);          //Disable the analog function for PORTE
 	GPIO_PORTC_AFSEL_R&=~(0xF0);          //Disable alternate function for PORTC
 	GPIO_PORTE_AFSEL_R&=~(0x1E);          //Disable alternate function for PORTE
-	GPIO_PORTC_PCTL_R&=~(0x11110000);     //using pins as GPIO
-	GPIO_PORTE_PCTL_R&=~(0x00011110);     //using pins as GPIO
+	GPIO_PORTC_PCTL_R&=~(0xFFFF0000);     //using pins as GPIO
+	GPIO_PORTE_PCTL_R&=~(0x000FFFF0);     //using pins as GPIO
   GPIO_PORTE_PDR_R |= 0x1E;             //Enable pull down resistor on PORTE
   GPIO_PORTC_DEN_R |= 0xF0;             //Set PORTC as digital pins
   GPIO_PORTE_DEN_R |= 0x1E;             //Set PORTE as digital pins
