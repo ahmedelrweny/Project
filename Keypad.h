@@ -2,6 +2,6 @@
 #define Keypad_H_
 
 void keypad_Init(void);
-char KayScan(void);
+char KeyScan(void);
 
 #endif

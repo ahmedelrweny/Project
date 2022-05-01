@@ -9,8 +9,7 @@ static char symbol[4][4] = {
 };
 
 void keypad_Init(void){
-	SYSCTL_RCGCGPIO_R |= 0x14;            //Enable clock to PORTC and PORTE  
-  while ((SYSCTL_RCGCGPIO_R&0x14)==0);  //wait for clock to be setted
+
   GPIO_PORTC_CR_R |= 0xF0;              //Allow settings for all pins of PORTC
   GPIO_PORTE_CR_R  |= 0x1E;             //Allow settings for all pins of PORTE
   GPIO_PORTE_DIR_R &=~(0x1E);           //PE1-PE4 are used with row and set them as digital input pins
@@ -27,7 +26,7 @@ void keypad_Init(void){
 	GPIO_PORTE_DATA_R&=~0x1E;             //Intializaion of PORTE
 }
 
-char KayScan(void){
+char KeyScan(void){
 	int i;
 	int j;
 	for (i=0;i<4;i++){                    // set colums 
