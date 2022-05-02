@@ -67,6 +67,7 @@ void LCD_Write(unsigned char Data){
 	GPIO_PORTA_DATA_R |= 0x04; //Enable write data
 	GPIO_PORTA_DATA_R = 0x00; //To Disable changes for LCD
 	SysTick_Wait(80);        //waits 1 micro sec
+	LCD_CMD(0x06);             //Increment from left to right
 }
 
 //LCD_String function to write the whole string on LCD
