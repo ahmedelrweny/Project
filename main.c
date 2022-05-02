@@ -14,6 +14,8 @@ char input;
 
 int main(void){
 	System_Init();
+	SW1_Init();
+	SW2_Init();
 	interrupt_Init();
 	
 	while(1){
