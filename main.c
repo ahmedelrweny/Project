@@ -17,7 +17,7 @@ int main(void){
 	while(1){
 		input = KeyScan();
 		LCD_Write(input);
-		Systick_Wait_ms(10000);
+		Systick_Wait_ms(3000);
 		/*switch(input){
 		case 1:
 			cook_Popcorn();
