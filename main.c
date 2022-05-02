@@ -14,6 +14,7 @@ char input;
 
 int main(void){
 	System_Init();
+	LED_Init();
 	SW1_Init();
 	SW2_Init();
 	interrupt_Init();
