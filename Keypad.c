@@ -31,7 +31,7 @@ char KeyScan(){
 	for (i=0;i<4;i++){ // set colums 
 	GPIO_PORTC_DATA_R=(0x10<<i);
 	for(j=0;j<4;j++){ // set rows
-		if((GPIO_PORTC_DATA_R&0x1E)&(0x02<<j)){
+		if((GPIO_PORTE_DATA_R&0x1E)&(0x02<<j)){
 			return symbol[j][i];
 		
 	}}}
