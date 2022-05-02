@@ -13,6 +13,10 @@ int main(void){
 	keypad_Init();
 	
 	while(1){
+		do{
+			input = KeyScan();
+		}
+		while(input == 0);
 		LCD_String("HELLO");
 		Systick_Wait_ms(10000);
 		/*switch(input){
