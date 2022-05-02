@@ -6,18 +6,17 @@
 #include "Timer.h"
 #include "LED.h"
 #include "Switch.h"
+#include "defines.h"
+#include <inttypes.h>
+#include "Interrupt.h"
 
 char input;
 
 int main(void){
 	System_Init();
-	LCD_Init();
-	keypad_Init();
+	interrupt_Init();
 	
 	while(1){
-		input = KeyScan();
-		LCD_Write(input);
-		Systick_Wait_ms(3000);
 		/*switch(input){
 		case 1:
 			cook_Popcorn();
@@ -36,4 +35,18 @@ int main(void){
 			break;
 		}*/
 	}	
+}
+
+void GPIOF_Handler(void)
+{	
+  if (GPIO_PORTF_MIS_R & 0x10) /* check if interrupt causes by PF4/SW1*/
+    {   
+      GPIO_PORTF_DATA_R |= (1<<3);
+      GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
+     } 
+    else if (GPIO_PORTF_MIS_R & 0x01) /* check if interrupt causes by PF0/SW2 */
+    {   
+     GPIO_PORTF_DATA_R &= ~0x08;
+     GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
+    }
 }
