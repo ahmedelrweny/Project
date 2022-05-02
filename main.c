@@ -4,6 +4,8 @@
 #include "keypad.h"
 #include "LCD.h"
 #include "Timer.h"
+#include "LED.h"
+#include "Switch.h"
 
 char input;
 
@@ -13,7 +15,8 @@ int main(void){
 	keypad_Init();
 	
 	while(1){
-		LCD_String("HELLO");
+		input = KeyScan();
+		LCD_Write(input);
 		Systick_Wait_ms(10000);
 		/*switch(input){
 		case 1:
