@@ -14,9 +14,11 @@ char input;
 
 int main(void){
 	System_Init();
+	buzzer_Init();
 	LED_Init();
 	SW1_Init();
 	SW2_Init();
+	SW3_Init();
 	interrupt_Init();
 	
 	while(1){
@@ -44,12 +46,22 @@ void GPIOF_Handler(void)
 {	
   if (GPIO_PORTF_MIS_R & 0x10) /* check if interrupt causes by PF4/SW1*/
     {   
-      GPIO_PORTF_DATA_R |= (1<<3);
+      //YOUR CODE HERE MONGED & REDA (SW1)
       GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
-     } 
+    } 
     else if (GPIO_PORTF_MIS_R & 0x01) /* check if interrupt causes by PF0/SW2 */
     {   
-     GPIO_PORTF_DATA_R &= ~0x08;
-     GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
+     //YOUR CODE HERE MONGED & REDA (SW2)
+			GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
     }
+}
+
+void GPIOD_Handler(void)
+{	
+  if (GPIO_PORTD_MIS_R & 0x40) /* check if interrupt causes by PD6/SW3*/
+    {   
+      //YOUR CODE HERE MONGED & REDA (SW3)
+			beep();
+      GPIO_PORTD_ICR_R |= 0x40; /* clear the interrupt flag */
+		}    
 }
