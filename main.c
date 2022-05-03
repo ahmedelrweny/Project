@@ -15,6 +15,8 @@ char input;
 int main(void){
 	System_Init();
 	buzzer_Init();
+	keypad_Init();
+	LCD_Init();
 	LED_Init();
 	SW1_Init();
 	SW2_Init();
@@ -61,7 +63,6 @@ void GPIOD_Handler(void)
   if (GPIO_PORTD_MIS_R & 0x04) /* check if interrupt causes by PD6/SW3*/
     {   
       //YOUR CODE HERE MONGED & REDA (SW3)
-			beep();
       GPIO_PORTD_ICR_R |= 0x04; /* clear the interrupt flag */
 		}    
 }
