@@ -22,6 +22,7 @@ int main(void){
 	interrupt_Init();
 	
 	while(1){
+		beep();
 		/*switch(input){
 		case 1:
 			cook_Popcorn();
