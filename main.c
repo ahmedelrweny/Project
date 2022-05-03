@@ -22,7 +22,6 @@ int main(void){
 	interrupt_Init();
 	
 	while(1){
-		beep();
 		/*switch(input){
 		case 1:
 			cook_Popcorn();
@@ -59,10 +58,10 @@ void GPIOF_Handler(void)
 
 void GPIOD_Handler(void)
 {	
-  if (GPIO_PORTD_MIS_R & 0x40) /* check if interrupt causes by PD6/SW3*/
+  if (GPIO_PORTD_MIS_R & 0x04) /* check if interrupt causes by PD6/SW3*/
     {   
       //YOUR CODE HERE MONGED & REDA (SW3)
 			beep();
-      GPIO_PORTD_ICR_R |= 0x40; /* clear the interrupt flag */
+      GPIO_PORTD_ICR_R |= 0x04; /* clear the interrupt flag */
 		}    
 }
