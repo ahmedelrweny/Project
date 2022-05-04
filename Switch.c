@@ -28,12 +28,12 @@ void SW2_Init(void){
 
 void SW3_Init(void){
 	
-		GPIO_PORTD_CR_R |= 0x04; 						//repeat without unlocking
-		GPIO_PORTD_AMSEL_R &= ~0x04;
-		GPIO_PORTD_PCTL_R &= ~0x00000F00;
-		GPIO_PORTD_AFSEL_R &= ~0x04;
-		GPIO_PORTD_DIR_R &= ~0x04;
-		GPIO_PORTD_DEN_R |=0x04;
+		GPIO_PORTE_CR_R |= 0x01; 						//repeat neither unlocking nor pull up
+		GPIO_PORTE_AMSEL_R &= ~0x01;
+		GPIO_PORTE_PCTL_R &= ~0x0000000F;
+		GPIO_PORTE_AFSEL_R &= ~0x01;
+		GPIO_PORTE_DIR_R &= ~0x01;
+		GPIO_PORTE_DEN_R |=0x01;
 }
 
 //*input functions*
@@ -50,5 +50,5 @@ unsigned char SW2_Input(void){
 
 unsigned char SW3_Input(void){
 	
-		return GPIO_PORTD_DATA_R & 0x04;
+		return GPIO_PORTE_DATA_R & 0x01;
 }
