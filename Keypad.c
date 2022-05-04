@@ -1,5 +1,7 @@
 #include "defines.h"
 #include <inttypes.h>
+
+
 static char symbol[4][4] = {
   {'1','2','3','A'},
   {'4','5','6','B'},
@@ -22,14 +24,14 @@ void keypad_Init(){
   GPIO_PORTE_DEN_R |= 0x1E;             //Set PORTE as digital pins
 	GPIO_PORTE_DATA_R&=~0x1E;              //Intializaion of PORTE
 }
-char KayScan(){
+char KeyScan(){
 	while(1){
 	int i;
 	int j;
 	for (i=0;i<4;i++){ // set colums 
 	GPIO_PORTC_DATA_R=(0x10<<i);
 	for(j=0;j<4;j++){ // set rows
-		if((GPIO_PORTC_DATA_R&0x1E)&(0x02<<j)){
+		if((GPIO_PORTE_DATA_R&0x1E)&(0x02<<j)){
 			return symbol[j][i];
 		
 	}}}
