@@ -11,19 +11,20 @@ void microwave_Init(void){
 	 
 }
 void cook_Popcorn(){
-	int i = 60;
-	while(i<=0){ 
+	int i=60;
+	char no[] = {'6','0'};
+
+	while(i>=0){ 
 		
 		LCD_String("00:");
-		if(i<10){
-			LCD_Write('0');
-			LCD_Write(i);
-		}
-		else{
-			LCD_Write(i);
-		}
+			LCD_Write(no[0]);
+			LCD_Write(no[1]);
 		i--;
 				Systick_Wait_ms(1000);
+		if(no[1]==0x30){
+			no[1]=0x39;
+			no[0]--;
+		}
 		  
 		    LCD_Clear_Display();
 			}
