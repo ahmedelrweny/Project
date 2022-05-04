@@ -25,6 +25,9 @@ void cook_Popcorn(){
 			no[1]=0x39;
 			no[0]--;
 		}
+		else {
+			no[1]--;
+		}
 		  
 		    LCD_Clear_Display();
 			}
