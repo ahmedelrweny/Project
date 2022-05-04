@@ -9,6 +9,7 @@
 #include "defines.h"
 #include <inttypes.h>
 #include "Interrupt.h"
+#include "Microwave.h"
 
 char input;
 
@@ -24,6 +25,8 @@ int main(void){
 	interrupt_Init();
 	
 	while(1){
+		char choose=KeyScan();
+		Cooking( choose );
 		/*switch(input){
 		case 1:
 			cook_Popcorn();
