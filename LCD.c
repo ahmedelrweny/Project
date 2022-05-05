@@ -3,7 +3,6 @@
 #include "tiva.h"
 #include "Timer.h"
 #include <string.h>
-#include <time.h>
 #define RS 0x10 //Pin 4 in Port A
 #define RW 0x08 //Pin 3 in Port A
 #define EN 0x04 //Pin 2 in Port A
@@ -11,18 +10,6 @@ void delay_1ms(){
 	int i;
 	for(i=0;i<3180;i++){}
 }
-void test(){
-	double time_taken=0;
-	char* time;
-	clock_t t;
-    t = clock();
-	delay_1ms();
-    t = clock() - t;
-  time_taken = ((double)t)/CLOCKS_PER_SEC;
-	*time = time_taken;
-	LCD_String(&time);
-}
-
 void delay_ms(int n)
 {
 	int i,j;
