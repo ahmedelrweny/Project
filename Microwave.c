@@ -79,7 +79,7 @@ void Cook_Time(){
 }
 
 
-}
+
 int Char_to_int(char x){
 	int number = x-0x30;
 	return number;
