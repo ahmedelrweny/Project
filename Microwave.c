@@ -22,3 +22,27 @@ char* Int_to_char(int x){
 	 required[1] = num2 +0x30;
 	
 	return required;}
+
+void cook_Popcorn(){
+	int i=60;
+	char no[] = {'6','0'};
+
+	while(i>=0){ 
+		
+		LCD_String("00:");
+			LCD_Write(no[0]);
+			LCD_Write(no[1]);
+		i--;
+				Systick_Wait_ms(1000);
+		if(no[1]==0x30){
+			no[1]=0x39;
+			no[0]--;
+		}
+		else {
+			no[1]--;
+		}
+		  
+		    LCD_Clear_Display();
+			}
+	
+}
