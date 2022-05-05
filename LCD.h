@@ -9,6 +9,7 @@ void SetCursorToRight(void);
 void ShiftDisplayLeft(void);
 void LCD_Write(unsigned char Data);
 void LCD_String(char *str);
+void LCD_Array(char arr[]);
 
 
 
