@@ -12,14 +12,15 @@ void delay_1ms(){
 	for(i=0;i<3180;i++){}
 }
 void test(){
+	double time_taken=0;
+	char* time;
 	clock_t t;
     t = clock();
 	delay_1ms();
     t = clock() - t;
-	char* time;
-    double time_taken = ((double)t)/CLOCKS_PER_SEC;
+  time_taken = ((double)t)/CLOCKS_PER_SEC;
 	*time = time_taken;
-	LCD_String(time);
+	LCD_String(&time);
 }
 
 void delay_ms(int n)
