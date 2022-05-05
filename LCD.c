@@ -8,24 +8,25 @@
 #define EN 0x04 //Pin 2 in Port A
 void delay_1ms(){
 	int i;
-	for(i=0;i<16000;i++){}
+	for(i=0;i<3180;i++){}
 }
 void delay_ms(int n)
 {
 	int i,j;
 	for(i=0;i<n;i++)
-	for(j=0;j<16000;j++){}
+	for(j=0;j<3180;j++){}
 }
 void delay_micros(int n)
 {
 	int i,j;
 	for(i=0;i<n;i++){
-	for(j=0;j<16;j++){}
+	for(j=0;j<3;j++){}
 	}
 }
 //LCD Control
 void LCD_CMD(unsigned char signal){
 	GPIO_PORTA_DATA_R = 0x00; //Set RS,RW to 0 to Enable write
+	delay_micros(100);
 	GPIO_PORTA_DATA_R |= 0x04; //Enable write data
 	delay_micros(100);
 	GPIO_PORTB_DATA_R = signal; //Set Data of PortB
@@ -80,6 +81,7 @@ void ShiftDisplayLeft(void){
 //LCD_Write a function that writes character on LCD
 void LCD_Write(unsigned char Data){
 	GPIO_PORTA_DATA_R = 0x10;  //which means RS=1, RW=0, EN=0 to control that the entered is data not command
+	delay_micros(100);
 	GPIO_PORTA_DATA_R |= 0x04; //Enable write data
 	delay_micros(100);
 	GPIO_PORTB_DATA_R = Data;  //LCD has the data entered on port B
