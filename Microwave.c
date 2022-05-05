@@ -50,9 +50,9 @@ void Time_Display(char time[]){
 
 void Cook_Time(){
 	char time[]={'0','0',':','0','0'};
-	int i ,j ;
+	int i=0 ,j ;
 	LCD_Clear_Display();
-	for (i=4;i>=0;i++){
+	while(SW2_Input()==1){
 	if (i==2){
 		continue ;
 	}
@@ -66,7 +66,10 @@ void Cook_Time(){
 		}
 		time[3-j]=time[4-j];
 	}
-	while(SW2_Input()==1);
+	i++;
+	if(i>4){ break;
+	}
+	}
 	if((time[0]>3)||(time[1]==0)||(time[0]==3&&time[1]>0)){
 		LCD_String("Invalid value, please enter a value between (1 to 30)min");
 		Cook_Time();
