@@ -8,13 +8,13 @@
 #define EN 0x04 //Pin 2 in Port A
 void delay_1ms(){
 	int i;
-	for(i=0;i<80000;i++){}
+	for(i=0;i<16000;i++){}
 }
 void delay_ms(int n)
 {
 	int i,j;
 	for(i=0;i<n;i++)
-	for(j=0;j<80000;j++){}
+	for(j=0;j<16000;j++){}
 }
 void delay_micros(int n)
 {
