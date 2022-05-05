@@ -8,19 +8,19 @@
 #define EN 0x04 //Pin 2 in Port A
 void delay_1ms(){
 	int i;
-	for(i=0;i<3180;i++){}
+	for(i=0;i<80000;i++){}
 }
 void delay_ms(int n)
 {
 	int i,j;
 	for(i=0;i<n;i++)
-	for(j=0;j<3180;j++){}
+	for(j=0;j<80000;j++){}
 }
 void delay_micros(int n)
 {
 	int i,j;
 	for(i=0;i<n;i++){
-	for(j=0;j<3;j++){}
+	for(j=0;j<80;j++){}
 	}
 }
 //LCD Control
@@ -89,6 +89,7 @@ void LCD_Write(unsigned char Data){
 	GPIO_PORTA_DATA_R = 0x00; //To Disable changes for LCD
 	delay_1ms();
 	LCD_CMD(0x06);             //Increment from left to right
+	delay_ms(1000);
 }
 
 //LCD_String function to write the whole string on LCD
