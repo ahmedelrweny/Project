@@ -9,6 +9,7 @@
 #include "defines.h"
 #include <inttypes.h>
 #include "Interrupt.h"
+#include "microwave.h"
 
 char input;
 

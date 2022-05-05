@@ -3,24 +3,35 @@
 #include "tiva.h"
 #include "Timer.h"
 #include <string.h>
+#include <time.h>
 #define RS 0x10 //Pin 4 in Port A
 #define RW 0x08 //Pin 3 in Port A
 #define EN 0x04 //Pin 2 in Port A
-
 void delay_1ms(){
-	for(int i=0;i<3180;i++);
+	int i;
+	for(i=0;i<3180;i++){}
 }
+void test(){
+	clock_t t;
+    t = clock();
+	delay_1ms();
+    t = clock() - t;
+    double time_taken = ((double)t)/CLOCKS_PER_SEC;
+	LCD_String(t);
+}
+
 void delay_ms(int n)
 {
 	int i,j;
 	for(i=0;i<n;i++)
-	for(j=0;j<3180;j++);
+	for(j=0;j<3180;j++){}
 }
 void delay_micros(int n)
 {
 	int i,j;
-	for(i=0;i<n;i++)
-	for(j=0;j<3;j++);
+	for(i=0;i<n;i++){
+	for(j=0;j<3;j++){}
+	}
 }
 //LCD Control
 void LCD_CMD(unsigned char signal){
