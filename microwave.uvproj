@@ -470,6 +470,11 @@
               <FileType>5</FileType>
               <FilePath>.\LCD.h</FilePath>
             </File>
+            <File>
+              <FileName>Microwave.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Microwave.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

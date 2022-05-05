@@ -24,17 +24,17 @@ int main(void){
 	interrupt_Init();
 	
 	while(1){
-		/*switch(input){
-		case 1:
+		/*switch( KeyScan()){
+		case 'A':
 			cook_Popcorn();
 			break;
-		case 2:
+		case 'B';
 			cook_Chiken();
 			break;
-		case 3:
+		case 'C':
 			cook_Beef();
 			break;
-		case 4:
+		case 'D':
 			cook_Time();
 			break;
 		default:
