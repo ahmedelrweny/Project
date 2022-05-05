@@ -16,8 +16,10 @@ void test(){
     t = clock();
 	delay_1ms();
     t = clock() - t;
+	char* time;
     double time_taken = ((double)t)/CLOCKS_PER_SEC;
-	LCD_String(t);
+	*time = time_taken;
+	LCD_String(time);
 }
 
 void delay_ms(int n)
