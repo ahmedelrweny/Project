@@ -14,6 +14,7 @@ char input;
 
 int main(void){
 	microwave_Init();
+	LCD_String("Hello Omar 15223");
 	while(1){
 		/*switch(input){
 		case 1:
