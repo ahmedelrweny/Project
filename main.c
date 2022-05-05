@@ -17,7 +17,7 @@ int main(void){
 	buzzer_Init();
 	keypad_Init();
 	LCD_Init();
-	LED_Init();
+	//LED_Init();
 	SW1_Init();
 	SW2_Init();
 	SW3_Init();
