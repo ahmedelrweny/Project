@@ -5,10 +5,77 @@
 #include "LCD.h"
 #include <string.h>
 #include "Keypad.h"
-
+#include <stdio.h>
+#include "Switch.h"
 
 void microwave_Init(void){
 	 
+}
+//LCD_Array function to write the whole array of chars on LCD
+void LCD_Array(char arr[]){   // write a array of chars on LCD
+  int l=sizeof(arr)/sizeof(arr[0]);        // l = array length
+  int i=0;                    //itterator
+  while(i<l){
+		LCD_Write(arr[i]);        // call the function LCD_Write 
+		i++;
+    }
+}
+void Time_Display(char time[]){
+	int i,j;
+	while (1){
+	while(1){ 
+		LCD_Array(time);
+		Systick_Wait_ms(1000);
+		if(time[4]==0x30){
+			time[4]=0x39;
+			time[3]--;
+		}
+		else {
+			time[4]--;
+		}
+		  LCD_Clear_Display();
+		  if (time[3]==0x30){break;}
+			}
+	if(time[0]==0x30&&time[1]==0x30){break;}
+	if(time[1]==0x30){
+			time[1]=0x39;
+			time[2]--;
+		}
+		else {
+			time[1]--;
+		}
+			
+		
+}}
+
+void Cook_Time(){
+	char time[]={'0','0',':','0','0'};
+	int i ,j ;
+	LCD_Clear_Display();
+	for (i=4;i>=0;i++){
+	if (i==2){
+		continue ;
+	}
+	time[4]=KeyScan();
+	LCD_Array(time);
+	for(j=4-i;j>=0;j--){
+		if (j==2){
+		time[0]=time[1];}
+		if (j==1){
+			time[1]=time[3];
+		}
+		time[3-j]=time[4-j];
+	}
+	while(SW2_Input()==1);
+	if((time[0]>3)||(time[1]==0)||(time[0]==3&&time[1]>0)){
+		LCD_String("Invalid value, please enter a value between (1 to 30)min");
+		Cook_Time();
+	}
+	Time_Display(time);
+	
+}
+
+
 }
 int Char_to_int(char x){
 	int number = x-0x30;
@@ -24,33 +91,15 @@ char* Int_to_char(int x){
 	return required;}
 
 void cook_Popcorn(){
-	int i=60;
-	char no[] = {'6','0'};
-
-	while(i>=0){ 
-		
-		LCD_String("00:");
-			LCD_Write(no[0]);
-			LCD_Write(no[1]);
-		i--;
-				Systick_Wait_ms(1000);
-		if(no[1]==0x30){
-			no[1]=0x39;
-			no[0]--;
-		}
-		else {
-			no[1]--;
-		}
-		  
-		    LCD_Clear_Display();
-			}
 	
+			char time[]={'0','0',':','6','0'};
+			LCD_Array (time);
 }
 void cook_Beef_or_Chicken(char No_kiloes , char choose){
 	int min;
 	int no_seconds;
 	double time;
-	char time_array[10]={'\0'};
+	char time_array[5]={'\0'};
 	int no_kiloes =Char_to_int(No_kiloes);
 	if (choose =='B'){
 	  time=0.5*No_kiloes;}
@@ -61,16 +110,20 @@ void cook_Beef_or_Chicken(char No_kiloes , char choose){
 	 no_seconds= (time-min)*60;
 	time_array[0]=Int_to_char(min)[0];
 	time_array[1]=Int_to_char(min)[1];
-  time_array[2]=Int_to_char(no_seconds)[0];
-	time_array[3]=Int_to_char(no_seconds)[1];
+	time_array[2]=':';
+  time_array[3]=Int_to_char(no_seconds)[0];
+	time_array[4]=Int_to_char(no_seconds)[1];
+	LCD_Array (time_array);
 	
 }
 
 void Cooking(char choose ){
 	  char no_kiloes;
-		if ( choose =='A'){
-			LCD_String("popcorn");
-		cook_Popcorn();	
+		if ( choose =='A'){       // A for popcorn
+			LCD_String("popcorn");  // show popcorn in lcd
+			Systick_Wait_ms(1000);  // make a delay
+			LCD_Clear_Display();    // to clear the display
+		  cook_Popcorn();	        // to call the function cook_popcorn
 		}
 		if(choose =='B' ||choose =='C'){
 			LCD_String("Beef weight?");

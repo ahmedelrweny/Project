@@ -4,24 +4,34 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 E:\project\Project\microwave.uvproj
-Project File Date:  05/04/2022
+Project File Date:  05/05/2022
 
 <h2>Output:</h2>
 Build target 'Target 1'
-compiling main.c...
-Microwave.h(6): warning:  #1295-D: Deprecated declaration cook_Popcorn - give arg types
-  void cook_Popcorn();
-Microwave.h(9): warning:  #1-D: last line of file ends without a newline
-  #endif
-main.c: 2 warnings, 0 errors
 compiling Microwave.c...
-Microwave.c(24): warning:  #1166-D: returning pointer to local variable
+Microwave.c(24): warning:  #177-D: variable "i" was declared but never referenced
+        int i,j;
+Microwave.c(24): warning:  #177-D: variable "j" was declared but never referenced
+        int i,j;
+Microwave.c(91): warning:  #1166-D: returning pointer to local variable
         return required;}
-Microwave.c(54): warning:  #550-D: variable "time_array" was set but never used
-        char time_array[10]={'\0'};
-Microwave.c: 2 warnings, 0 errors
+Microwave.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=3880 RO-data=652 RW-data=16 ZI-data=512  
-".\microwave.axf" - 0 Error(s), 4 Warning(s).
-axf" - 1 Error(s), 2 Warning(s).
+Program Size: Code=4180 RO-data=652 RW-data=16 ZI-data=512  
+".\microwave.axf" - 0 Error(s), 3 Warning(s).
+;
+Microwave.c(15): warning:  #177-D: variable "j" was declared but never referenced
+        int i,j;
+Microwave.c(51): warning:  #223-D: function "LCD_Array" declared implicitly
+        LCD_Array(time);
+Microwave.c(82): warning:  #1166-D: returning pointer to local variable
+        return required;}
+Microwave.c(100): warning:  #550-D: variable "time_array" was set but never used
+        char time_array[10]={'\0'};
+Microwave.c: 6 warnings, 0 errors
+linking...
+.\microwave.axf: Error: L6218E: Undefined symbol LCD_Array (referred from microwave.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 1 error messages.
+".\microwave.axf" - 1 Error(s), 8 Warning(s).
 Target not created
