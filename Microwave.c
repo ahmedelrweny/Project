@@ -4,10 +4,9 @@ void microwave_Init(void){
 void Time_Display(char time[]){
 	int i,j;
 	while (1){
-	for(i=60;i>=0;i--){ 
+	while(1){ 
 		LCD_Array(time);
-		i--;
-				Systick_Wait_ms(1000);
+		Systick_Wait_ms(1000);
 		if(time[4]==0x30){
 			time[4]=0x39;
 			time[3]--;
@@ -15,8 +14,8 @@ void Time_Display(char time[]){
 		else {
 			time[4]--;
 		}
-		  
-		    LCD_Clear_Display();
+		  LCD_Clear_Display();
+		  if (time[3]==0x30){break;}
 			}
 	if(time[0]==0x30&&time[1]==0x30){break;}
 	if(time[1]==0x30){

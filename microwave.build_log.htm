@@ -7,6 +7,35 @@ C:\Users\ranah\OneDrive\Desktop\sr\Project\Project\microwave.uvproj
 Project File Date:  05/05/2022
 
 <h2>Output:</h2>
+Build target 'Target 1'
+compiling main.c...
+compiling Microwave.c...
+Microwave.c(8): warning:  #223-D: function "LCD_Array" declared implicitly
+                LCD_Array(time);
+Microwave.c(9): warning:  #223-D: function "Systick_Wait_ms" declared implicitly
+                Systick_Wait_ms(1000);
+Microwave.c(17): warning:  #223-D: function "LCD_Clear_Display" declared implicitly
+                  LCD_Clear_Display();
+Microwave.c(5): warning:  #177-D: variable "i" was declared but never referenced
+        int i,j;
+Microwave.c(5): warning:  #177-D: variable "j" was declared but never referenced
+        int i,j;
+Microwave.c(35): warning:  #223-D: function "LCD_Clear_Display" declared implicitly
+        LCD_Clear_Display();
+Microwave.c(40): warning:  #223-D: function "KeyScan" declared implicitly
+        time[4]=KeyScan();
+Microwave.c(41): warning:  #223-D: function "LCD_Array" declared implicitly
+        LCD_Array(time);
+Microwave.c(50): warning:  #223-D: function "SW2_Input" declared implicitly
+        while(SW2_Input()==1);
+Microwave.c(52): warning:  #223-D: function "LCD_String" declared implicitly
+                LCD_String("Invalid value, please enter a value between 1 and 30");
+Microwave.c(60): warning:  #1-D: last line of file ends without a newline
+  }
+Microwave.c: 11 warnings, 0 errors
+linking...
+Program Size: Code=1988 RO-data=652 RW-data=16 ZI-data=512  
+".\microwave.axf" - 0 Error(s), 11 Warning(s).
 </pre>
 </body>
 </html>

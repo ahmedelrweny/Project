@@ -44,9 +44,9 @@ Removing Unused input sections from the image.
 
     Removing startup_tm4c123.o(HEAP), (0 bytes).
     Removing main.o(.data), (1 bytes).
-    Removing microwave.o(.text), (232 bytes).
+    Removing microwave.o(.text), (332 bytes).
 
-3 unused section(s) (total 233 bytes) removed from the image.
+3 unused section(s) (total 333 bytes) removed from the image.
 
 ==============================================================================
 
