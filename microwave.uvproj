@@ -466,14 +466,19 @@
               <FilePath>.\Interrupt.c</FilePath>
             </File>
             <File>
-              <FileName>LCD.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\LCD.h</FilePath>
-            </File>
-            <File>
               <FileName>Microwave.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Microwave.h</FilePath>
+            </File>
+            <File>
+              <FileName>LED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>LED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\LED.c</FilePath>
             </File>
           </Files>
         </Group>

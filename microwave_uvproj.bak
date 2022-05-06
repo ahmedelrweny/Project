@@ -466,9 +466,9 @@
               <FilePath>.\Interrupt.c</FilePath>
             </File>
             <File>
-              <FileName>LCD.h</FileName>
+              <FileName>Microwave.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\LCD.h</FilePath>
+              <FilePath>.\Microwave.h</FilePath>
             </File>
           </Files>
         </Group>

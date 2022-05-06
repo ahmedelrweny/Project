@@ -10,3 +10,4 @@
 .\main.o: C:\Keil\ARM\ARMCC\bin\..\include\inttypes.h
 .\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\main.o: Interrupt.h
+.\main.o: Microwave.h

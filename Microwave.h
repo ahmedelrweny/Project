@@ -2,7 +2,10 @@
 #define Microwave_H_
 
 void microwave_Init(void);
-void Cook_Time(void);
-void Time_Display(char time[]);
+void Cooking(char choose );
+void cook_Popcorn();
+void cook_Beef_or_Chicken(int No_kiloes , char choose);
+char* Int_to_char(int x);
+int Char_to_int(char x);
 
 #endif
