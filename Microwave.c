@@ -15,7 +15,7 @@ void microwave_Init(void){
 void LCD_Array(char arr[]){   // write a array of chars on LCD
   int l=sizeof(arr)/sizeof(arr[0]);        // l = array length
   int i=0;                    //itterator
-  while(i<l){
+  while(i<(l+1)){
 		LCD_Write(arr[i]);        // call the function LCD_Write 
 		i++;
     }
@@ -146,6 +146,9 @@ void Cooking(char choose ){
 		  Systick_Wait_ms(2000);
 		  LCD_Clear_Display();
 		  cook_Beef_or_Chicken(no_kiloes,choose);
+		}
+		if(choose =='D'){
+			Cook_Time();
 		}
 			
 	
