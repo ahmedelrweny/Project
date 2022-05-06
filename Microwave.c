@@ -36,7 +36,7 @@ void Time_Display(char time[]){
 		  LCD_Clear_Display();
 		  if (time[3]==0x30){break;}
 			}
-	if(time[0]==0x30&&time[1]==0x30){break;}
+	if(time[0]==0x30&&time[1]==0x30&&time[3]==0x30&&time[4]==0x30){break;}
 	if(time[1]==0x30){
 			time[1]=0x39;
 			time[2]--;
@@ -133,8 +133,9 @@ void Cooking(char choose ){
 			LCD_String("Beef weight?");
 			Systick_Wait_ms(1000);
 			LCD_Clear_Display();}
-			if(choose =='B'){
+			if(choose =='C'){
 			LCD_String("Chicken  weight?"); 
+				Systick_Wait_ms(1000);
 	l:	LCD_Clear_Display();
 			}
 			LCD_String("please value between 1 and 9"); 
