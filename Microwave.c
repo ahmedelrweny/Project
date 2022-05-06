@@ -129,11 +129,14 @@ void Cooking(char choose ){
 		  cook_Popcorn();	        // to call the function cook_popcorn
 		}
 		if(choose =='B' ||choose =='C'){
+			if(choose =='B'){
 			LCD_String("Beef weight?");
 			Systick_Wait_ms(1000);
-			LCD_Clear_Display();
+			LCD_Clear_Display();}
+			if(choose =='B'){
 			LCD_String("Chicken  weight?"); 
 	l:	LCD_Clear_Display();
+			}
 			LCD_String("please value between 1 and 9"); 
 			LCD_Clear_Display();
 		  no_kiloes =KeyScan();
