@@ -89,8 +89,7 @@ void cook_Popcorn(){
 	    char time[]={'0','0',':','6','0'};
 	    LCD_String("popcorn");  // show popcorn in lcd
 			Systick_Wait_ms(1000);  // make a delay
-			LCD_Clear_Display();    // to clear the display
-		  cook_Popcorn();	        // to call the function cook_popcorn
+			LCD_Clear_Display();    // to clear the display	      
 			Time_Display(time);
 }
 void cook_Beef_or_Chicken(char choose){
@@ -100,19 +99,18 @@ void cook_Beef_or_Chicken(char choose){
 	char time_array[5]={'\0'};
 	int no_kiloes ;
 	if(choose =='B'){
-			LCD_String("Beef weight?");
-			Systick_Wait_ms(1000);
-			LCD_Clear_Display();}
-	 else if(choose =='C'){
-			LCD_String("Chicken  weight?"); 
-				Systick_Wait_ms(1000);
-	   	LCD_Clear_Display();
-			}
-l:	  LCD_String("value 1 to 9"); 
-			Systick_Wait_ms(1000);
-			LCD_Clear_Display();
-		  No_kiloes =KeyScan();
-			if( No_kiloes<'1' || No_kiloes>'9'){ 
+		LCD_String("Beef weight?");
+		Systick_Wait_ms(1000);
+	  LCD_Clear_Display();}
+	else if(choose =='C'){
+		LCD_String("Chicken  weight?"); 
+		Systick_Wait_ms(1000);
+		LCD_Clear_Display();}
+l:  LCD_String("value 1 to 9"); 
+		Systick_Wait_ms(1000);
+		LCD_Clear_Display();
+		No_kiloes =KeyScan();
+		if( No_kiloes<'1' || No_kiloes>'9'){ 
 			LCD_String("Err");
 			Systick_Wait_ms(2000);
 			LCD_Clear_Display();
@@ -121,12 +119,12 @@ l:	  LCD_String("value 1 to 9");
 		  LCD_Write(No_kiloes);
 		  Systick_Wait_ms(2000);
 		  LCD_Clear_Display();
-	if (choose =='B'){
-		no_kiloes=Char_to_int(No_kiloes);
-	  time=0.5*no_kiloes;}
-	else if(choose == 'C'){
-		no_kiloes=Char_to_int(No_kiloes);
-		time=0.2*no_kiloes;
+			if (choose =='B'){
+				no_kiloes=Char_to_int(No_kiloes);
+			time=0.5*no_kiloes;}
+			else if(choose == 'C'){
+				no_kiloes=Char_to_int(No_kiloes);
+				time=0.2*no_kiloes;
 	}
 	 min= (int)time;
 	 no_seconds= (time-min)*60;
