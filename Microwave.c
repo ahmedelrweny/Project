@@ -28,24 +28,24 @@ void Time_Display(char time[]){
 			time[4]=0x39;
 			time[3]--;
 		}
-		if(time[4]!=0x30 && time[3]!=0x30 ) {
+		else if(time[4]!=0x30 && time[3]!=0x30 ) {
 			time[4]--;
 		}
-		if(time[4]==0x30 && time[3]==0x30 ){
+		else if(time[4]==0x30 && time[3]==0x30 ){
 			if(time[1]!=0x30){
 			time[4]=0x39;
 			time[3]=0x35;
 			time[1]--;}
-			if(time[1]==0x30 && time[0]!=0x30){
+		else if(time[1]==0x30 && time[0]!=0x30){
 			time[4]=0x39;
 			time[3]=0x35;
 				time[1]=0x39;
 				time[0]--;}
-			if(time[1]==0x30 && time[0]==0x30){
+		else if(time[1]==0x30 && time[0]==0x30){
 				break;
 			}
 			}
-			if(time[4]!=0x30 && time[3]==0x30){
+		else if(time[4]!=0x30 && time[3]==0x30){
 				time[4]--;
 			}
 			 LCD_Clear_Display();
