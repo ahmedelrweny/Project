@@ -21,32 +21,36 @@ void LCD_Array(char arr[]){   // write a array of chars on LCD
     }
 }
 void Time_Display(char time[]){
-	int i,j;
-	while (1){
-	while(1){ 
+	while(time[0]!=0x30 || time[1]!=0x30 || time[3]!=0x30 ||  time[4]!=0x30){ 
 		LCD_Array(time);
 		Systick_Wait_ms(1000);
-		if(time[4]==0x30){
+		if(time[4]==0x30 && time[3]!=0x30){
 			time[4]=0x39;
 			time[3]--;
 		}
-		else {
+		if(time[4]!=0x30 && time[3]!=0x30 ) {
 			time[4]--;
 		}
-		  LCD_Clear_Display();
-		  if (time[3]==0x30){break;}
+		if(time[4]==0x30 && time[3]==0x30 ){
+			if(time[1]!=0x30){
+			time[4]=0x39;
+			time[3]=0x35;
+			time[1]--;}
+			if(time[1]==0x30 && time[0]!=0x30){
+			time[4]=0x39;
+			time[3]=0x35;
+				time[1]=0x39;
+				time[0]--;}
+			if(time[1]==0x30 && time[0]==0x30){
+				break;
 			}
-	if(time[0]==0x30&&time[1]==0x30&&time[3]==0x30&&time[4]==0x30){break;}
-	if(time[1]==0x30){
-			time[1]=0x39;
-			time[2]--;
+			}
+			if(time[4]!=0x30 && time[3]==0x30){
+				time[4]--;
+			}
+			 LCD_Clear_Display();
 		}
-		else {
-			time[1]--;
-		}
-			
-		
-}}
+	}
 
 void Cook_Time(){
 	char time[]={'0','0',':','0','0'};
@@ -138,14 +142,14 @@ void Cooking(char choose ){
 				Systick_Wait_ms(1000);
 	l:	LCD_Clear_Display();
 			}
-			LCD_String("please value between 1 and 9"); 
+			LCD_String("value 1 to 9"); 
 			LCD_Clear_Display();
 		  no_kiloes =KeyScan();
 			if( no_kiloes<'1' || no_kiloes>'9'){ 
 			LCD_String("Err");
 			Systick_Wait_ms(2000);
 			goto l ;}
-		  LCD_String("the entered value is"); 
+		  LCD_String("the value is"); 
 		  LCD_Write(no_kiloes);
 		  Systick_Wait_ms(2000);
 		  LCD_Clear_Display();
