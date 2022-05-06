@@ -7,4 +7,5 @@ void cook_Beef_or_Chicken(char choose);
 char* Int_to_char(int x);
 int Char_to_int(char x);
 void Cook_Time();
+void Time_Display(char time[]);
 #endif

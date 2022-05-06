@@ -25,21 +25,22 @@ int main(void){
 	interrupt_Init();
 	
 	while(1){
+	
 		switch(KeyScan()){
-		case 'A':
-			cook_Popcorn();
+			case 'A':
+				cook_Popcorn();
 			break;
-		case 'B':
-			cook_Beef_or_Chicken('B');
+			case 'B':
+				cook_Beef_or_Chicken('B');
 			break;
-		case 'C':
-			cook_Beef_or_Chicken('C');
+			case 'C':
+				cook_Beef_or_Chicken('C');
 			break;
-		case 'D':
-		 Cook_Time();
+			case 'D':
+				Cook_Time();
 			break;
-		default:
-			LCD_String("Please enter a choice");
+			default:
+				LCD_String("Please enter a choice");
 			break;
 		}
 	}	

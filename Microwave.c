@@ -126,8 +126,8 @@ l:  LCD_String("value 1 to 9");
 				no_kiloes=Char_to_int(No_kiloes);
 				time=0.2*no_kiloes;
 	}
-	 min= (int)time;
-	 no_seconds= (time-min)*60;
+			min= (int)time;
+	no_seconds= (time-min)*60;
 	time_array[0]=Int_to_char(min)[0];
 	time_array[1]=Int_to_char(min)[1];
 	time_array[2]=':';
