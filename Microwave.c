@@ -60,7 +60,7 @@ void Cook_Time(){
         LCD_Array(time);
 			if(SW2_Input()==0){break;}
     }
-	if((time[0]>'3')||(time[0]=='3' && time[1]!=0)||((time[1]<'1')&&time[0]=='0' || time[3]>=6 )){
+	if((time[0]>'3')||(time[0]=='3' && time[1]!=0)||(((time[1]<'1')&& time[0]=='0' )|| time[3]>=6 )){
 		LCD_String("Invalid value");
     Systick_Wait_ms(2000);
 	  LCD_Clear_Display();
@@ -86,11 +86,11 @@ char* Int_to_char(int x){
 	return required;}
 
 void cook_Popcorn(){
-	    char time[]={'0','0',':','6','0'};
+	char time[]={'0','0',':','6','0'};  // to set time min
 	    LCD_String("popcorn");  // show popcorn in lcd
 			Systick_Wait_ms(1000);  // make a delay
 			LCD_Clear_Display();    // to clear the display	      
-			Time_Display(time);
+			Time_Display(time);     // to display time
 }
 void cook_Beef_or_Chicken(char choose){
 	int min;
@@ -99,7 +99,7 @@ void cook_Beef_or_Chicken(char choose){
 	char time_array[5]={'\0'};
 	int no_kiloes ;
 	if(choose =='B'){
-		LCD_String("Beef weight?");
+		LCD_String("Beef weight?");    
 		Systick_Wait_ms(1000);
 	  LCD_Clear_Display();}
 	else if(choose =='C'){
