@@ -70,21 +70,26 @@ void Cook_Time(){
 	
 }
 
-
-
 int Char_to_int(char x){
 	int number = x-0x30;
 	return number;
 }
-char* Int_to_char(int x){
+char Int_to_char0(int x){
 	 int num1= x/10;
 	 int num2= x-(num1*10);
 	 char required[2];
 	   required[0] = num1 +0x30;
 	 required[1] = num2 +0x30;
 	
-	return required;}
-
+	return required[0];}
+char Int_to_char1(int x){
+	 int num1= x/10;
+	 int num2= x-(num1*10);
+	 char required[2];
+	 required[1] = num2 +0x30;
+	
+	return required[1];}
+	
 void cook_Popcorn(){
 	char time[]={'0','0',':','6','0'};  // to set time min
 	    LCD_String("popcorn");  // show popcorn in lcd
@@ -128,11 +133,11 @@ l:  LCD_String("value 1 to 9");
 	}
 			min= (int)time;
 	no_seconds= (time-min)*60;
-	time_array[0]=Int_to_char(min)[0];
-	time_array[1]=Int_to_char(min)[1];
+	time_array[0]=Int_to_char0(min);
+	time_array[1]=Int_to_char1(min);
 	time_array[2]=':';
-  time_array[3]=Int_to_char(no_seconds)[0];
-	time_array[4]=Int_to_char(no_seconds)[1];
+  time_array[3]=Int_to_char0(no_seconds);
+	time_array[4]=Int_to_char1(no_seconds);
 	 Time_Display(time_array);
 }
 
