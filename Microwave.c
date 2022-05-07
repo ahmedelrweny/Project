@@ -59,7 +59,7 @@ void Cook_Time(){
         LCD_Array(time);
 			if(SW2_Input()==0){break;}
     }
-	if((time[0]>'3')||(time[0]=='3' && time[1]!=0)||(((time[1]<'1')&& time[0]=='0' )|| time[3]>='6' )){
+	if((time[0]>'3')||(time[0]=='3' && time[1]!='0')||(((time[1]<'1')&& time[0]=='0' )|| time[3]>='6' )){
 		LCD_String("Invalid value");
     Systick_Wait_ms(2000);
 	  LCD_Clear_Display();
