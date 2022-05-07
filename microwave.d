@@ -7,5 +7,4 @@
 .\microwave.o: LCD.h
 .\microwave.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
 .\microwave.o: Keypad.h
-.\microwave.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\microwave.o: Switch.h

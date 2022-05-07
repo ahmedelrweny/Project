@@ -5,7 +5,6 @@
 #include "LCD.h"
 #include <string.h>
 #include "Keypad.h"
-#include <stdio.h>
 #include "Switch.h"
  char No_kiloes;
 void microwave_Init(void){
@@ -45,10 +44,10 @@ void Time_Display(char time[]){
 	}
 void Cook_Time(){
  char time[]={'0','0',':','0','0'};
-
-    int i ;
+ char x;
+ int i ;
     for(i=4;i>0;i--){
-        char x= getchar();
+         x= KeyScan();
 			if(SW1_Input()==0){
 				 LCD_Clear_Display();
 				 Cook_Time();
@@ -60,7 +59,7 @@ void Cook_Time(){
         LCD_Array(time);
 			if(SW2_Input()==0){break;}
     }
-	if((time[0]>'3')||(time[0]=='3' && time[1]!=0)||(((time[1]<'1')&& time[0]=='0' )|| time[3]>=6 )){
+	if((time[0]>'3')||(time[0]=='3' && time[1]!=0)||(((time[1]<'1')&& time[0]=='0' )|| time[3]>='6' )){
 		LCD_String("Invalid value");
     Systick_Wait_ms(2000);
 	  LCD_Clear_Display();
