@@ -17,17 +17,25 @@ void LED_Clear(void){
 }
 
 void RedOn(void){
-		LED_Clear();
-		GPIO_PORTF_DATA_R ^= 0x2;
+		GPIO_PORTF_DATA_R |= 0x2;
 }
 
 void BlueOn(void){
-	
-		LED_Clear();
+		GPIO_PORTF_DATA_R |= 0x4;
+}
+
+void GreenOn(void){
+		GPIO_PORTF_DATA_R |= 0x8;
+}
+
+void RedToggle(void){
+		GPIO_PORTF_DATA_R ^= 0x2;
+}
+
+void BlueToggle(void){
 		GPIO_PORTF_DATA_R ^= 0x4;
 }
 
-void GreenOn(void){		
-		LED_Clear();
+void GreenToggle(void){
 		GPIO_PORTF_DATA_R ^= 0x8;
 }
