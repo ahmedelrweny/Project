@@ -61,7 +61,6 @@ void Cook_Time(){
  char time[]={'0','0',':','0','0'};
  char x;
  int i ;
- Systick_Wait_ms(1000);
  LCD_String("Time?");
  Systick_Wait_ms(1000);
  LCD_Clear_Display();
