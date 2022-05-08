@@ -12,6 +12,7 @@
 
 
 char No_kiloes;
+char time[]={'0','0',':','0','0'};
 
 void microwave_Init(void){
 	System_Init();
@@ -57,8 +58,7 @@ void Time_Display(char time[]){
 		}
 	}
 
-void Cook_Time(){
- char time[]={'0','0',':','0','0'};
+void Cook_Time(void){
  char x;
  int i ;
  LCD_String("Time?");
@@ -113,8 +113,8 @@ char Int_to_char1(int x){
 	return required[1];
 }
 	
-void cook_Popcorn(){
-	char time[]={'0','0',':','6','0'};  // to set time min
+void cook_Popcorn(void){
+	    time[3]='6';  // to set time min
 	    LCD_String("popcorn");  // show popcorn in lcd
 			Systick_Wait_ms(1000);  // make a delay
 			LCD_Clear_Display();    // to clear the display	      
@@ -124,8 +124,7 @@ void cook_Popcorn(){
 void cook_Beef_or_Chicken(char choose){
 	int min;
 	int no_seconds;
-	double time;
-	char time_array[5]={'\0'};
+	double Time;
 	int no_kiloes ;
 	if(choose =='B'){
 		LCD_String("Beef weight?");    
@@ -144,44 +143,38 @@ l:  LCD_String("value 1 to 9");
 			Systick_Wait_ms(2000);
 			LCD_Clear_Display();
 			goto l ;}
-		  LCD_String("value is"); 
+		  LCD_String("value is "); 
 		  LCD_Write(No_kiloes);
 		  Systick_Wait_ms(2000);
 		  LCD_Clear_Display();
 			if (choose =='B'){
 				no_kiloes=Char_to_int(No_kiloes);
-			time=0.5*no_kiloes;}
+			Time=0.5*no_kiloes;}
 			else if(choose == 'C'){
 				no_kiloes=Char_to_int(No_kiloes);
-				time=0.2*no_kiloes;
+				Time=0.2*no_kiloes;
 	}
-			min= (int)time;
-	no_seconds= (time-min)*60;
-	time_array[0]=Int_to_char0(min);
-	time_array[1]=Int_to_char1(min);
-	time_array[2]=':';
-  time_array[3]=Int_to_char0(no_seconds);
-	time_array[4]=Int_to_char1(no_seconds);
-	Time_Display(time_array);
+	min= (int)time;
+	no_seconds= (Time-min) * 60;
+	time[0]=Int_to_char0(min);
+	time[1]=Int_to_char1(min);
+	time[2]=':';
+  time[3]=Int_to_char0(no_seconds);
+	time[4]=Int_to_char1(no_seconds);
+	Time_Display(time);
 }
 
 
-unsigned int CurrentTime;
 
-void start(unsigned int timer){
-    NVIC_ST_RELOAD_R = timer;
-    NVIC_ST_CTRL_R |= 0x05;
+void start(void){
+    //Again please
 }
 void pause(void){
-    CurrentTime = NVIC_ST_CURRENT_R;
-    NVIC_ST_CTRL_R &= ~(0x05);
-    //Show Time
+    //Again please
 }
 void resume(void){
-    NVIC_ST_RELOAD_R = CurrentTime;
-    NVIC_ST_CTRL_R |= 0x05;
+    //Again please
 }
 void reset(void){
-    NVIC_ST_CURRENT_R = 0x0;
-    NVIC_ST_CTRL_R &= ~(0x05);
+    //Again please
 }
