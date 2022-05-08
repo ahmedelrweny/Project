@@ -6,36 +6,21 @@
 #define RS 0x10 //Pin 4 in Port A
 #define RW 0x08 //Pin 3 in Port A
 #define EN 0x04 //Pin 2 in Port A
-void delay_1ms(){
-	int i;
-	for(i=0;i<3180;i++){}
-}
-void delay_ms(int n)
-{
-	int i,j;
-	for(i=0;i<n;i++)
-	for(j=0;j<3180;j++){}
-}
-void delay_micros(int n)
-{
-	int i,j;
-	for(i=0;i<n;i++){
-	for(j=0;j<3;j++){}
-	}
-}
+
+
 //LCD Control
 void LCD_CMD(unsigned char signal){
-	GPIO_PORTA_DATA_R = 0x00; //Set RS,RW to 0 to Enable write
-	delay_micros(100);
-	GPIO_PORTA_DATA_R |= 0x04; //Enable write data
-	delay_micros(100);
-	GPIO_PORTB_DATA_R = signal; //Set Data of PortB
-	delay_micros(100);
-	GPIO_PORTA_DATA_R = 0x00; //To Disable changes for LCD
-	/*Commands of code 0000 --> 0111 Requires 2ms to be sure they are executed
-	Commands above that Requires 40 microsec to be sure they are executed*/
-	if(signal < 4) delay_ms(2); // 2ms
-	else delay_micros(40); // 40 micro sec
+		GPIO_PORTA_DATA_R = 0x00; //Set RS,RW to 0 to Enable write
+		Systick_Wait_1ms();
+		GPIO_PORTA_DATA_R |= 0x04; //Enable write data
+		Systick_Wait_1ms();
+		GPIO_PORTB_DATA_R = signal; //Set Data of PortB
+		Systick_Wait_1ms();
+		GPIO_PORTA_DATA_R = 0x00; //To Disable changes for LCD
+		/*Commands of code 0000 --> 0111 Requires 2ms to be sure they are executed
+		Commands above that Requires 40 microsec to be sure they are executed*/
+		if(signal < 4) SysTick_Wait(160000); // 2ms
+		else SysTick_Wait(3200); // 40 micro sec
 }
 
 void LCD_Clear_Display(void){
@@ -47,22 +32,22 @@ void LCD_Init(void){
 
     //Enable PortA bits 2-4 for Rs Rw Enable
     GPIO_PORTA_CR_R |= 0x1C;
-	GPIO_PORTA_AMSEL_R &= ~0x1C;
-	GPIO_PORTA_PCTL_R &= ~0x000FFF00;
-	GPIO_PORTA_AFSEL_R &= ~0x1C;
-	GPIO_PORTA_DIR_R |= 0x1C;						
-	GPIO_PORTA_DEN_R |= 0x1C;	
-	//Enable port B bits 0-7 for
-	GPIO_PORTB_CR_R |= 0xFF;
-	GPIO_PORTB_AMSEL_R &= ~0xFF;
-	GPIO_PORTB_PCTL_R &= ~0xFFFFFFFF;
-	GPIO_PORTB_AFSEL_R &= ~0xFF;
-	GPIO_PORTB_DIR_R |= 0xFF;						
-	GPIO_PORTB_DEN_R |= 0xFF;	
+		GPIO_PORTA_AMSEL_R &= ~0x1C;
+		GPIO_PORTA_PCTL_R &= ~0x000FFF00;
+		GPIO_PORTA_AFSEL_R &= ~0x1C;
+		GPIO_PORTA_DIR_R |= 0x1C;						
+		GPIO_PORTA_DEN_R |= 0x1C;	
+		//Enable port B bits 0-7 for
+		GPIO_PORTB_CR_R |= 0xFF;
+		GPIO_PORTB_AMSEL_R &= ~0xFF;
+		GPIO_PORTB_PCTL_R &= ~0xFFFFFFFF;
+		GPIO_PORTB_AFSEL_R &= ~0xFF;
+		GPIO_PORTB_DIR_R |= 0xFF;						
+		GPIO_PORTB_DEN_R |= 0xFF;	
 
-	LCD_CMD(0x38);           // Enable 8 bit mode
-	LCD_CMD(0x0F);           // Turn on Display
-	LCD_Clear_Display();
+		LCD_CMD(0x38);           // Enable 8 bit mode
+		LCD_CMD(0x0F);           // Turn on Display
+		LCD_Clear_Display();
 }
 
 void SetCursorToRight(void){
@@ -81,15 +66,14 @@ void ShiftDisplayLeft(void){
 //LCD_Write a function that writes character on LCD
 void LCD_Write(unsigned char Data){
 	GPIO_PORTA_DATA_R = 0x10;  //which means RS=1, RW=0, EN=0 to control that the entered is data not command
-	delay_micros(100);
+	Systick_Wait_1ms();
 	GPIO_PORTA_DATA_R |= 0x04; //Enable write data
-	delay_micros(100);
+	Systick_Wait_1ms();
 	GPIO_PORTB_DATA_R = Data;  //LCD has the data entered on port B
-	delay_micros(100);
+	Systick_Wait_1ms();
 	GPIO_PORTA_DATA_R = 0x00; //To Disable changes for LCD
-	delay_micros(100);
+	Systick_Wait_1ms();
 	LCD_CMD(0x06);             //Increment from left to right
-	delay_ms(1000);
 }
 
 //LCD_String function to write the whole string on LCD
@@ -101,3 +85,12 @@ void LCD_String(char *str){   // write a string on LCD
 		i++;
     }
 }
+
+//LCD_Array function to write the whole array of chars on LCD
+void LCD_Array(char arr[]){   // write a array of chars on LCD   
+  int i;               //itterator
+  for(i=0;i<(sizeof(arr)+1);i++){
+		LCD_Write(arr[i]);        // call the function LCD_Write 
+    }
+}
+ 
