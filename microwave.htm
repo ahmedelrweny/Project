@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\microwave.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\microwave.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Mon May 09 01:21:31 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Mon May 09 01:30:40 2022
 <BR><P>
 <H3>Maximum Stack Usage =        100 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1315,13 +1315,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8f]"></a>cook_Beef_or_Chicken</STRONG> (Thumb, 308 bytes, Stack size 56 bytes, microwave.o(.text))
+<P><STRONG><a name="[8f]"></a>cook_Beef_or_Chicken</STRONG> (Thumb, 312 bytes, Stack size 56 bytes, microwave.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = cook_Beef_or_Chicken &rArr; Time_Display &rArr; LCD_Array &rArr; LCD_Write &rArr; LCD_CMD &rArr; Systick_Wait_1ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
@@ -1537,7 +1537,7 @@ Global Symbols
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsub1
 </UL>
 
-<P><STRONG><a name="[a4]"></a>__aeabi_d2iz</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix))
+<P><STRONG><a name="[a3]"></a>__aeabi_d2iz</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_d2iz
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Beef_or_Chicken
@@ -1576,7 +1576,7 @@ Global Symbols
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd
 </UL>
 
-<P><STRONG><a name="[a3]"></a>__aeabi_drsub</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, daddsub_clz.o(x$fpl$drsb))
+<P><STRONG><a name="[a4]"></a>__aeabi_drsub</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, daddsub_clz.o(x$fpl$drsb))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_drsub
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Beef_or_Chicken

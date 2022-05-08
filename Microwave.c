@@ -142,26 +142,28 @@ l:  LCD_String("value 1 to 9");
 			LCD_String("Err");
 			Systick_Wait_ms(2000);
 			LCD_Clear_Display();
-			goto l ;}
-		  LCD_String("value is "); 
-		  LCD_Write(No_kiloes);
-		  Systick_Wait_ms(2000);
-		  LCD_Clear_Display();
-			if (choose =='B'){
-				no_kiloes=Char_to_int(No_kiloes);
-			Time=0.5*no_kiloes;}
-			else if(choose == 'C'){
-				no_kiloes=Char_to_int(No_kiloes);
-				Time=0.2*no_kiloes;
-	}
-	min= (int)time;
-	no_seconds= (Time-min) * 60;
-	time[0]=Int_to_char0(min);
-	time[1]=Int_to_char1(min);
-	time[2]=':';
-  time[3]=Int_to_char0(no_seconds);
-	time[4]=Int_to_char1(no_seconds);
-	Time_Display(time);
+			goto l ;
+		}
+		 LCD_String("value is "); 
+		 LCD_Write(No_kiloes);
+		 Systick_Wait_ms(2000);
+		 LCD_Clear_Display();
+		if (choose =='B'){
+			no_kiloes=Char_to_int(No_kiloes);
+			Time=0.5*no_kiloes;
+		}
+		else if(choose == 'C'){
+			no_kiloes=Char_to_int(No_kiloes);
+			Time=0.2*no_kiloes;
+		}
+	  min= (int)Time;
+		no_seconds= (Time-min) * 60;
+		time[0]=Int_to_char0(min);
+		time[1]=Int_to_char1(min);
+		time[2]=':';
+		time[3]=Int_to_char0(no_seconds);
+		time[4]=Int_to_char1(no_seconds);
+		Time_Display(time);
 }
 
 
