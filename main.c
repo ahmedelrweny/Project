@@ -16,7 +16,7 @@
 int main(void){
 	microwave_Init();
 	while(1){
-		Cook_Time();
+		cook_Beef_or_Chicken('C');
 		/*switch(input){
 		case 1:
 			cook_Popcorn();
