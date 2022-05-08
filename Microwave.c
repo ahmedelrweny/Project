@@ -72,8 +72,10 @@ void Cook_Time(){
         time[1]=time[3];
         time[3]=time[4];
         time[4]=x;
-        LCD_Array(time);
-			  Systick_Wait_ms(1000);
+        if(i != 1){
+					LCD_Array(time);
+				}	
+			  Systick_Wait_ms(500);
 			
     }
 	if((time[0]>'3')||(time[0]=='3' && time[1]!='0')||(((time[1]<'1')&& time[0]=='0' )|| time[3]>='6' )){
