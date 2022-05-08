@@ -61,6 +61,7 @@ void Cook_Time(){
  char time[]={'0','0',':','0','0'};
  char x;
  int i ;
+ while(KeyScan()=='D'){};
  LCD_Clear_Display();
     for(i=4;i>0;i--){
 			
