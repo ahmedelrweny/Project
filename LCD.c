@@ -7,19 +7,15 @@
 #define RW 0x08 //Pin 3 in Port A
 #define EN 0x04 //Pin 2 in Port A
 
-void delay_1ms(void){
-	int i;
-	for(i=0;i<3180;i++);
-}
 
 //LCD Control
 void LCD_CMD(unsigned char signal){
 		GPIO_PORTA_DATA_R = 0x00; //Set RS,RW to 0 to Enable write
-		delay_1ms();
+		Systick_Wait_1ms();
 		GPIO_PORTA_DATA_R |= 0x04; //Enable write data
-		delay_1ms();
+		Systick_Wait_1ms();
 		GPIO_PORTB_DATA_R = signal; //Set Data of PortB
-		delay_1ms();
+		Systick_Wait_1ms();
 		GPIO_PORTA_DATA_R = 0x00; //To Disable changes for LCD
 		/*Commands of code 0000 --> 0111 Requires 2ms to be sure they are executed
 		Commands above that Requires 40 microsec to be sure they are executed*/
@@ -70,13 +66,13 @@ void ShiftDisplayLeft(void){
 //LCD_Write a function that writes character on LCD
 void LCD_Write(unsigned char Data){
 	GPIO_PORTA_DATA_R = 0x10;  //which means RS=1, RW=0, EN=0 to control that the entered is data not command
-	delay_1ms();
+	Systick_Wait_1ms();
 	GPIO_PORTA_DATA_R |= 0x04; //Enable write data
-	delay_1ms();
+	Systick_Wait_1ms();
 	GPIO_PORTB_DATA_R = Data;  //LCD has the data entered on port B
-	delay_1ms();
+	Systick_Wait_1ms();
 	GPIO_PORTA_DATA_R = 0x00; //To Disable changes for LCD
-	delay_1ms();
+	Systick_Wait_1ms();
 	LCD_CMD(0x06);             //Increment from left to right
 }
 
