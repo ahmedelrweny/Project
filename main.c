@@ -16,7 +16,7 @@
 int main(void){
 	microwave_Init();
 	while(1){
-		LCD_String("Hello");
+		Cook_Time();
 		/*switch(input){
 		case 1:
 			cook_Popcorn();

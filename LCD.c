@@ -7,7 +7,7 @@
 #define RW 0x08 //Pin 3 in Port A
 #define EN 0x04 //Pin 2 in Port A
 
-void delay_1ms(){
+void delay_1ms(void){
 	int i;
 	for(i=0;i<3180;i++);
 }

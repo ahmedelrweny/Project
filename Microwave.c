@@ -64,19 +64,15 @@ void Cook_Time(){
  LCD_Clear_Display();
     for(i=4;i>0;i--){
 			
-			 LCD_Clear_Display();
-         x= KeyScan();
+				LCD_Clear_Display();
+        x= KeyScan();
         time[0]=time[1];
         time[1]=time[3];
         time[3]=time[4];
         time[4]=x;
         LCD_Array(time);
 			  Systick_Wait_ms(1000);
-			if(SW1_Input()==0){
-				 LCD_Clear_Display();
-				 Cook_Time();
-			}
-			if(SW2_Input()==0){break;}
+			
     }
 	if((time[0]>'3')||(time[0]=='3' && time[1]!='0')||(((time[1]<'1')&& time[0]=='0' )|| time[3]>='6' )){
 		LCD_String("Invalid value");
@@ -162,7 +158,7 @@ l:  LCD_String("value 1 to 9");
 	time_array[2]=':';
   time_array[3]=Int_to_char0(no_seconds);
 	time_array[4]=Int_to_char1(no_seconds);
-	 Time_Display(time_array);
+	Time_Display(time_array);
 }
 
 
