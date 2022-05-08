@@ -84,3 +84,12 @@ void LCD_String(char *str){   // write a string on LCD
 		i++;
     }
 }
+
+//LCD_Array function to write the whole array of chars on LCD
+void LCD_Array(char arr[]){   // write a array of chars on LCD   
+     int i;               //itterator
+  for(i=0;i<(sizeof(arr)+1);i++){
+		LCD_Write(arr[i]);        // call the function LCD_Write 
+    }
+}
+ 

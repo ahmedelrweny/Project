@@ -9,21 +9,14 @@
 #include "defines.h"
 #include <inttypes.h>
 #include "Interrupt.h"
+#include "Microwave.h"
 
-char input;
+
 
 int main(void){
-	System_Init();
-	buzzer_Init();
-	keypad_Init();
-	LCD_Init();
-	LED_Init();
-	SW1_Init();
-	SW2_Init();
-	SW3_Init();
-	interrupt_Init();
-	
+	microwave_Init();
 	while(1){
+		
 		/*switch(input){
 		case 1:
 			cook_Popcorn();
@@ -43,7 +36,7 @@ int main(void){
 		}*/
 	}	
 }
-
+ 
 void GPIOF_Handler(void)
 {	
   if (GPIO_PORTF_MIS_R & 0x10) /* check if interrupt causes by PF4/SW1*/
