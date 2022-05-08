@@ -62,6 +62,8 @@ void Cook_Time(){
  char x;
  int i ;
  while(KeyScan()=='D'){};
+ LCD_String("Time?");
+ Systick_Wait_ms(1000);
  LCD_Clear_Display();
     for(i=4;i>0;i--){
 			
