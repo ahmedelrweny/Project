@@ -16,27 +16,26 @@
 int main(void){
 	microwave_Init();
 	while(1){
-		cook_Beef_or_Chicken('C');
-		/*switch(input){
-		case 1:
-			cook_Popcorn();
+		switch(KeyScan()){
+			case 'A':
+				cook_Popcorn();
 			break;
-		case 2:
-			cook_Chiken();
+			case 'B':
+				cook_Beef_or_Chicken('B');
 			break;
-		case 3:
-			cook_Beef();
+			case 'C':
+				cook_Beef_or_Chicken('C');
 			break;
-		case 4:
-			cook_Time();
+			case 'D':
+				Cook_Time();
 			break;
-		default:
-			LCD_Show("Please enter a choice");
+			default:
+				LCD_String("Please enter a valid choice");
 			break;
-		}*/
-	}	
+		}	
+	}
 }
- 
+
 void GPIOF_Handler(void)
 {	
   if (GPIO_PORTF_MIS_R & 0x10) /* check if interrupt causes by PF4/SW1*/
