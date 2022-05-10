@@ -17,6 +17,7 @@ int main(void){
 	microwave_Init();
 	while(1){
 		switch(KeyScan()){
+			
 			case 'A':
 				cook_Popcorn();
 			break;
