@@ -455,11 +455,6 @@
               <FileType>1</FileType>
               <FilePath>.\LED.c</FilePath>
             </File>
-            <File>
-              <FileName>Interrupt.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Interrupt.c</FilePath>
-            </File>
           </Files>
         </Group>
       </Groups>
