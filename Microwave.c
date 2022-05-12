@@ -183,3 +183,11 @@ void start(void){
 void pause(void){
 	LCD_Array(time);
 }
+
+void reset(void){
+
+	time[0] = '0';
+	time[1] = '0';
+	time[3] = '0';
+	time[4] = '0';
+}
