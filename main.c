@@ -12,7 +12,7 @@
 #include "Microwave.h"
 
 
-
+static int SW1_Pressed=0;
 int main(void){
 	microwave_Init();
 	while(1){
@@ -39,10 +39,11 @@ int main(void){
 
 void GPIOF_Handler(void)
 {	
-  if (GPIO_PORTF_MIS_R & 0x10) /* check if interrupt causes by PF4/SW1*/
+  if (GPIO_PORTF_MIS_R & 0x10 && SW1_Pressed==0) /* check if interrupt causes by PF4/SW1*/
     {   
       //pause
+			SW1_Pressed=1;
       GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
-    } 
+    }  
 }
 
