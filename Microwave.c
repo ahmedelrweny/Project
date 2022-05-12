@@ -79,17 +79,16 @@ int  Check_Invaild(char time[]){
 void Cook_Time(void){
  char x;
  int i ;
- LCD_String("Time?");
+ LCD_String("Time?"); // disply "Time?" on LCD
  Systick_Wait_ms(1000);
- LCD_Clear_Display();
     for(i=4;i>0;i--){
 			
-		LCD_Clear_Display();
+		LCD_Clear_Display(); // clear to write the value of time 
         x= KeyScan();
-        time[0]=time[1];
-        time[1]=time[3];
-        time[3]=time[4];
-        time[4]=x;
+        time[0]=time[1]; // tens of mins equal ones of mins
+        time[1]=time[3]; // ones of mins equal tens of seconds
+        time[3]=time[4]; // tens of seconds equal ones of seconds
+        time[4]=x; // ones of seconds equal the user input
         if(i != 1){
 					LCD_Array(time);
 				}	
