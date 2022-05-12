@@ -58,6 +58,24 @@ void Time_Display(char time[]){
 		}
 	}
 
+int  Check_Invaild(char time[]){
+	if (time[3]>='6'||time[4]>='A'){ // get the value of seconds between 0 to 59 only
+	return 1;
+	}
+	else if(time[0]>'3'){ // to prevent tens of min to be more than  3 
+		return 1;
+	}
+	else if (time[0]=='3'){  //to prevent mins to be more than 30 min 
+	if(time[1]!='0'||time[3]!='0'||time[4]!='0')
+		return 1;
+	}
+	else if (time[0]=='0') { //to prevent mins to be less than 1 min 
+		if(time[1]<'1')
+		return 1;
+	}
+		return 0;
+	}
+	
 void Cook_Time(void){
  char x;
  int i ;
@@ -78,7 +96,7 @@ void Cook_Time(void){
 			  Systick_Wait_ms(500);
 			
     }
-	if((time[0]>'3')||(time[0]=='3' && time[1]!='0')||(((time[1]<'1')&& time[0]=='0' )|| time[3]>='6' )){
+	if(Check_Invaild(time)){
 		LCD_String("Invalid value");
     Systick_Wait_ms(2000);
 	  LCD_Clear_Display();
