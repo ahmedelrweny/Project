@@ -170,6 +170,8 @@ void TimetoInteger(){
 	int min1 = Char_to_int(time[1]);
 	int sec0 = Char_to_int(time[3]);
 	int sec1 = Char_to_int(time[4]);
-	int time = (min0 * 10 + min1) * 60 + (sec0 * 10 + sec1); // time in seconds
+	int mins = (min0 * 10 + min1);
+	int secs = (sec0 * 10 + sec1);
+	int time = mins * 60 + secs; // time in seconds
 
 }
