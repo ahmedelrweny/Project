@@ -44,6 +44,11 @@ void GPIOF_Handler(void)
       //pause
 			SW1_Pressed=1;
       GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
-    }  
+    }
+		else if(GPIO_PORTF_MIS_R & 0x10 && SW1_Pressed==1){
+			//reset
+			SW1_Pressed=0;
+      GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
+    }
 }
 
