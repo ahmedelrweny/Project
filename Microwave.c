@@ -177,3 +177,6 @@ int TimetoInteger(void){
 
 }
 
+void start(void){
+	Time_Display(time);
+}
