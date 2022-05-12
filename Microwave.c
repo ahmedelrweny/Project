@@ -193,5 +193,5 @@ void reset(void){
 
 }
 void resume(void){
-	Time_Display();
+	Time_Display(time);
 }
