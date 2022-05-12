@@ -190,4 +190,8 @@ void reset(void){
 	time[1] = '0';
 	time[3] = '0';
 	time[4] = '0';
+
+}
+void resume(void){
+	Time_Display();
 }
