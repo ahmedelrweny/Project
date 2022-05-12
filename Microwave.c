@@ -179,6 +179,7 @@ int TimetoInteger(void){
 
 void start(void){
 	Time_Display(time);
+	//leds on
 }
 void pause(void){
 	LCD_Array(time);
