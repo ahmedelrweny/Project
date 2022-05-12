@@ -66,7 +66,7 @@ void Cook_Time(void){
  LCD_Clear_Display();
     for(i=4;i>0;i--){
 			
-				LCD_Clear_Display();
+		LCD_Clear_Display();
         x= KeyScan();
         time[0]=time[1];
         time[1]=time[3];
@@ -156,7 +156,7 @@ l:  LCD_String("value 1 to 9");
 			no_kiloes=Char_to_int(No_kiloes);
 			Time=0.2*no_kiloes;
 		}
-	  min= (int)Time;
+	  	min= (int)Time;
 		no_seconds= (Time-min) * 60;
 		time[0]=Int_to_char0(min);
 		time[1]=Int_to_char1(min);
@@ -165,18 +165,19 @@ l:  LCD_String("value 1 to 9");
 		time[4]=Int_to_char1(no_seconds);
 		Time_Display(time);
 }
+void TimetoInteger(){
+	int min0 = Char_to_int(time[0]);
+	int min1 = Char_to_int(time[1]);
+	int sec0 = Char_to_int(time[3]);
+	int sec1 = Char_to_int(time[4]);
+	int time = (min0 * 10 + min1) * 60 + (sec0 * 10 + sec1); // time in seconds
 
+}
 
 
 void start(void){
-    //Again please
+
+	
+
 }
-void pause(void){
-    //Again please
-}
-void resume(void){
-    //Again please
-}
-void reset(void){
-    //Again please
-}
+
