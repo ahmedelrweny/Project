@@ -183,6 +183,7 @@ void start(void){
 }
 void pause(void){
 	LCD_Array(time);
+	//leds blink
 }
 
 void reset(void){
