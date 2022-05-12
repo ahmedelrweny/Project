@@ -180,3 +180,6 @@ int TimetoInteger(void){
 void start(void){
 	Time_Display(time);
 }
+void pause(void){
+	LCD_Array(time);
+}
