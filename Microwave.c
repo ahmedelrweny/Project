@@ -173,11 +173,3 @@ void TimetoInteger(){
 	int time = (min0 * 10 + min1) * 60 + (sec0 * 10 + sec1); // time in seconds
 
 }
-
-
-void start(void){
-
-	
-
-}
-
