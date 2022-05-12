@@ -197,4 +197,5 @@ void reset(void){
 }
 void resume(void){
 	Time_Display(time);
+	// leds on
 }
