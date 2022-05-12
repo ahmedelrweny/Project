@@ -10,3 +10,4 @@
 .\main.o: D:\FML (At Death's Door)\Keil\ARM\ARMCC\bin\..\include\inttypes.h
 .\main.o: D:\FML (At Death's Door)\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\main.o: Interrupt.h
+.\main.o: Microwave.h

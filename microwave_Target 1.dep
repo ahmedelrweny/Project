@@ -1,18 +1,19 @@
 Dependencies for Project 'microwave', Target 'Target 1': (DO NOT MODIFY !)
 F (.\startup_TM4C123.s)(0x6270479D)(--cpu Cortex-M4 --pd "__EVAL SETA 1" -g --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"--list .\startup_tm4c123.lst --xref -o .\startup_tm4c123.o --depend .\startup_tm4c123.d)
-F (.\main.c)(0x6270791F)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+F (.\main.c)(0x6278470D)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\main.o --omf_browse .\main.crf --depend .\main.d)
 I (Tiva.h)(0x6270479D)
 I (Switch.h)(0x6270479D)
 I (Buzzer.h)(0x6270479D)
 I (keypad.h)(0x6270479D)
-I (LCD.h)(0x6270479D)
+I (LCD.h)(0x627846C6)
 I (Timer.h)(0x6270479D)
 I (LED.h)(0x6270479D)
 I (defines.h)(0x6266B688)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-I (Interrupt.h)(0x62706369)
-F (.\Switch.c)(0x62707817)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\switch.o --omf_browse .\switch.crf --depend .\switch.d)
+I (Interrupt.h)(0x62707942)
+I (Microwave.h)(0x62783F1D)
+F (.\Switch.c)(0x62707942)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\switch.o --omf_browse .\switch.crf --depend .\switch.d)
 I (defines.h)(0x6266B688)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
@@ -20,8 +21,19 @@ F (.\Tiva.c)(0x6270479D)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -
 I (defines.h)(0x6266B688)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-F (.\Microwave.c)(0x6270479D)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\microwave.o --omf_browse .\microwave.crf --depend .\microwave.d)
-F (.\LCD.c)(0x6270479D)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\lcd.o --omf_browse .\lcd.crf --depend .\lcd.d)
+F (.\Microwave.c)(0x6278529E)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\microwave.o --omf_browse .\microwave.crf --depend .\microwave.d)
+I (Tiva.h)(0x6270479D)
+I (Switch.h)(0x6270479D)
+I (Buzzer.h)(0x6270479D)
+I (keypad.h)(0x6270479D)
+I (LCD.h)(0x627846C6)
+I (Timer.h)(0x6270479D)
+I (LED.h)(0x6270479D)
+I (defines.h)(0x6266B688)
+I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
+I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
+I (Interrupt.h)(0x62707942)
+F (.\LCD.c)(0x62784B01)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\lcd.o --omf_browse .\lcd.crf --depend .\lcd.d)
 I (defines.h)(0x6266B688)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
@@ -32,19 +44,19 @@ F (.\Keypad.c)(0x62705C25)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork 
 I (defines.h)(0x6266B688)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-F (.\Buzzer.c)(0x6270791F)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\buzzer.o --omf_browse .\buzzer.crf --depend .\buzzer.d)
+F (.\Buzzer.c)(0x62707942)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\buzzer.o --omf_browse .\buzzer.crf --depend .\buzzer.d)
 I (defines.h)(0x6266B688)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-F (.\Timer.c)(0x6270479D)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\timer.o --omf_browse .\timer.crf --depend .\timer.d)
+F (.\Timer.c)(0x627846C6)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\timer.o --omf_browse .\timer.crf --depend .\timer.d)
 I (defines.h)(0x6266B688)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-F (.\LED.c)(0x6270479D)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\led.o --omf_browse .\led.crf --depend .\led.d)
+F (.\LED.c)(0x627846C6)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\led.o --omf_browse .\led.crf --depend .\led.d)
 I (defines.h)(0x6266B688)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-F (.\Interrupt.c)(0x62707817)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\interrupt.o --omf_browse .\interrupt.crf --depend .\interrupt.d)
+F (.\Interrupt.c)(0x62707942)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I "D:\FML (At Death's Door)\Keil\ARM\RV31\INC"-I "D:\FML (At Death's Door)\Keil\ARM\CMSIS\Include"-I "D:\FML (At Death's Door)\Keil\ARM\Inc\TI\TM4C123"-DTM4C123GH6PM-o .\interrupt.o --omf_browse .\interrupt.crf --depend .\interrupt.d)
 I (defines.h)(0x6266B688)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (D:\FML (At Death's Door)\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
