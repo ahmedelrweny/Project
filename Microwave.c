@@ -165,13 +165,15 @@ l:  LCD_String("value 1 to 9");
 		time[4]=Int_to_char1(no_seconds);
 		Time_Display(time);
 }
-void TimetoInteger(){
+int TimetoInteger(void){
 	int min0 = Char_to_int(time[0]);
 	int min1 = Char_to_int(time[1]);
 	int sec0 = Char_to_int(time[3]);
 	int sec1 = Char_to_int(time[4]);
 	int mins = (min0 * 10 + min1);
 	int secs = (sec0 * 10 + sec1);
-	int time = mins * 60 + secs; // time in seconds
+	int time;
+	return time = mins * 60 + secs; // time in seconds
 
 }
+
