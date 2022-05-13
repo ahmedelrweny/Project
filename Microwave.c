@@ -1,110 +1,92 @@
-#include "Tiva.h"
-#include "Switch.h"
-#include "Buzzer.h"
-#include "keypad.h"
-#include "LCD.h"
-#include "Timer.h"
-#include "LED.h"
-#include "Switch.h"
 #include "defines.h"
 #include <inttypes.h>
-#include "Interrupt.h"
-
-
-char No_kiloes;
-char time[]={'0','0',':','0','0'};
-
+#include "tiva.h"
+#include "Timer.h"
+#include "LCD.h"
+#include <string.h>
+#include "Keypad.h"
+#include "Switch.h"
+ char No_kiloes;
+ char time[]={'0','0',':','0','0'};
+ typedef enum {false,true} bool_enum;
 void microwave_Init(void){
-	System_Init();
-	buzzer_Init();
-	keypad_Init();
-	LCD_Init();
-	LED_Init();
-	SW1_Init();
-	SW2_Init();
-	SW3_Init();
-	interrupt_Init();
+	 
 }
 
+
 void Time_Display(char time[]){
-	while(time[0]!=0x30 || time[1]!=0x30 || time[3]!=0x30 ||  time[4]!=0x30){ 
-		LCD_Array(time);
-		Systick_Wait_ms(1000);
-		if(time[4]==0x30 && time[3]!=0x30){
+	LCD_Clear_Display();//clear LCD
+	while(time[0]!=0x30 || time[1]!=0x30 || time[3]!=0x30 ||  time[4]!=0x30){ // loop untill 00:00
+		LCD_Array(time); // display time on LCD
+		Systick_Wait_ms(1000); //delay 1 seconds
+		if(time[4]!=0x30 && time[3]==0x30){//handle the case of tens of seconds equal zero and ones of seconds not equal zero 
+				time[4]--;
+			}
+		else if(time[4]==0x30 && time[3]!=0x30){ //handle the case of tens of seconds not equal zero and ones of seconds equal zero 
 			time[4]=0x39;
 			time[3]--;
 		}
-		else if(time[4]!=0x30 && time[3]!=0x30 ) {
+		else if(time[4]!=0x30 && time[3]!=0x30 ) {//handle the case of both tens and ones of seconds not equal zero 
 			time[4]--;
 		}
-		else if(time[4]==0x30 && time[3]==0x30 ){
-			if(time[1]!=0x30){
+		else if(time[4]==0x30 && time[3]==0x30 ){//handle the case of seconds equal zero and mins not equal zero 
+			if(time[1]!=0x30){ //handle the case of ones of mins not equal zero
 			time[4]=0x39;
 			time[3]=0x35;
 			time[1]--;}
-		else if(time[1]==0x30 && time[0]!=0x30){
+		else if(time[1]==0x30 && time[0]!=0x30){//handle the case of ones of mins equal zero and tens of mins not equal zero 
 			time[4]=0x39;
 			time[3]=0x35;
 				time[1]=0x39;
 				time[0]--;}
-		else if(time[1]==0x30 && time[0]==0x30){
+		else if(time[1]==0x30 && time[0]==0x30){ //handle the case of mins and seconds equal zero
 				break;
 			}
-			}
-		else if(time[4]!=0x30 && time[3]==0x30){
-				time[4]--;
 			}
 			 LCD_Clear_Display();
 		}
 	}
-
 int  Check_Invaild(char time[]){
 	if (time[1]>'9'||time[3]>='6'||time[4]>'9'){ // get the value of seconds between 0 to 59 only 
 		                                            //get the value of ones of mins between 0 to 9 only 
-	return 1;
+	return true;
 	}
 	else if(time[0]>'3'){ // to prevent tens of min to be more than  3 
-		return 1;
+		return true;
 	}
 	else if (time[0]=='3' && (time[1]!='0'||time[3]!='0'||time[4]!='0')){  //to prevent mins to be more than 30 min 
-		return 1;
+		return true;
 	}
 	else if (time[0]=='0' && time[1]=='0') { //to prevent mins to be less than 1 min 
-		return 1;
+		return true;
 	}
-		return 0;
+		return false;
 	
 }
-void Cook_Time(void){
+void Cook_Time(){
  char x;
  int i ;
- LCD_String("Time?"); // disply "Time?" on LCD
- Systick_Wait_ms(1000);
     for(i=4;i>0;i--){
 			
-		LCD_Clear_Display(); // clear to write the value of time 
-        x= KeyScan();
-        time[0]=time[1]; // tens of mins equal ones of mins
+			 LCD_Clear_Display(); // clear to write the value of time 
+         x= KeyScan();
+        time[0]=time[1];// tens of mins equal ones of mins
         time[1]=time[3]; // ones of mins equal tens of seconds
-        time[3]=time[4]; // tens of seconds equal ones of seconds
-        time[4]=x; // ones of seconds equal the user input
-        if(i != 1){
-					LCD_Array(time);
-				}	
+        time[3]=time[4];// tens of seconds equal ones of seconds
+        time[4]=x;// ones of seconds equal the user input
+        LCD_Array(time);
 			  Systick_Wait_ms(500);
-			
-    }
-	if(Check_Invaild(time)){  // check value of time 
-		LCD_String("Invalid value"); //disply "Invalid value" on LCD
-    Systick_Wait_ms(2000); // wait 2 seconds
-	  LCD_Clear_Display(); // clear LCD
+	if((Check_Invaild)){
+		LCD_String("Invalid value");// check value of time 
+    Systick_Wait_ms(2000);//disply "Invalid value" on LCD
+	  LCD_Clear_Display();// clear LCD
 		Cook_Time(); //call the function to get new value
 	}
 	Time_Display(time); //to countdown time on LCD
 	
 	
 }
-
+}
 int Char_to_int(char x){  // to transfer the char to int
 	int number = x-0x30;    // as '0'= 0x30 and '9'=0x39
 	return number;          // to return the int number
@@ -117,7 +99,6 @@ char Int_to_char0(int x){   // to transfer the int num to char and get tens
 	   required[0] = num1 +0x30;   // transfer tens into char
 	return required[0];          // return tens char
 }
-
 char Int_to_char1(int x){ // to transfer the int num to char and get ones
 	 int num1= x/10;        // to get tens
 	 int num2= x-(num1*10); // to get ones
@@ -126,14 +107,12 @@ char Int_to_char1(int x){ // to transfer the int num to char and get ones
 	return required[1];         // return ones char
 }
 	
-void cook_Popcorn(void){
-	    time[3]='6';  // to set time min
+void cook_Popcorn(){
+	char time[]={'0','0',':','6','0'};  // to set time min
 	    LCD_String("popcorn");  // show popcorn in lcd
-			Systick_Wait_ms(1000);  // make a delay
-			LCD_Clear_Display();    // to clear the display	      
+			Systick_Wait_ms(1000);  // make a delay      
 			Time_Display(time);     // to display time
 }
- 
 void cook_Beef_or_Chicken(char choose){
 	int min;
 	int no_seconds;
@@ -177,38 +156,4 @@ l:  LCD_String("value 1 to 9");  // show value 1 to 9 on lcd
 		time[3]=Int_to_char0(no_seconds);  // Get tens of seconds
 		time[4]=Int_to_char1(no_seconds);   // Get ones of seconds
 		Time_Display(time);                 // to display time
-}
-int TimetoInteger(void){
-	int min0 = Char_to_int(time[0]);
-	int min1 = Char_to_int(time[1]);
-	int sec0 = Char_to_int(time[3]);
-	int sec1 = Char_to_int(time[4]);
-	int mins = (min0 * 10 + min1);
-	int secs = (sec0 * 10 + sec1);
-	int time;
-	return time = mins * 60 + secs; // time in seconds
-
-}
-
-void start(void){
-	Time_Display(time);
-	//leds on
-}
-void pause(void){
-	LCD_Array(time);
-	//leds blink
-}
-
-void reset(void){
-
-	time[0] = '0';
-	time[1] = '0';
-	time[3] = '0';
-	time[4] = '0';
-	//leds stop
-
-}
-void resume(void){
-	Time_Display(time);
-	// leds on
 }
