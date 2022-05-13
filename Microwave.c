@@ -9,10 +9,12 @@
 #include "defines.h"
 #include <inttypes.h>
 #include "Interrupt.h"
+#include<stdbool.h>  
 
 
 char No_kiloes;
 char time[]={'0','0',':','0','0'};
+char invalid= 0;
 
 void microwave_Init(void){
 	System_Init();
@@ -27,6 +29,7 @@ void microwave_Init(void){
 }
 
 void Time_Display(char time[]){
+	LCD_Clear_Display();
 	while(time[0]!='0' || time[1]!='0' || time[3]!='0' ||  time[4]!='0') 	// Ascii of 0x30 is 0
 		{ 
 			LCD_Show(time);
@@ -61,33 +64,41 @@ void Time_Display(char time[]){
 		LCD_Show("End");
 	}
 
-void Cook_Time(void){
- char x;
- int i ;
- LCD_Show("Cooking Time?");
- Systick_Wait_ms(1000);
- LCD_Clear_Display();
-    for(i=4;i>0;i--){
+void Cook_Time(void)
+{
+	char x;
+	int i ;
+	LCD_Show("Cooking Time?");
+	Systick_Wait_ms(1000);
+	LCD_Clear_Display();
+  for(i=4;i>0;i--)
+	{	
+		LCD_Clear_Display();
+    x= KeyScan();
+		if(x=='A' || x=='B' || x=='C' || x=='D' || x=='#' || x=='*' )
+		{
+			invalid = 1;
+			break;
+		}
 			
-				LCD_Clear_Display();
-        x= KeyScan();
-        time[0]=time[1];
-        time[1]=time[3];
-        time[3]=time[4];
-        time[4]=x;
-        if(i != 1){
-					LCD_Show(time);
-				}	
-			  Systick_Wait_ms(500);
+    time[0]=time[1];
+    time[1]=time[3];
+    time[3]=time[4];
+    time[4]=x;
+		LCD_Show(time);
+		Systick_Wait_ms(500);
 			
-    }
-	if((time[0]>'3')||(time[0]=='3' && time[1]!='0')||(((time[1]<'1')&& time[0]=='0' )|| time[3]>='6' )){
+  }
+	if(	(time[0]>'3')		||		(time[0]=='3' && ( time[1]!='0' || time[3] !='0' || time[4] !='0')) || invalid == 1	)
+	{
+		invalid = 0;
+		
 		LCD_Show("Invalid value");
-    Systick_Wait_ms(2000);
-	  LCD_Clear_Display(); 
+		Systick_Wait_ms(2000);
+		LCD_Clear_Display(); 
 		Cook_Time();
+		Time_Display(time);
 	}
-	Time_Display(time);
 }
 
 int Char_to_int(char x){
