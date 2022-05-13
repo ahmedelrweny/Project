@@ -59,18 +59,17 @@ void Time_Display(char time[]){
 	}
 
 int  Check_Invaild(char time[]){
-	if (time[3]>='6'||time[4]>'9'){ // get the value of seconds between 0 to 59 only
+	if (time[1]>'9'||time[3]>='6'||time[4]>'9'){ // get the value of seconds between 0 to 59 only 
+		                                            //get the value of ones of mins between 0 to 9 only 
 	return 1;
 	}
 	else if(time[0]>'3'){ // to prevent tens of min to be more than  3 
 		return 1;
 	}
-	else if (time[0]=='3'){  //to prevent mins to be more than 30 min 
-	if(time[1]!='0'||time[3]!='0'||time[4]!='0')
+	else if (time[0]=='3' && (time[1]!='0'||time[3]!='0'||time[4]!='0')){  //to prevent mins to be more than 30 min 
 		return 1;
 	}
-	else if (time[0]=='0') { //to prevent mins to be less than 1 min 
-		if(time[1]<'1')
+	else if (time[0]=='0' && time[1]=='0') { //to prevent mins to be less than 1 min 
 		return 1;
 	}
 		return 0;
