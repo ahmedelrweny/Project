@@ -110,17 +110,15 @@ int Char_to_int(char x){  // to transfer the char to int
 	return number;          // to return the int number
 }
 
-char Int_to_char0(int x){
-	 int num1= x/10;
-	 int num2= x-(num1*10);
-	 char required[2];
-	   required[0] = num1 +0x30;
-	 required[1] = num2 +0x30;
-	
-	return required[0];
+char Int_to_char0(int x){   // to transfer the int num to char and get tens
+	 int num1= x/10;          // to get tens 
+	 int num2= x-(num1*10);    // to get ones
+	 char required[2];          //define array of 2 chars
+	   required[0] = num1 +0x30;   // transfer tens into char
+	return required[0];          // return tens char
 }
 
-char Int_to_char1(int x){
+char Int_to_char1(int x){ 
 	 int num1= x/10;
 	 int num2= x-(num1*10);
 	 char required[2];
