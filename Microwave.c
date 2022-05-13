@@ -87,9 +87,9 @@ void Cook_Time(){
 	
 }
 }
-int Char_to_int(char x){
-	int number = x-0x30;
-	return number;
+int Char_to_int(char x){  // to transfer the char to int
+	int number = x-0x30;    // as '0'= 0x30 and '9'=0x39
+	return number;          // to return the int number
 }
 
 char Int_to_char0(int x){
