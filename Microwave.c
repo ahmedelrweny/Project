@@ -139,44 +139,44 @@ void cook_Beef_or_Chicken(char choose){
 	int no_seconds;
 	double Time;
 	int no_kiloes ;
-	if(choose =='B'){
-		LCD_String("Beef weight?");    
-		Systick_Wait_ms(1000);
-	  LCD_Clear_Display();}
-	else if(choose =='C'){
-		LCD_String("Chicken  weight?"); 
-		Systick_Wait_ms(1000);
-		LCD_Clear_Display();}
-l:  LCD_String("value 1 to 9"); 
-		Systick_Wait_ms(1000);
-		LCD_Clear_Display();
-		No_kiloes =KeyScan();
-		if( No_kiloes<'1' || No_kiloes>'9'){ 
-			LCD_String("Err");
-			Systick_Wait_ms(2000);
-			LCD_Clear_Display();
-			goto l ;
+	if(choose =='B'){     // check if the choose is B
+		LCD_String("Beef weight?");    // show Beef weight on lcd
+		Systick_Wait_ms(1000);     // make delay 
+	  LCD_Clear_Display();}      // to clear the lcd
+	else if(choose =='C'){       // check if the choose is C
+		LCD_String("Chicken  weight?");  // show Chicken weight on lcd
+		Systick_Wait_ms(1000);     // make delay 
+		LCD_Clear_Display();}      // to clear the lcd
+l:  LCD_String("value 1 to 9");  // show value 1 to 9 on lcd
+		Systick_Wait_ms(1000);     // make delay 
+		LCD_Clear_Display();       // to clear the lcd 
+		No_kiloes =KeyScan();      // take num of kiloes from the user
+		if( No_kiloes<'1' || No_kiloes>'9'){   // check if the user enters a vaild num
+			LCD_String("Err");  //show Err in lcd if the condition is true
+			Systick_Wait_ms(2000);  // wait 2 seconds 
+			LCD_Clear_Display(); // clear the lcd 
+			goto l ;            //go to label l to enter a new value 
 		}
-		 LCD_String("value is "); 
-		 LCD_Write(No_kiloes);
-		 Systick_Wait_ms(2000);
-		 LCD_Clear_Display();
-		if (choose =='B'){
-			no_kiloes=Char_to_int(No_kiloes);
-			Time=0.5*no_kiloes;
+		 LCD_String("value is ");   // show value is  in lcd
+		 LCD_Write(No_kiloes);     // show num of kiloes in lcd
+		 Systick_Wait_ms(2000);    // make delay 
+		 LCD_Clear_Display();      // to clear lcd 
+		if (choose =='B'){         //check if the choose is B
+			no_kiloes=Char_to_int(No_kiloes);   // transfer the num of kiloes from char to int
+			Time=0.5*no_kiloes;                 // cacl time
 		}
-		else if(choose == 'C'){
-			no_kiloes=Char_to_int(No_kiloes);
-			Time=0.2*no_kiloes;
+		else if(choose == 'C'){         //check if the choose is C
+			no_kiloes=Char_to_int(No_kiloes);   // transfer the num of kiloes from char to int
+			Time=0.2*no_kiloes;             // cacl time
 		}
-	  	min= (int)Time;
-		no_seconds= (Time-min) * 60;
-		time[0]=Int_to_char0(min);
-		time[1]=Int_to_char1(min);
-		time[2]=':';
-		time[3]=Int_to_char0(no_seconds);
-		time[4]=Int_to_char1(no_seconds);
-		Time_Display(time);
+	  	min= (int)Time;            // Get number of mins
+		no_seconds= (Time-min) * 60;   // Get number of  seconds
+		time[0]=Int_to_char0(min);     // Get tens of min
+		time[1]=Int_to_char1(min);     // Get ones of min 
+		time[2]=':';                   // Get : 
+		time[3]=Int_to_char0(no_seconds);  // Get tens of seconds
+		time[4]=Int_to_char1(no_seconds);   // Get ones of seconds
+		Time_Display(time);                 // to display time
 }
 int TimetoInteger(void){
 	int min0 = Char_to_int(time[0]);
