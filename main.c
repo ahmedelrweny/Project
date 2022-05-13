@@ -15,21 +15,28 @@
 
 int main(void){
 	microwave_Init();
+	LCD_Show("Enter a Choice");
+	
 	while(1){
 		switch(KeyScan()){
 			case 'A':
+				LCD_Clear_Display();
 				cook_Popcorn();
 			break;
 			case 'B':
+				LCD_Clear_Display();
 				cook_Beef_or_Chicken('B');
 			break;
 			case 'C':
+				LCD_Clear_Display();
 				cook_Beef_or_Chicken('C');
 			break;
 			case 'D':
+				LCD_Clear_Display();
 				Cook_Time();
 			break;
 			default:
+				LCD_Clear_Display();
 				LCD_Show("Not valid");
 				Systick_Wait_ms(1000);
 				LCD_Clear_Display();

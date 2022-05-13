@@ -84,8 +84,7 @@ void Cook_Time(void){
 	if((time[0]>'3')||(time[0]=='3' && time[1]!='0')||(((time[1]<'1')&& time[0]=='0' )|| time[3]>='6' )){
 		LCD_Show("Invalid value");
     Systick_Wait_ms(2000);
-	  LCD_Clear_Display();
-
+	  LCD_Clear_Display(); 
 		Cook_Time();
 	}
 	Time_Display(time);
