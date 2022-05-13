@@ -15,33 +15,33 @@ void microwave_Init(void){
 
 
 void Time_Display(char time[]){
-	LCD_Clear_Display();
-	while(time[0]!=0x30 || time[1]!=0x30 || time[3]!=0x30 ||  time[4]!=0x30){ 
-		LCD_Array(time);
-		Systick_Wait_ms(1000);
-		if(time[4]==0x30 && time[3]!=0x30){
+	LCD_Clear_Display();//clear LCD
+	while(time[0]!=0x30 || time[1]!=0x30 || time[3]!=0x30 ||  time[4]!=0x30){ // loop untill 00:00
+		LCD_Array(time); // display time on LCD
+		Systick_Wait_ms(1000); //delay 1 seconds
+		if(time[4]!=0x30 && time[3]==0x30){//handle the case of tens of seconds equal zero and ones of seconds not equal zero 
+				time[4]--;
+			}
+		else if(time[4]==0x30 && time[3]!=0x30){ //handle the case of tens of seconds not equal zero and ones of seconds equal zero 
 			time[4]=0x39;
 			time[3]--;
 		}
-		else if(time[4]!=0x30 && time[3]!=0x30 ) {
+		else if(time[4]!=0x30 && time[3]!=0x30 ) {//handle the case of both tens and ones of seconds not equal zero 
 			time[4]--;
 		}
-		else if(time[4]==0x30 && time[3]==0x30 ){
-			if(time[1]!=0x30){
+		else if(time[4]==0x30 && time[3]==0x30 ){//handle the case of seconds equal zero and mins not equal zero 
+			if(time[1]!=0x30){ //handle the case of ones of mins not equal zero
 			time[4]=0x39;
 			time[3]=0x35;
 			time[1]--;}
-		else if(time[1]==0x30 && time[0]!=0x30){
+		else if(time[1]==0x30 && time[0]!=0x30){//handle the case of ones of mins equal zero and tens of mins not equal zero 
 			time[4]=0x39;
 			time[3]=0x35;
 				time[1]=0x39;
 				time[0]--;}
-		else if(time[1]==0x30 && time[0]==0x30){
+		else if(time[1]==0x30 && time[0]==0x30){ //handle the case of mins and seconds equal zero
 				break;
 			}
-			}
-		else if(time[4]!=0x30 && time[3]==0x30){
-				time[4]--;
 			}
 			 LCD_Clear_Display();
 		}
