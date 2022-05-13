@@ -27,35 +27,38 @@ void microwave_Init(void){
 }
 
 void Time_Display(char time[]){
-	while(time[0]!=0x30 || time[1]!=0x30 || time[3]!=0x30 ||  time[4]!=0x30){ 
-		LCD_Show(time);
-		Systick_Wait_ms(1000);
-		if(time[4]==0x30 && time[3]!=0x30){
-			time[4]=0x39;
-			time[3]--;
-		}
-		else if(time[4]!=0x30 && time[3]!=0x30 ) {
-			time[4]--;
-		}
-		else if(time[4]==0x30 && time[3]==0x30 ){
-			if(time[1]!=0x30){
-			time[4]=0x39;
-			time[3]=0x35;
-			time[1]--;}
-		else if(time[1]==0x30 && time[0]!=0x30){
-			time[4]=0x39;
-			time[3]=0x35;
-				time[1]=0x39;
-				time[0]--;}
-		else if(time[1]==0x30 && time[0]==0x30){
-				break;
+	while(time[0]!='0' || time[1]!='0' || time[3]!='0' ||  time[4]!='0') 	// Ascii of 0x30 is 0
+		{ 
+			LCD_Show(time);
+			Systick_Wait_ms(1000);
+		
+			if(time[4]!='0' ) 
+			{
+				time[4]--;	
 			}
+			else if(time[4]=='0' && time[3]!='0')
+			{
+				time[4]='9';
+				time[3]--;
 			}
-		else if(time[4]!=0x30 && time[3]==0x30){
-				time[4]--;
+
+			else if(time[4]=='0' && time[3]=='0' && time[1]!='0')
+			{
+				time[4]='9';
+				time[3]='5';
+				time[1]--;
 			}
-			 LCD_Clear_Display();
+			else if(time[4]=='0' && time[3]=='0' && time[1]=='0' && time[0]!='0')
+			{
+				time[4]='9';
+				time[3]='5';
+				time[1]='9';
+				time[0]--;
+			}
+
+			LCD_Clear_Display();
 		}
+		LCD_Show("End");
 	}
 
 void Cook_Time(void){
@@ -82,13 +85,14 @@ void Cook_Time(void){
 		LCD_Show("Invalid value");
     Systick_Wait_ms(2000);
 	  LCD_Clear_Display();
+
 		Cook_Time();
 	}
 	Time_Display(time);
 }
 
 int Char_to_int(char x){
-	int number = x-0x30;
+	int number = x-'0';
 	return number;
 }
 
@@ -96,8 +100,8 @@ char Int_to_char0(int x){
 	 int num1= x/10;
 	 int num2= x-(num1*10);
 	 char required[2];
-	 required[0] = num1 +0x30;
-	 required[1] = num2 +0x30;
+	 required[0] = num1 +'0';
+	 required[1] = num2 +'0';
 	 return required[0];
 }
 
@@ -105,7 +109,7 @@ char Int_to_char1(int x){
 	 int num1= x/10;
 	 int num2= x-(num1*10);
 	 char required[2];
-	 required[1] = num2 +0x30;
+	 required[1] = num2 +'0';
 	 return required[1];
 }
 	

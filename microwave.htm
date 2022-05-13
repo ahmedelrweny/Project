@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\microwave.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\microwave.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Fri May 13 12:46:15 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Fri May 13 14:20:14 2022
 <BR><P>
 <H3>Maximum Stack Usage =        100 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1203,13 +1203,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[86]"></a>main</STRONG> (Thumb, 68 bytes, Stack size 0 bytes, main.o(.text))
+<P><STRONG><a name="[86]"></a>main</STRONG> (Thumb, 80 bytes, Stack size 0 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = main &rArr; cook_Beef_or_Chicken &rArr; Time_Display &rArr; LCD_Show &rArr; LCD_Write &rArr; LCD_CMD &rArr; Systick_Wait_1ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;microwave_Init
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Popcorn
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Beef_or_Chicken
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Show
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KeyScan
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cook_Time
 </UL>
@@ -1222,15 +1224,15 @@ Global Symbols
 <P><STRONG><a name="[10]"></a>GPIOD_Handler</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, main.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(RESET)
 </UL>
-<P><STRONG><a name="[97]"></a>SW1_Init</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, switch.o(.text))
+<P><STRONG><a name="[99]"></a>SW1_Init</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, switch.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;microwave_Init
 </UL>
 
-<P><STRONG><a name="[98]"></a>SW2_Init</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, switch.o(.text))
+<P><STRONG><a name="[9a]"></a>SW2_Init</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, switch.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;microwave_Init
 </UL>
 
-<P><STRONG><a name="[99]"></a>SW3_Init</STRONG> (Thumb, 82 bytes, Stack size 0 bytes, switch.o(.text))
+<P><STRONG><a name="[9b]"></a>SW3_Init</STRONG> (Thumb, 82 bytes, Stack size 0 bytes, switch.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;microwave_Init
 </UL>
 
@@ -1240,32 +1242,32 @@ Global Symbols
 
 <P><STRONG><a name="[d8]"></a>SW3_Input</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, switch.o(.text), UNUSED)
 
-<P><STRONG><a name="[92]"></a>System_Init</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, tiva.o(.text))
+<P><STRONG><a name="[94]"></a>System_Init</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, tiva.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;microwave_Init
 </UL>
 
 <P><STRONG><a name="[8c]"></a>microwave_Init</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, microwave.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = microwave_Init &rArr; LCD_Init &rArr; LCD_Clear_Display &rArr; LCD_CMD &rArr; Systick_Wait_1ms
 </UL>
-<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;keypad_Init
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;interrupt_Init
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buzzer_Init
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SW3_Init
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SW2_Init
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SW1_Init
+<BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;keypad_Init
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;interrupt_Init
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buzzer_Init
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SW3_Init
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SW2_Init
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SW1_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9b]"></a>Time_Display</STRONG> (Thumb, 194 bytes, Stack size 8 bytes, microwave.o(.text))
+<P><STRONG><a name="[9d]"></a>Time_Display</STRONG> (Thumb, 170 bytes, Stack size 8 bytes, microwave.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Time_Display &rArr; LCD_Show &rArr; LCD_Write &rArr; LCD_CMD &rArr; Systick_Wait_1ms
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
+<BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Show
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Popcorn
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Beef_or_Chicken
@@ -1276,10 +1278,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 60 + In Cycle
 <LI>Call Chain = Cook_Time &rArr;  Cook_Time (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
+<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Show
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KeyScan
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cook_Time
 </UL>
@@ -1306,10 +1308,10 @@ Global Symbols
 <P><STRONG><a name="[8e]"></a>cook_Popcorn</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, microwave.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = cook_Popcorn &rArr; Time_Display &rArr; LCD_Show &rArr; LCD_Write &rArr; LCD_CMD &rArr; Systick_Wait_1ms
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
+<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Show
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1321,14 +1323,14 @@ Global Symbols
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Int_to_char1
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Int_to_char0
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Char_to_int
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Show
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KeyScan
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1347,27 +1349,28 @@ Global Symbols
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Wait
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
 </UL>
 
-<P><STRONG><a name="[9d]"></a>LCD_Clear_Display</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, lcd.o(.text))
+<P><STRONG><a name="[93]"></a>LCD_Clear_Display</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, lcd.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = LCD_Clear_Display &rArr; LCD_CMD &rArr; Systick_Wait_1ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_CMD
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
+<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Popcorn
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Beef_or_Chicken
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cook_Time
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[95]"></a>LCD_Init</STRONG> (Thumb, 184 bytes, Stack size 8 bytes, lcd.o(.text))
+<P><STRONG><a name="[97]"></a>LCD_Init</STRONG> (Thumb, 184 bytes, Stack size 8 bytes, lcd.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = LCD_Init &rArr; LCD_Clear_Display &rArr; LCD_CMD &rArr; Systick_Wait_1ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_CMD
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;microwave_Init
 </UL>
@@ -1388,14 +1391,14 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
+<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Popcorn
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Beef_or_Chicken
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cook_Time
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[94]"></a>keypad_Init</STRONG> (Thumb, 206 bytes, Stack size 0 bytes, keypad.o(.text))
+<P><STRONG><a name="[96]"></a>keypad_Init</STRONG> (Thumb, 206 bytes, Stack size 0 bytes, keypad.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;microwave_Init
 </UL>
 
@@ -1405,7 +1408,7 @@ Global Symbols
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[93]"></a>buzzer_Init</STRONG> (Thumb, 82 bytes, Stack size 0 bytes, buzzer.o(.text))
+<P><STRONG><a name="[95]"></a>buzzer_Init</STRONG> (Thumb, 82 bytes, Stack size 0 bytes, buzzer.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;microwave_Init
 </UL>
 
@@ -1424,22 +1427,23 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Wait
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_CMD
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms
 </UL>
 
-<P><STRONG><a name="[9c]"></a>Systick_Wait_ms</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, timer.o(.text))
+<P><STRONG><a name="[92]"></a>Systick_Wait_ms</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, timer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = Systick_Wait_ms &rArr; Systick_Wait_1ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_1ms
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
+<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Popcorn
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Beef_or_Chicken
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cook_Time
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[96]"></a>LED_Init</STRONG> (Thumb, 106 bytes, Stack size 0 bytes, led.o(.text))
+<P><STRONG><a name="[98]"></a>LED_Init</STRONG> (Thumb, 106 bytes, Stack size 0 bytes, led.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;microwave_Init
 </UL>
 
@@ -1457,7 +1461,7 @@ Global Symbols
 
 <P><STRONG><a name="[e4]"></a>GreenToggle</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, led.o(.text), UNUSED)
 
-<P><STRONG><a name="[9a]"></a>interrupt_Init</STRONG> (Thumb, 156 bytes, Stack size 0 bytes, interrupt.o(.text))
+<P><STRONG><a name="[9c]"></a>interrupt_Init</STRONG> (Thumb, 156 bytes, Stack size 0 bytes, interrupt.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;microwave_Init
 </UL>
 

@@ -31,6 +31,8 @@ int main(void){
 			break;
 			default:
 				LCD_Show("Not valid");
+				Systick_Wait_ms(1000);
+				LCD_Clear_Display();
 			break;
 		}	
 	}
