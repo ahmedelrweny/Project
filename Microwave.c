@@ -118,13 +118,12 @@ char Int_to_char0(int x){   // to transfer the int num to char and get tens
 	return required[0];          // return tens char
 }
 
-char Int_to_char1(int x){ 
-	 int num1= x/10;
-	 int num2= x-(num1*10);
-	 char required[2];
-	 required[1] = num2 +0x30;
-	
-	return required[1];
+char Int_to_char1(int x){ // to transfer the int num to char and get ones
+	 int num1= x/10;        // to get tens
+	 int num2= x-(num1*10); // to get ones
+	 char required[2];      //define array of 2 chars
+	 required[1] = num2 +0x30;     // transfer ones into char
+	return required[1];         // return ones char
 }
 	
 void cook_Popcorn(void){
