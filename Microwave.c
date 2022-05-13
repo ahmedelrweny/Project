@@ -13,7 +13,7 @@
 
 
 char No_kiloes;
-char time[]={'0','0',':','0','0','\0'};
+char time[5]={'0','0',':','0','0'};
 
 void microwave_Init(void){
 	System_Init();
@@ -85,13 +85,17 @@ void Cook_Time(void){
 	char x;
 	int i ;
 	bool invalid= false;
+	time[0]='0'; 			//Make function to reset array to zero
+	time[1]='0';
+	time[3]='0';
+	time[4]='0';
 	LCD_Show("Cooking Time?");
 	Systick_Wait_ms(1000);
   for(i=4;i>0;i--)
 	{	
     x= KeyScan();
 		LCD_Clear_Display();
-		if( x<'0' || x>'9' )
+		if( x>'9')
 		{
 			invalid= true;
 			break;
