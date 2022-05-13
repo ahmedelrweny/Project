@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\microwave.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\microwave.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Fri May 13 14:54:06 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Fri May 13 17:22:15 2022
 <BR><P>
 <H3>Maximum Stack Usage =        100 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1271,15 +1271,13 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Popcorn
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Beef_or_Chicken
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cook_Time
 </UL>
 
-<P><STRONG><a name="[92]"></a>Cook_Time</STRONG> (Thumb, 194 bytes, Stack size 16 bytes, microwave.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 60 + In Cycle
+<P><STRONG><a name="[92]"></a>Cook_Time</STRONG> (Thumb, 184 bytes, Stack size 16 bytes, microwave.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 52 + In Cycle
 <LI>Call Chain = Cook_Time &rArr;  Cook_Time (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms
+<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Show
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KeyScan
@@ -1293,14 +1291,12 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Beef_or_Chicken
 </UL>
 
-<P><STRONG><a name="[a4]"></a>Int_to_char0</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, microwave.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Int_to_char0
-</UL>
-<BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Beef_or_Chicken
+<P><STRONG><a name="[a4]"></a>IntToChar_Tens</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, microwave.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Beef_or_Chicken
 </UL>
 
-<P><STRONG><a name="[a5]"></a>Int_to_char1</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, microwave.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Int_to_char1
+<P><STRONG><a name="[a5]"></a>IntToChar_Units</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, microwave.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = IntToChar_Units
 </UL>
 <BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Beef_or_Chicken
 </UL>
@@ -1324,8 +1320,8 @@ Global Symbols
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Int_to_char1
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Int_to_char0
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntToChar_Units
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntToChar_Tens
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Char_to_int
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms

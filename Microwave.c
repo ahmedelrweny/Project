@@ -70,11 +70,10 @@ void Cook_Time(void)
 	int i ;
 	LCD_Show("Cooking Time?");
 	Systick_Wait_ms(1000);
-	LCD_Clear_Display();
   for(i=4;i>0;i--)
 	{	
-		LCD_Clear_Display();
     x= KeyScan();
+		LCD_Clear_Display();
 		if(x=='A' || x=='B' || x=='C' || x=='D' || x=='#' || x=='*' )
 		{
 			invalid = 1;
@@ -92,13 +91,13 @@ void Cook_Time(void)
 	if(	(time[0]>'3')		||		(time[0]=='3' && ( time[1]!='0' || time[3] !='0' || time[4] !='0')) || invalid == 1	)
 	{
 		invalid = 0;
-		
 		LCD_Show("Invalid value");
 		Systick_Wait_ms(2000);
 		LCD_Clear_Display(); 
 		Cook_Time();
-		Time_Display(time);
 	}
+	//Time_Display(time); // Remove from here, add it to the start button later
+	
 }
 
 int Char_to_int(char x){
@@ -106,21 +105,19 @@ int Char_to_int(char x){
 	return number;
 }
 
-char Int_to_char0(int x){
-	 int num1= x/10;
-	 int num2= x-(num1*10);
-	 char required[2];
-	 required[0] = num1 +'0';
-	 required[1] = num2 +'0';
-	 return required[0];
+char IntToChar_Tens(int x){
+	 int Tens= x/10;
+	 char required;
+	 required = Tens +'0';
+	 return required;
 }
 
-char Int_to_char1(int x){
-	 int num1= x/10;
-	 int num2= x-(num1*10);
-	 char required[2];
-	 required[1] = num2 +'0';
-	 return required[1];
+char IntToChar_Units(int x){
+	 int Tens= x/10;
+	 int Units= x-(Tens*10);
+	 char required;
+	 required = Units +'0';
+	 return required;
 }
 	
 void cook_Popcorn(void){
@@ -168,10 +165,10 @@ l:  LCD_Show("value 1 to 9");
 		}
 	  min= (int)Time;
 		no_seconds= (Time-min) * 60;
-		time[0]=Int_to_char0(min);
-		time[1]=Int_to_char1(min);
-		time[3]=Int_to_char0(no_seconds);
-		time[4]=Int_to_char1(no_seconds);
+		time[0]=IntToChar_Tens(min);
+		time[1]=IntToChar_Units(min);
+		time[3]=IntToChar_Tens(no_seconds);
+		time[4]=IntToChar_Units(no_seconds);
 		Time_Display(time);
 }
 
