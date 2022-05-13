@@ -95,13 +95,13 @@ void Cook_Time(void){
 			  Systick_Wait_ms(500);
 			
     }
-	if(Check_Invaild(time)){
-		LCD_String("Invalid value");
-    Systick_Wait_ms(2000);
-	  LCD_Clear_Display();
-		Cook_Time();
+	if(Check_Invaild(time)){  // check value of time 
+		LCD_String("Invalid value"); //disply "Invalid value" on LCD
+    Systick_Wait_ms(2000); // wait 2 seconds
+	  LCD_Clear_Display(); // clear LCD
+		Cook_Time(); //call the function to get new value
 	}
-	Time_Display(time);
+	Time_Display(time); //to countdown time on LCD
 	
 	
 }
