@@ -76,15 +76,19 @@ void Time_Display(char time[]){
 
 			LCD_Clear_Display();
 		}
-		LCD_Show("End");
-		Systick_Wait_ms(1000);
-		LCD_Clear_Display();
-	}
+	LCD_Show("End");
+	Systick_Wait_ms(1000);
+	LCD_Clear_Display();
+}
 
 void Cook_Time(void){
 	char x;
 	int i ;
 	bool invalid= false;
+	time[4]='0';
+	time[3]='0';
+	time[1]='0';
+	time[0]='0';
 	LCD_Show("Cooking Time?");
 	Systick_Wait_ms(1000);
   for(i=4;i>0;i--)
@@ -123,25 +127,25 @@ int Char_to_int(char x){
 }
 
 char IntToChar_Tens(int x){
-	 int Tens= x/10;
-	 char required;
-	 required = Tens +'0';
-	 return required;
+	int Tens= x/10;
+	char required;
+	required = Tens +'0';
+	return required;
 }
 
 char IntToChar_Units(int x){
-	 int Tens= x/10;
-	 int Units= x-(Tens*10);
-	 char required;
-	 required = Units +'0';
-	 return required;
+	int Tens= x/10;
+	int Units= x-(Tens*10);
+	char required;
+	required = Units +'0';
+	return required;
 }
 	
 void cook_Popcorn(void){
-	    time[3]='6';  // to set time minutes
-	    LCD_Show("Popcorn");  // show popcorn in lcd
-			Systick_Wait_ms(1000);  // make a delay      
-			//Time_Display(time);     / Remove from here, add it to the start button later
+	time[3]='6';  // to set time minutes
+	LCD_Show("Popcorn");  // show popcorn in lcd
+	Systick_Wait_ms(1000);  // make a delay      
+	//Time_Display(time);     / Remove from here, add it to the start button later
 }
  
 void cook_Beef_or_Chicken(char choice){
