@@ -7,6 +7,7 @@
 #include "Keypad.h"
 #include "Switch.h"
  char No_kiloes;
+ char time[]={'0','0',':','0','0'};
  typedef enum {false,true} bool_enum;
 void microwave_Init(void){
 	 
@@ -14,6 +15,7 @@ void microwave_Init(void){
 
 
 void Time_Display(char time[]){
+	LCD_Clear_Display();
 	while(time[0]!=0x30 || time[1]!=0x30 || time[3]!=0x30 ||  time[4]!=0x30){ 
 		LCD_Array(time);
 		Systick_Wait_ms(1000);
@@ -62,41 +64,34 @@ int  Check_Invaild(char time[]){
 	
 }
 void Cook_Time(){
- char time[]={'0','0',':','0','0'};
  char x;
  int i ;
- LCD_Clear_Display();
     for(i=4;i>0;i--){
 			
-			 LCD_Clear_Display();
+			 LCD_Clear_Display(); // clear to write the value of time 
          x= KeyScan();
-        time[0]=time[1];
-        time[1]=time[3];
-        time[3]=time[4];
-        time[4]=x;
+        time[0]=time[1];// tens of mins equal ones of mins
+        time[1]=time[3]; // ones of mins equal tens of seconds
+        time[3]=time[4];// tens of seconds equal ones of seconds
+        time[4]=x;// ones of seconds equal the user input
         LCD_Array(time);
-			  Systick_Wait_ms(1000);
-			if(SW1_Input()==0){
-				 LCD_Clear_Display();
-				 Cook_Time();
-			}
-			if(SW2_Input()==0){break;}
-    }
-	if((time[0]>'3')||(time[0]=='3' && time[1]!='0')||(((time[1]<'1')&& time[0]=='0' )|| time[3]>='6' )){
-		LCD_String("Invalid value");
-    Systick_Wait_ms(2000);
-	  LCD_Clear_Display();
-		Cook_Time();
+			  Systick_Wait_ms(500);
+	if((Check_Invaild)){
+		LCD_String("Invalid value");// check value of time 
+    Systick_Wait_ms(2000);//disply "Invalid value" on LCD
+	  LCD_Clear_Display();// clear LCD
+		Cook_Time(); //call the function to get new value
 	}
-	Time_Display(time);
+	Time_Display(time); //to countdown time on LCD
 	
 	
 }
-
+}
 int Char_to_int(char x){
 	int number = x-0x30;
 	return number;
 }
+
 char Int_to_char0(int x){
 	 int num1= x/10;
 	 int num2= x-(num1*10);
@@ -116,8 +111,7 @@ char Int_to_char1(int x){
 void cook_Popcorn(){
 	char time[]={'0','0',':','6','0'};  // to set time min
 	    LCD_String("popcorn");  // show popcorn in lcd
-			Systick_Wait_ms(1000);  // make a delay
-			LCD_Clear_Display();    // to clear the display	      
+			Systick_Wait_ms(1000);  // make a delay      
 			Time_Display(time);     // to display time
 }
 void cook_Beef_or_Chicken(char choose){
