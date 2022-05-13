@@ -95,7 +95,7 @@ void Cook_Time(void){
 	{	
     x= KeyScan();
 		LCD_Clear_Display();
-		if( x<'0' || x>'9' )
+		if(  x>'9' )
 		{
 			invalid= true;
 			break;
