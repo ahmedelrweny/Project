@@ -3,18 +3,18 @@
 
 
 void buzzer_Init(void){
-		GPIO_PORTE_CR_R |= 0x02; 						//repeat neither unlocking nor pull up
-		GPIO_PORTE_AMSEL_R &= ~0x02;
-		GPIO_PORTE_PCTL_R &= ~0x000000F0;
-		GPIO_PORTE_AFSEL_R &= ~0x02;
-		GPIO_PORTE_DIR_R |= 0x02;						//set as output
-		GPIO_PORTE_DEN_R |= 0x02;					
+	GPIO_PORTD_CR_R |= 0x08; 						//repeat without unlocking
+	GPIO_PORTD_AMSEL_R &= ~0x08;
+	GPIO_PORTD_PCTL_R &= ~0x0000F000;
+	GPIO_PORTD_AFSEL_R &= ~0x08;
+	GPIO_PORTD_DIR_R |= 0x08;
+	GPIO_PORTD_DEN_R |= 0x08;
 }
 
 void beep(void){
-	GPIO_PORTE_DATA_R |= 0x02;
+	GPIO_PORTD_DATA_R |= 0x08;
 }
 
 void stop_Beep(void){
-	GPIO_PORTE_DATA_R &= ~0x02;
+	GPIO_PORTD_DATA_R &= ~0x08;
 }
