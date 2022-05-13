@@ -30,7 +30,7 @@ int main(void){
 				Cook_Time();
 			break;
 			default:
-				LCD_String("Please enter a valid choice");
+				LCD_Show("Not valid");
 			break;
 		}	
 	}
@@ -52,7 +52,7 @@ void GPIOF_Handler(void)
 
 void GPIOD_Handler(void)
 {	
-  if (GPIO_PORTD_MIS_R & 0x04) /* check if interrupt causes by PD6/SW3*/
+  if (GPIO_PORTD_MIS_R & 0x04) /* check if interrupt causes by PD2/SW3*/
     {   
       //YOUR CODE HERE MONGED & REDA (SW3)
       GPIO_PORTD_ICR_R |= 0x04; /* clear the interrupt flag */

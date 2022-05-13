@@ -28,7 +28,7 @@ void microwave_Init(void){
 
 void Time_Display(char time[]){
 	while(time[0]!=0x30 || time[1]!=0x30 || time[3]!=0x30 ||  time[4]!=0x30){ 
-		LCD_Array(time);
+		LCD_Show(time);
 		Systick_Wait_ms(1000);
 		if(time[4]==0x30 && time[3]!=0x30){
 			time[4]=0x39;
@@ -61,7 +61,7 @@ void Time_Display(char time[]){
 void Cook_Time(void){
  char x;
  int i ;
- LCD_String("Time?");
+ LCD_Show("Cooking Time?");
  Systick_Wait_ms(1000);
  LCD_Clear_Display();
     for(i=4;i>0;i--){
@@ -73,20 +73,18 @@ void Cook_Time(void){
         time[3]=time[4];
         time[4]=x;
         if(i != 1){
-					LCD_Array(time);
+					LCD_Show(time);
 				}	
 			  Systick_Wait_ms(500);
 			
     }
 	if((time[0]>'3')||(time[0]=='3' && time[1]!='0')||(((time[1]<'1')&& time[0]=='0' )|| time[3]>='6' )){
-		LCD_String("Invalid value");
+		LCD_Show("Invalid value");
     Systick_Wait_ms(2000);
 	  LCD_Clear_Display();
 		Cook_Time();
 	}
 	Time_Display(time);
-	
-	
 }
 
 int Char_to_int(char x){
@@ -98,10 +96,9 @@ char Int_to_char0(int x){
 	 int num1= x/10;
 	 int num2= x-(num1*10);
 	 char required[2];
-	   required[0] = num1 +0x30;
+	 required[0] = num1 +0x30;
 	 required[1] = num2 +0x30;
-	
-	return required[0];
+	 return required[0];
 }
 
 char Int_to_char1(int x){
@@ -109,13 +106,12 @@ char Int_to_char1(int x){
 	 int num2= x-(num1*10);
 	 char required[2];
 	 required[1] = num2 +0x30;
-	
-	return required[1];
+	 return required[1];
 }
 	
 void cook_Popcorn(void){
 	    time[3]='6';  // to set time min
-	    LCD_String("popcorn");  // show popcorn in lcd
+	    LCD_Show("popcorn");  // show popcorn in lcd
 			Systick_Wait_ms(1000);  // make a delay
 			LCD_Clear_Display();    // to clear the display	      
 			Time_Display(time);     // to display time
@@ -127,24 +123,24 @@ void cook_Beef_or_Chicken(char choose){
 	double Time;
 	int no_kiloes ;
 	if(choose =='B'){
-		LCD_String("Beef weight?");    
+		LCD_Show("Beef weight?");    
 		Systick_Wait_ms(1000);
 	  LCD_Clear_Display();}
 	else if(choose =='C'){
-		LCD_String("Chicken  weight?"); 
+		LCD_Show("Chicken  weight?"); 
 		Systick_Wait_ms(1000);
 		LCD_Clear_Display();}
-l:  LCD_String("value 1 to 9"); 
+l:  LCD_Show("value 1 to 9"); 
 		Systick_Wait_ms(1000);
 		LCD_Clear_Display();
 		No_kiloes =KeyScan();
 		if( No_kiloes<'1' || No_kiloes>'9'){ 
-			LCD_String("Err");
+			LCD_Show("Err");
 			Systick_Wait_ms(2000);
 			LCD_Clear_Display();
 			goto l ;
 		}
-		 LCD_String("value is "); 
+		 LCD_Show("value is "); 
 		 LCD_Write(No_kiloes);
 		 Systick_Wait_ms(2000);
 		 LCD_Clear_Display();
@@ -160,7 +156,6 @@ l:  LCD_String("value 1 to 9");
 		no_seconds= (Time-min) * 60;
 		time[0]=Int_to_char0(min);
 		time[1]=Int_to_char1(min);
-		time[2]=':';
 		time[3]=Int_to_char0(no_seconds);
 		time[4]=Int_to_char1(no_seconds);
 		Time_Display(time);
@@ -172,9 +167,6 @@ void start(void){
     //Again please
 }
 void pause(void){
-    //Again please
-}
-void resume(void){
     //Again please
 }
 void reset(void){
