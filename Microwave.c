@@ -59,7 +59,7 @@ void Time_Display(char time[]){
 	}
 
 int  Check_Invaild(char time[]){
-	if (time[3]>='6'||time[4]>='A'){ // get the value of seconds between 0 to 59 only
+	if (time[3]>='6'||time[4]>'9'){ // get the value of seconds between 0 to 59 only
 	return 1;
 	}
 	else if(time[0]>'3'){ // to prevent tens of min to be more than  3 
@@ -74,8 +74,8 @@ int  Check_Invaild(char time[]){
 		return 1;
 	}
 		return 0;
-	}
 	
+}
 void Cook_Time(void){
  char x;
  int i ;
