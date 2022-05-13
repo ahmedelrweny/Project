@@ -9,12 +9,11 @@
 #include "defines.h"
 #include <inttypes.h>
 #include "Interrupt.h"
-#include<stdbool.h>  
+#include <stdbool.h>  
 
 
 char No_kiloes;
-char time[]={'0','0',':','0','0'};
-char invalid= 0;
+char time[]={'0','0',':','0','0','\0'};
 
 void microwave_Init(void){
 	System_Init();
@@ -28,9 +27,25 @@ void microwave_Init(void){
 	interrupt_Init();
 }
 
+bool Check_Invalid(void){
+	if(	time[0]>'3' )
+		{
+			 return true;
+		}
+	if(	time[0]=='3' && ( time[1]!='0' || time[3] !='0' || time[4] !='0') 	)
+		{
+			 return true;
+		}
+	if(	time[3]>'5'	 )
+		{
+			 return true;
+		}
+			 return false;
+}
+
 void Time_Display(char time[]){
 	LCD_Clear_Display();
-	while(time[0]!='0' || time[1]!='0' || time[3]!='0' ||  time[4]!='0') 	// Ascii of 0x30 is 0
+	while(time[0]!='0' || time[1]!='0' || time[3]!='0' ||  time[4]!='0') 	
 		{ 
 			LCD_Show(time);
 			Systick_Wait_ms(1000);
@@ -62,21 +77,23 @@ void Time_Display(char time[]){
 			LCD_Clear_Display();
 		}
 		LCD_Show("End");
+		Systick_Wait_ms(1000);
+		LCD_Clear_Display();
 	}
 
-void Cook_Time(void)
-{
+void Cook_Time(void){
 	char x;
 	int i ;
+	bool invalid= false;
 	LCD_Show("Cooking Time?");
 	Systick_Wait_ms(1000);
   for(i=4;i>0;i--)
 	{	
     x= KeyScan();
 		LCD_Clear_Display();
-		if(x=='A' || x=='B' || x=='C' || x=='D' || x=='#' || x=='*' )
+		if( x<'0' || x>'9' )
 		{
-			invalid = 1;
+			invalid= true;
 			break;
 		}
 			
@@ -88,9 +105,9 @@ void Cook_Time(void)
 		Systick_Wait_ms(500);
 			
   }
-	if(	(time[0]>'3')		||		(time[0]=='3' && ( time[1]!='0' || time[3] !='0' || time[4] !='0')) || invalid == 1	)
+	if(Check_Invalid() || invalid	)
 	{
-		invalid = 0;
+		
 		LCD_Show("Invalid value");
 		Systick_Wait_ms(2000);
 		LCD_Clear_Display(); 
@@ -121,61 +138,76 @@ char IntToChar_Units(int x){
 }
 	
 void cook_Popcorn(void){
-	    time[3]='6';  // to set time min
-	    LCD_Show("popcorn");  // show popcorn in lcd
-			Systick_Wait_ms(1000);  // make a delay
-			LCD_Clear_Display();    // to clear the display	      
-			Time_Display(time);     // to display time
+	    time[3]='6';  // to set time minutes
+	    LCD_Show("Popcorn");  // show popcorn in lcd
+			Systick_Wait_ms(1000);  // make a delay      
+			//Time_Display(time);     / Remove from here, add it to the start button later
 }
  
-void cook_Beef_or_Chicken(char choose){
-	int min;
-	int no_seconds;
-	double Time;
+void cook_Beef_or_Chicken(char choice){
+	int minutes;
+	int seconds;
+	double TimeInMinutes_d;
 	int no_kiloes ;
-	if(choose =='B'){
-		LCD_Show("Beef weight?");    
+	
+	if(choice =='B')
+		{
+			LCD_Show("Beef weight?");    
+			Systick_Wait_ms(1000);
+			LCD_Clear_Display();
+		}
+	else if(choice =='C')
+		{
+			LCD_Show("Chicken weight?"); 
+			Systick_Wait_ms(1000);
+			LCD_Clear_Display();
+		}
+	do
+	{
+		LCD_Show("Kiloes? 1 to 9"); 
 		Systick_Wait_ms(1000);
-	  LCD_Clear_Display();}
-	else if(choose =='C'){
-		LCD_Show("Chicken  weight?"); 
-		Systick_Wait_ms(1000);
-		LCD_Clear_Display();}
-l:  LCD_Show("value 1 to 9"); 
-		Systick_Wait_ms(1000);
-		LCD_Clear_Display();
 		No_kiloes =KeyScan();
-		if( No_kiloes<'1' || No_kiloes>'9'){ 
+		LCD_Clear_Display();
+		
+		if(No_kiloes<'1' || No_kiloes>'9' )
+		{ 
 			LCD_Show("Err");
 			Systick_Wait_ms(2000);
 			LCD_Clear_Display();
-			goto l ;
 		}
-		 LCD_Show("value is "); 
-		 LCD_Write(No_kiloes);
-		 Systick_Wait_ms(2000);
-		 LCD_Clear_Display();
-		if (choose =='B'){
-			no_kiloes=Char_to_int(No_kiloes);
-			Time=0.5*no_kiloes;
-		}
-		else if(choose == 'C'){
-			no_kiloes=Char_to_int(No_kiloes);
-			Time=0.2*no_kiloes;
-		}
-	  min= (int)Time;
-		no_seconds= (Time-min) * 60;
-		time[0]=IntToChar_Tens(min);
-		time[1]=IntToChar_Units(min);
-		time[3]=IntToChar_Tens(no_seconds);
-		time[4]=IntToChar_Units(no_seconds);
-		Time_Display(time);
+	}
+	while(No_kiloes<'1' || No_kiloes>'9');
+
+	LCD_Show("Weight is "); 
+	LCD_Write(No_kiloes);
+	Systick_Wait_ms(2000);
+		
+	if (choice =='B')
+	{
+		no_kiloes=Char_to_int(No_kiloes);
+		TimeInMinutes_d=0.5*no_kiloes;
+	}
+	else if(choice == 'C')
+	{
+		no_kiloes=Char_to_int(No_kiloes);
+		TimeInMinutes_d=0.2*no_kiloes;
+	}
+	minutes= (int)TimeInMinutes_d;
+	seconds= (TimeInMinutes_d-minutes) * 60;
+	time[0]=IntToChar_Tens(minutes);
+	time[1]=IntToChar_Units(minutes);
+	time[3]=IntToChar_Tens(seconds);
+	time[4]=IntToChar_Units(seconds);
+	LCD_Clear_Display();
+	LCD_Show(time);
+	//Time_Display(time);				 / Remove from here, add it to the start button later
 }
 
 
 
 void start(void){
-    //Again please
+	Time_Display(time);	
+    
 }
 void pause(void){
     //Again please

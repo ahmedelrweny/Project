@@ -53,7 +53,8 @@ void GPIOF_Handler(void)
       GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
     } 
     else if (GPIO_PORTF_MIS_R & 0x01) /* check if interrupt causes by PF0/SW2 */
-    {   
+    {  
+			start();
      //YOUR CODE HERE MONGED & REDA (SW2)
 			GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
     }
