@@ -63,7 +63,7 @@ void LCD_Write(unsigned char Data){
 	LCD_CMD(0x06);             //Increment from left to right
 }
 
-//LCD_String function to write the whole string on LCD
+//LCD_Show function to write the whole string on LCD
 void LCD_Show(char *str){   // write a string on LCD
   int l=strlen(str);        // l = string length
   int i=0;                    //itterator

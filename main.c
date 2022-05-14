@@ -10,9 +10,11 @@
 #include <inttypes.h>
 #include "Interrupt.h"
 #include "Microwave.h"
+#include "stdbool.h"
 
 char input;
-
+static int SW1_Pressed=0;
+static bool started=false;
 int main(void){
 	microwave_Init();
 	LCD_Show("Enter a Choice");
@@ -53,25 +55,20 @@ int main(void){
 
 void GPIOF_Handler(void)
 {	
-  if (GPIO_PORTF_MIS_R & 0x10) /* check if interrupt causes by PF4/SW1*/
+  if (GPIO_PORTF_MIS_R & 0x10 && SW1_Pressed==0) /* check if interrupt causes by PF4/SW1*/
     {   
-      //YOUR CODE HERE MONGED & REDA (SW1)
+      //pause
+			SW1_Pressed=1;
       GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
-    } 
-    else if (GPIO_PORTF_MIS_R & 0x01) /* check if interrupt causes by PF0/SW2 */
-    {   
-			start();
-     
-			//YOUR CODE HERE MONGED & REDA (SW2)
-			GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
     }
-}
-
-void GPIOD_Handler(void)
-{	
-  if (GPIO_PORTD_MIS_R & 0x04) /* check if interrupt causes by PD6/SW3*/
-    {   
-      //YOUR CODE HERE MONGED & REDA (SW3)
-      GPIO_PORTD_ICR_R |= 0x04; /* clear the interrupt flag */
-		}    
+		else if(GPIO_PORTF_MIS_R & 0x10 && SW1_Pressed==1){
+			//reset
+			SW1_Pressed=0;
+      GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
+    }
+		if((!started)&&(GPIO_PORTF_MIS_R & 0x01) && (SW3_Input() != 0x04)) /* check if interrupt caused by PF0/SW2 and the door is closed*/
+			{
+				//start
+				started=true;
+			}	
 }
