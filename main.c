@@ -56,7 +56,7 @@ int main(void){
 void GPIOF_Handler(void)
 {	
   /*SW1 interrupts handling*/
-	if (GPIO_PORTF_MIS_R & 0x10 && SW1_Pressed==0) /* check if interrupt causes by PF4/SW1*/
+	if (GPIO_PORTF_MIS_R & 0x10 && SW1_Pressed==0) /* check if interrupt causes by PF4/SW1 for one time*/
     {   
       pause();
 			started=false; //which means that you are stopped
@@ -87,7 +87,7 @@ void GPIOF_Handler(void)
 void GPIOD_Handler(void)
 {
 	/*SW3 interrupts handling*/	
-  if (GPIO_PORTD_MIS_R & 0x04) /* check if interrupt causes by PD2/SW3*/
+  if (GPIO_PORTD_MIS_R & 0x04) /* check if interrupt is caused by PD2/SW3*/
     {
       pause();
 			started=false; //which means that you are stopped
