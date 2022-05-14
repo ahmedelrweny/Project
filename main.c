@@ -57,18 +57,26 @@ void GPIOF_Handler(void)
 {	
   if (GPIO_PORTF_MIS_R & 0x10 && SW1_Pressed==0) /* check if interrupt causes by PF4/SW1*/
     {   
-      //pause
+      pause();
+			started=false; //which means that you stopped
 			SW1_Pressed=1;
       GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
     }
 		else if(GPIO_PORTF_MIS_R & 0x10 && SW1_Pressed==1){
-			//reset
+			reset();
+			started=false; //which means that you stopped
 			SW1_Pressed=0;
       GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
     }
-		if((!started)&&(GPIO_PORTF_MIS_R & 0x01) && (SW3_Input() != 0x04)) /* check if interrupt caused by PF0/SW2 and the door is closed*/
+		if((!started)&&(GPIO_PORTF_MIS_R & 0x01) && (SW3_Input() != 0x04)) /* check if interrupt is caused by PF0/SW2 and the door is closed*/
 			{
-				//start
+				start();
 				started=true;
+				GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
 			}	
+		else if ((GPIO_PORTF_MIS_R & 0x01) && (SW3_Input() == 0x04))/* check if interrupt is caused by PF0/SW2 and the door is open*/
+			{
+				LCD_Show("close door & push SW2"); /*close the door to be able to start then push SW2 to start*/
+				GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
+			}
 }
