@@ -49,18 +49,6 @@ void LCD_Init(void){
 		LCD_Clear_Display();
 }
 
-void SetCursorToRight(void){
-	int i;
-	LCD_CMD(0x80);
-	for (i = 0; i < 16; i++)
-	{
-		LCD_CMD(0x14);
-	}
-}
-
-void ShiftDisplayLeft(void){
-	LCD_CMD(0x07);             //used to Handle Time Entry Required in Project from Right To Left
-}
 
 //LCD_Write a function that writes character on LCD
 void LCD_Write(unsigned char Data){
@@ -76,7 +64,7 @@ void LCD_Write(unsigned char Data){
 }
 
 //LCD_String function to write the whole string on LCD
-void LCD_String(char *str){   // write a string on LCD
+void LCD_Show(char *str){   // write a string on LCD
   int l=strlen(str);        // l = string length
   int i=0;                    //itterator
   while(i<l){
@@ -84,10 +72,4 @@ void LCD_String(char *str){   // write a string on LCD
 		i++;
     }
 }
-//LCD_Array function to write the whole array of chars on LCD
-void LCD_Array(char arr[]){   // write a array of chars on LCD   
-     int i;               //itterator
-  for(i=0;i<(sizeof(arr)+1);i++){
-		LCD_Write(arr[i]);        // call the function LCD_Write 
-    }
-}
+

@@ -14,33 +14,38 @@
 char input;
 
 int main(void){
-	System_Init();
-	buzzer_Init();
-	keypad_Init();
-	LCD_Init();
-	LED_Init();
-	SW1_Init();
-	SW2_Init();
-	SW3_Init();
-	interrupt_Init();
+	microwave_Init();
+	LCD_Show("Enter a Choice");
 	
 	while(1){
 	
-		switch(KeyScan()){
-			case 'A':
-				cook_Popcorn();
+	switch(KeyScan())
+	{
+		case 'A':
+			LCD_Clear_Display();
+			cook_Popcorn();
 			break;
-			case 'B':
-				cook_Beef_or_Chicken('B');
+			
+		case 'B':
+			LCD_Clear_Display();
+			cook_Beef_or_Chicken('B');
 			break;
-			case 'C':
-				cook_Beef_or_Chicken('C');
+			
+		case 'C':
+			LCD_Clear_Display();
+			cook_Beef_or_Chicken('C');
 			break;
-			case 'D':
-				Cook_Time();
+			
+		case 'D':
+			LCD_Clear_Display();
+			Cook_Time();
 			break;
-			default:
-				LCD_String("Please enter a choice");
+			
+		default:
+			LCD_Clear_Display();
+			LCD_Show("Not valid");
+			Systick_Wait_ms(1000);
+			LCD_Clear_Display();
 			break;
 		}
 	}	
@@ -55,7 +60,9 @@ void GPIOF_Handler(void)
     } 
     else if (GPIO_PORTF_MIS_R & 0x01) /* check if interrupt causes by PF0/SW2 */
     {   
-     //YOUR CODE HERE MONGED & REDA (SW2)
+			start();
+     
+			//YOUR CODE HERE MONGED & REDA (SW2)
 			GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
     }
 }
