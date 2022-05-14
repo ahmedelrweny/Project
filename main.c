@@ -55,28 +55,42 @@ int main(void){
 
 void GPIOF_Handler(void)
 {	
-  if (GPIO_PORTF_MIS_R & 0x10 && SW1_Pressed==0) /* check if interrupt causes by PF4/SW1*/
+  /*SW1 interrupts handling*/
+	if (GPIO_PORTF_MIS_R & 0x10 && SW1_Pressed==0) /* check if interrupt causes by PF4/SW1*/
     {   
       pause();
-			started=false; //which means that you stopped
+			started=false; //which means that you are stopped
 			SW1_Pressed=1;
       GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
     }
-		else if(GPIO_PORTF_MIS_R & 0x10 && SW1_Pressed==1){
+	else if(GPIO_PORTF_MIS_R & 0x10 && SW1_Pressed==1)
+		{
 			reset();
-			started=false; //which means that you stopped
+			started=false; //which means that you are stopped
 			SW1_Pressed=0;
       GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
     }
-		if((!started)&&(GPIO_PORTF_MIS_R & 0x01) && (SW3_Input() != 0x04)) /* check if interrupt is caused by PF0/SW2 and the door is closed*/
-			{
-				start();
-				started=true;
-				GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
-			}	
-		else if ((GPIO_PORTF_MIS_R & 0x01) && (SW3_Input() == 0x04))/* check if interrupt is caused by PF0/SW2 and the door is open*/
-			{
-				LCD_Show("close door & push SW2"); /*close the door to be able to start then push SW2 to start*/
-				GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
-			}
+	 /*SW2 interrupts handling*/	
+	if((!started)&&(GPIO_PORTF_MIS_R & 0x01) && (SW3_Input() != 0x04)) /* check if interrupt is caused by PF0/SW2 and the door is closed*/
+		{
+			start();
+			started=true;
+			GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
+		}	
+	else if ((GPIO_PORTF_MIS_R & 0x01) && (SW3_Input() == 0x04))/* check if interrupt is caused by PF0/SW2 and the door is open*/
+		{
+			LCD_Show("close door & push SW2"); /*close the door to be able to start then push SW2 to start*/
+			GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
+		}
+}
+
+void GPIOD_Handler(void)
+{
+	/*SW3 interrupts handling*/	
+  if (GPIO_PORTD_MIS_R & 0x04) /* check if interrupt causes by PD2/SW3*/
+    {
+      pause();
+			started=false; //which means that you are stopped
+      GPIO_PORTD_ICR_R |= 0x04; /* clear the interrupt flag */
+    }
 }
