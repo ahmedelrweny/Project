@@ -13,7 +13,7 @@
 #include "stdbool.h"
 
 char input;
-static int SW1_Pressed=0;
+static int SW1_Press_Counts=0;
 static bool started=false;
 int main(void){
 	microwave_Init();
@@ -56,30 +56,31 @@ int main(void){
 void GPIOF_Handler(void)
 {	
   /*SW1 interrupts handling*/
-	if (GPIO_PORTF_MIS_R & 0x10 && SW1_Pressed==0) /* check if interrupt causes by PF4/SW1 for one time*/
+	if (GPIO_PORTF_MIS_R & 0x10 && SW1_Press_Counts==0) /* check if interrupt causes by PF4/SW1 for one time*/
     {   
       pause();
 			started=false; //which means that you are stopped
-			SW1_Pressed=1;
+			SW1_Press_Counts=1;
       GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
     }
-	else if(GPIO_PORTF_MIS_R & 0x10 && SW1_Pressed==1)/* check if interrupt causes by PF4/SW1 for two successive times*/
+	else if(GPIO_PORTF_MIS_R & 0x10 && SW1_Press_Counts==1)/* check if interrupt causes by PF4/SW1 for two successive times*/
 		{
 			reset();
 			started=false; //which means that you are stopped
-			SW1_Pressed=0;
+			SW1_Press_Counts=0;
       GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
     }
 	 /*SW2 interrupts handling*/	
-	if((!started)&&(GPIO_PORTF_MIS_R & 0x01) && (SW3_Input() != 0x04)) /* check if interrupt is caused by PF0/SW2 and the door is closed*/
+	if((!started)&&(GPIO_PORTF_MIS_R & 0x01) && (SW3_Input() == 0x04)) /* check if interrupt is caused by PF0/SW2 and the door is closed*/
 		{
 			start();
 			started=true;
 			GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
 		}	
-	else if ((GPIO_PORTF_MIS_R & 0x01) && (SW3_Input() == 0x04))/* check if interrupt is caused by PF0/SW2 and the door is open*/
+	else if ((GPIO_PORTF_MIS_R & 0x01) && (SW3_Input() != 0x04))/* check if interrupt is caused by PF0/SW2 and the door is open*/
 		{
 			LCD_Show("close door & push SW2"); /*close the door to be able to start then push SW2 to start*/
+			Systick_Wait_ms(1000);
 			GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
 		}
 }
