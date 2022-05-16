@@ -217,36 +217,46 @@ void cook_Beef_or_Chicken(char choice){
 		LCD_Show(time);                 											// to display time
 }
 
-int TimetoInteger(void){
+/*int TimetoInteger(void){
 	int min0 = Char_to_int(time[0]);
 	int min1 = Char_to_int(time[1]);
 	int sec0 = Char_to_int(time[3]);
 	int sec1 = Char_to_int(time[4]);
 	int mins = (min0 * 10 + min1);
 	int secs = (sec0 * 10 + sec1);
-	int time;
-	return time = mins * 60 + secs; // time in seconds
+	int time__;
+	return time__ = mins * 60 + secs; // time in seconds
 
-}
+}*/
 
 void start(void){
 	Time_Display(time);
-	//leds on
+	RedOn();
+	BlueOn();
+	GreenOn();
 }
+
 void pause(void){
 	LCD_Show(time);
-	//leds blink
+	while((SW2_Input()==0x01) ||(SW1_Input()==0x010)) // not pressed
+		{
+			RedOn();
+			BlueOn();
+			GreenOn();
+			Systick_Wait_ms(500);
+			LED_Clear();
+			Systick_Wait_ms(500);
+		}
 }
 
 void reset(void){
-
 	time[0] = '0';
 	time[1] = '0';
 	time[3] = '0';
 	time[4] = '0';
-	//leds stop
-
+	LED_Clear();
 }
+
 void resume(void){ //we don't have to use it as it is the same implementation of start 
 	Time_Display(time);
 	// leds on

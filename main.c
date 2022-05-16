@@ -56,14 +56,14 @@ int main(void){
 void GPIOF_Handler(void)
 {	
   /*SW1 interrupts handling*/
-	if (GPIO_PORTF_MIS_R & 0x10 && SW1_Press_Counts==0) /* check if interrupt causes by PF4/SW1 for one time*/
+	if ((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==0)) /* check if interrupt causes by PF4/SW1 for one time*/
     {   
       pause();
 			started=false; //which means that you are stopped
 			SW1_Press_Counts=1;
       GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
     }
-	else if(GPIO_PORTF_MIS_R & 0x10 && SW1_Press_Counts==1)/* check if interrupt causes by PF4/SW1 for two successive times*/
+	else if((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==1))/* check if interrupt causes by PF4/SW1 for two successive times*/
 		{
 			reset();
 			started=false; //which means that you are stopped
