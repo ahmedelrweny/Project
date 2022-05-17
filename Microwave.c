@@ -172,7 +172,7 @@ char IntToChar_Units(int x){ // to transfer the int num to char and get ones
 }
 	
 void cook_Popcorn(){
-	time[3]='2';  																					// to set time minute
+	time[3]='6';  																					// to set time minute
 	LCD_Show("Popcorn");  																	// show popcorn in lcd
 	Systick_Wait_ms(1000);  																// make a delay      
 }
