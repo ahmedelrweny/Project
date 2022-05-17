@@ -38,7 +38,7 @@ void pause(void){
 			Systick_Wait_ms(500);
 			LED_Clear();
 			Systick_Wait_ms(500);
-			if(RESET == 1 || START ==1)
+			if((RESET == 1 || START ==1) && (!DOOR_OPEN))
 			{	
 				break;
 			}
@@ -69,6 +69,10 @@ bool Check_Invalid(void){
 	if(	time[3]>'5'	 )
 		{
 			 return true;
+		}
+	if(time[0]=='0' &&  time[1] =='0' && (time[3] !='0' || time[4] !='0'))
+		{
+			 return true;		
 		}
 	else
 		{
@@ -140,6 +144,7 @@ void Time_Display(char time[]){
 void start(void){
 	RESET=0;
 	PAUSE =0;
+	WhiteOn();
 	Time_Display(time);
 }
 
@@ -158,7 +163,7 @@ void Cook_Time(void){
 	{	
     x= KeyScan();
 		LCD_Clear_Display();
-		if(  x>'9' )
+		if( x<'0' ||  x>'9' )
 		{
 			invalid= true;
 			break;

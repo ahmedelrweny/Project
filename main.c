@@ -14,9 +14,9 @@
 
 bool START = 0;
 bool PAUSE = 0;
-bool RESET = 0; 
-
-char SW1_Press_Counts = 0;
+bool RESET = 0;
+bool DOOR_OPEN =0 ;
+bool SW1_Press_Counts = 0;
 
 int main(void){
 	microwave_Init();
@@ -79,7 +79,7 @@ void GPIOF_Handler(void)
       GPIO_PORTF_ICR_R |= 0x10;
     }
 	 
-	if((!START) && (GPIO_PORTF_MIS_R & 0x01)) 
+	if((GPIO_PORTF_MIS_R & 0x01)) 
 		{
 			RESET=0;
 			START=1; 
@@ -92,15 +92,27 @@ void GPIOF_Handler(void)
 
 void GPIOD_Handler(void)
 {
-  if (GPIO_PORTD_MIS_R & 0x04) 
+	if ((GPIO_PORTD_MIS_R & 0x04) && (!DOOR_OPEN)) 
 	{
 			RESET=0;
 			START=0; 
 			PAUSE=1;
+			DOOR_OPEN=1;
 			SW1_Press_Counts=1;
 			GPIO_PORTD_ICR_R |= 0x04;
 			
      
-    }
+  }
+	else if ((GPIO_PORTD_MIS_R & 0x04) && (DOOR_OPEN))
+	{
+			RESET=0;
+			START=0; 
+			PAUSE=1;
+			DOOR_OPEN=0;
+			SW1_Press_Counts=1;
+			GPIO_PORTD_ICR_R |= 0x04;
+			
+     
+	}
 }
 
