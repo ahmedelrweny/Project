@@ -5,10 +5,8 @@
 void LCD_CMD(unsigned char signal);
 void LCD_Clear_Display(void);
 void LCD_Init(void);
-void SetCursorToRight(void);
-void ShiftDisplayLeft(void);
 void LCD_Write(unsigned char Data);
-void LCD_String(char *str);
+void LCD_Show(char *str);
 
 
 

@@ -10,62 +10,109 @@
 #include <inttypes.h>
 #include "Interrupt.h"
 #include "Microwave.h"
+#include "stdbool.h"
 
-char input;
+bool START = 0;
+bool PAUSE = 0;
+bool RESET = 0;
+bool DOOR_OPEN =0 ;
+bool SW1_Press_Counts = 0;
 
 int main(void){
-	System_Init();
-	buzzer_Init();
-	keypad_Init();
-	LCD_Init();
-	LED_Init();
-	SW1_Init();
-	SW2_Init();
-	SW3_Init();
-	interrupt_Init();
+	microwave_Init();
+	
 	
 	while(1){
-		char choose=KeyScan();
-		Cooking( choose );
-		/*switch(input){
-		case 1:
-			cook_Popcorn();
+		
+		LCD_Show("Enter a Choice");	
+		
+		switch(KeyScan()){
+			case 'A':
+				LCD_Clear_Display();
+				cook_Popcorn();
 			break;
-		case 2:
-			cook_Chiken();
+			case 'B':
+				LCD_Clear_Display();
+				cook_Beef_or_Chicken('B');
 			break;
-		case 3:
-			cook_Beef();
+			case 'C':
+				LCD_Clear_Display();
+				cook_Beef_or_Chicken('C');
 			break;
-		case 4:
-			cook_Time();
+			case 'D':
+				LCD_Clear_Display();
+				Cook_Time();
 			break;
-		default:
-			LCD_Show("Please enter a choice");
-			break;
-		}*/
-	}	
+			default:
+				LCD_Clear_Display();
+				LCD_Show("Not valid");
+				Systick_Wait_ms(1000);
+				LCD_Clear_Display();
+				break;
+		}
+		while(1){
+			if(START == 1){	
+				start();
+				break;
+			}
+		}
+	}
 }
 
 void GPIOF_Handler(void)
 {	
-  if (GPIO_PORTF_MIS_R & 0x10) /* check if interrupt causes by PF4/SW1*/
-    {   
-      //YOUR CODE HERE MONGED & REDA (SW1)
-      GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
-    } 
-    else if (GPIO_PORTF_MIS_R & 0x01) /* check if interrupt causes by PF0/SW2 */
-    {   
-     //YOUR CODE HERE MONGED & REDA (SW2)
-			GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
+	if ((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==0))
+    { 
+			RESET=0;
+			START=0; 
+			PAUSE=1;
+			SW1_Press_Counts=1;	
+			GPIO_PORTF_ICR_R |= 0x10;
+			
     }
+	else if((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==1))
+		{
+			RESET=1;
+			START=0; 
+			PAUSE=0;
+			SW1_Press_Counts=0;
+      GPIO_PORTF_ICR_R |= 0x10;
+    }
+	 
+	if((GPIO_PORTF_MIS_R & 0x01)) 
+		{
+			RESET=0;
+			START=1; 
+			PAUSE=0;
+			SW1_Press_Counts=0;
+			GPIO_PORTF_ICR_R |= 0x01; 
+		}	
+	
 }
 
 void GPIOD_Handler(void)
-{	
-  if (GPIO_PORTD_MIS_R & 0x04) /* check if interrupt causes by PD6/SW3*/
-    {   
-      //YOUR CODE HERE MONGED & REDA (SW3)
-      GPIO_PORTD_ICR_R |= 0x04; /* clear the interrupt flag */
-		}    
+{
+	if ((GPIO_PORTD_MIS_R & 0x04) && (!DOOR_OPEN)) 
+	{
+			RESET=0;
+			START=0; 
+			PAUSE=1;
+			DOOR_OPEN=1;
+			SW1_Press_Counts=1;
+			GPIO_PORTD_ICR_R |= 0x04;
+			
+     
+  }
+	else if ((GPIO_PORTD_MIS_R & 0x04) && (DOOR_OPEN))
+	{
+			RESET=0;
+			START=0; 
+			PAUSE=1;
+			DOOR_OPEN=0;
+			SW1_Press_Counts=1;
+			GPIO_PORTD_ICR_R |= 0x04;
+			
+     
+	}
 }
+

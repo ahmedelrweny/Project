@@ -1,163 +1,278 @@
+#include "Tiva.h"
+#include "Switch.h"
+#include "Buzzer.h"
+#include "keypad.h"
+#include "LCD.h"
+#include "Timer.h"
+#include "LED.h"
+#include "Switch.h"
 #include "defines.h"
 #include <inttypes.h>
-#include "tiva.h"
-#include "Timer.h"
-#include "LCD.h"
-#include <string.h>
-#include "Keypad.h"
-#include <stdio.h>
-#include "Switch.h"
+#include "Interrupt.h"
+#include <stdbool.h>  
+
+
+
+char time[]={'0','0',':','0','0','\0'};
 
 void microwave_Init(void){
-	 
+	System_Init();
+	buzzer_Init();
+	keypad_Init();
+	LCD_Init();
+	LED_Init();
+	SW1_Init();
+	SW2_Init();
+	SW3_Init();
+	interrupt_Init();
 }
-//LCD_Array function to write the whole array of chars on LCD
-void LCD_Array(char arr[]){   // write a array of chars on LCD
-  int l=sizeof(arr)/sizeof(arr[0]);        // l = array length
-  int i=0;                    //itterator
-  while(i<(l+1)){
-		LCD_Write(arr[i]);        // call the function LCD_Write 
-		i++;
-    }
-}
-void Time_Display(char time[]){
-	while(time[0]!=0x30 || time[1]!=0x30 || time[3]!=0x30 ||  time[4]!=0x30){ 
-		LCD_Array(time);
-		Systick_Wait_ms(1000);
-		if(time[4]==0x30 && time[3]!=0x30){
-			time[4]=0x39;
-			time[3]--;
-		}
-		else if(time[4]!=0x30 && time[3]!=0x30 ) {
-			time[4]--;
-		}
-		else if(time[4]==0x30 && time[3]==0x30 ){
-			if(time[1]!=0x30){
-			time[4]=0x39;
-			time[3]=0x35;
-			time[1]--;}
-		else if(time[1]==0x30 && time[0]!=0x30){
-			time[4]=0x39;
-			time[3]=0x35;
-				time[1]=0x39;
-				time[0]--;}
-		else if(time[1]==0x30 && time[0]==0x30){
+
+void pause(void){
+	
+	LCD_Clear_Display();
+	LCD_Show(time);
+	
+	while(1)
+		{
+			WhiteOn();
+			Systick_Wait_ms(500);
+			LED_Clear();
+			Systick_Wait_ms(500);
+			if((RESET == 1 || START ==1) && (!DOOR_OPEN))
+			{	
 				break;
 			}
-			}
-		else if(time[4]!=0x30 && time[3]==0x30){
-				time[4]--;
-			}
-			 LCD_Clear_Display();
 		}
-	}
+	PAUSE =0;
+}
 
-void Cook_Time(){
-	char time[]={'0','0',':','0','0'};
-	int i=0 ,j ;
+void reset(void){
+	time[0] = '0';
+	time[1] = '0';
+	time[3] = '0';
+	time[4] = '0';
+	LED_Clear();
+	RESET=0;
+
+}
+
+
+bool Check_Invalid(void){
+	if(	time[0]>'3' )
+		{
+			 return true;
+		}
+	if(	time[0]=='3' && ( time[1]!='0' || time[3] !='0' || time[4] !='0') 	)
+		{
+			 return true;
+		}
+	if(	time[3]>'5'	 )
+		{
+			 return true;
+		}
+	if(time[0]=='0' &&  time[1] =='0' && (time[3] !='0' || time[4] !='0'))
+		{
+			 return true;		
+		}
+	else
+		{
+			 return false;
+		}
+}
+
+void End_Operation(){
+	int i;
 	LCD_Clear_Display();
-	while(SW2_Input()==1){
-	if (i==2){
-		continue ;
-	}
-	time[4]=KeyScan();
-	LCD_Array(time);
-	for(j=4-i;j>=0;j--){
-		if (j==2){
-		time[0]=time[1];}
-		if (j==1){
-			time[1]=time[3];
-		}
-		time[3-j]=time[4-j];
-	}
-	i++;
-	if(i>4){ break;
-	}
-	}
-	if((time[0]>3)||(time[1]==0)||(time[0]==3&&time[1]>0)){
-		LCD_String("Invalid value, please enter a value between (1 to 30)min");
-		Cook_Time();
-	}
-	Time_Display(time);
+	LCD_Show("End");
 	
+	for(i=0; i<3; i++){
+			beep();
+			WhiteOn();
+			Systick_Wait_ms(500);
+			LED_Clear();
+			stop_Beep();
+			Systick_Wait_ms(500);
+			
+		}		
+	LCD_Clear_Display();
 }
 
-
-
-int Char_to_int(char x){
-	int number = x-0x30;
-	return number;
-}
-char* Int_to_char(int x){
-	 int num1= x/10;
-	 int num2= x-(num1*10);
-	 char required[2];
-	   required[0] = num1 +0x30;
-	 required[1] = num2 +0x30;
-	
-	return required;}
-
-void cook_Popcorn(){
-	
-			char time[]={'0','0',':','6','0'};
-			LCD_Array (time);
-}
-void cook_Beef_or_Chicken(char No_kiloes , char choose){
-	int min;
-	int no_seconds;
-	double time;
-	char time_array[5]={'\0'};
-	int no_kiloes =Char_to_int(No_kiloes);
-	if (choose =='B'){
-	  time=0.5*No_kiloes;}
-	if(choose == 'C'){
-		time=0.2*No_kiloes;
-	}
-	 min= (int)time;
-	 no_seconds= (time-min)*60;
-	time_array[0]=Int_to_char(min)[0];
-	time_array[1]=Int_to_char(min)[1];
-	time_array[2]=':';
-  time_array[3]=Int_to_char(no_seconds)[0];
-	time_array[4]=Int_to_char(no_seconds)[1];
-	LCD_Array (time_array);
-	
-}
-
-void Cooking(char choose ){
-	  char no_kiloes;
-		if ( choose =='A'){       // A for popcorn
-			LCD_String("popcorn");  // show popcorn in lcd
-			Systick_Wait_ms(1000);  // make a delay
-			LCD_Clear_Display();    // to clear the display
-		  cook_Popcorn();	        // to call the function cook_popcorn
-		}
-		if(choose =='B' ||choose =='C'){
-			if(choose =='B'){
-			LCD_String("Beef weight?");
-			Systick_Wait_ms(1000);
-			LCD_Clear_Display();}
-			if(choose =='C'){
-			LCD_String("Chicken  weight?"); 
-				Systick_Wait_ms(1000);
-	l:	LCD_Clear_Display();
-			}
-			LCD_String("value 1 to 9"); 
+void Time_Display(char time[]){
+	LCD_Clear_Display();
+	while(time[0]!='0' || time[1]!='0' || time[3]!='0' ||  time[4]!='0') 	
+		{ 
+			WhiteOn();
 			LCD_Clear_Display();
-		  no_kiloes =KeyScan();
-			if( no_kiloes<'1' || no_kiloes>'9'){ 
-			LCD_String("Err");
-			Systick_Wait_ms(2000);
-			goto l ;}
-		  LCD_String("the value is"); 
-		  LCD_Write(no_kiloes);
-		  Systick_Wait_ms(2000);
-		  LCD_Clear_Display();
-		  cook_Beef_or_Chicken(no_kiloes,choose);
+			LCD_Show(time);
+			Systick_Wait_ms(1000);
+		
+			if(time[4]!='0' ) 
+			{
+				time[4]--;	
+			}
+			else if(time[4]=='0' && time[3]!='0')
+			{
+				time[4]='9';
+				time[3]--;
+			}
+
+			else if(time[4]=='0' && time[3]=='0' && time[1]!='0')
+			{
+				time[4]='9';
+				time[3]='5';
+				time[1]--;
+			}
+			else if(time[4]=='0' && time[3]=='0' && time[1]=='0' && time[0]!='0')
+			{
+				time[4]='9';
+				time[3]='5';
+				time[1]='9';
+				time[0]--;
+			}
+
+			LCD_Clear_Display();
+			if(PAUSE == 1){	
+				pause();
+			}
+			if(RESET == 1){	
+				reset();
+				break;
+			}
 		}
-		if(choose =='D'){
-			Cook_Time();
+	End_Operation();
+}
+
+void start(void){
+	RESET=0;
+	PAUSE =0;
+	Time_Display(time);
+}
+
+
+void Cook_Time(void){
+	char x;
+	int i ;
+	bool invalid= false;
+	time[4]='0';
+	time[3]='0';
+	time[1]='0';
+	time[0]='0';
+	LCD_Show("Cooking Time?");
+	Systick_Wait_ms(1000);
+  for(i=4;i>0;i--)
+	{	
+    x= KeyScan();
+		LCD_Clear_Display();
+		if( x<'0' ||  x>'9' )
+		{
+			invalid= true;
+			break;
 		}
 			
-	
+    time[0]=time[1];
+    time[1]=time[3];
+    time[3]=time[4];
+    time[4]=x;
+		LCD_Show(time);
+		Systick_Wait_ms(500);
+			
+  }
+	if(Check_Invalid() || invalid	)
+	{
+		LCD_Clear_Display();
+		LCD_Show("Invalid value");
+		Systick_Wait_ms(2000);
+		LCD_Clear_Display(); 
+		Cook_Time();
 	}
+}
+
+int Char_to_int(char x){
+	int number = x-'0';
+	return number;
+}
+
+char IntToChar_Tens(int x){
+	int Tens= x/10;
+	char required;
+	required = Tens +'0';
+	return required;
+}
+
+char IntToChar_Units(int x){
+	int Tens= x/10;
+	int Units= x-(Tens*10);
+	char required;
+	required = Units +'0';
+	return required;
+}
+	
+void cook_Popcorn(void){
+	time[3]='6';  // to set time minutes
+	LCD_Show("Popcorn");  // show popcorn in lcd
+	Systick_Wait_ms(1000);  // make a delay 
+	LCD_Clear_Display();
+	LCD_Show(time);
+}
+ 
+void cook_Beef_or_Chicken(char choice){
+	int minutes;
+	int seconds;
+	double TimeInMinutes_d;
+	char No_kiloes;
+	int no_kiloes ;
+	
+	if(choice =='B')
+		{
+			LCD_Show("Beef weight?");    
+			Systick_Wait_ms(1000);
+			LCD_Clear_Display();
+		}
+	else if(choice =='C')
+		{
+			LCD_Show("Chicken weight?"); 
+			Systick_Wait_ms(1000);
+			LCD_Clear_Display();
+		}
+	do
+	{
+		LCD_Show("Kiloes? 1 to 9"); 
+		Systick_Wait_ms(1000);
+		No_kiloes =KeyScan();
+		LCD_Clear_Display();
+		
+		if(No_kiloes<'1' || No_kiloes>'9' )
+		{ 
+			LCD_Show("Err");
+			Systick_Wait_ms(2000);
+			LCD_Clear_Display();
+		}
+	}
+	while(No_kiloes<'1' || No_kiloes>'9');
+
+	LCD_Show("Weight is "); 
+	LCD_Write(No_kiloes);
+	Systick_Wait_ms(2000);
+		
+	if (choice =='B')
+	{
+		no_kiloes=Char_to_int(No_kiloes);
+		TimeInMinutes_d=0.5*no_kiloes;
+	}
+	else if(choice == 'C')
+	{
+		no_kiloes=Char_to_int(No_kiloes);
+		TimeInMinutes_d=0.2*no_kiloes;
+	}
+	minutes= (int)TimeInMinutes_d;
+	seconds= (TimeInMinutes_d-minutes) * 60;
+	time[0]=IntToChar_Tens(minutes);
+	time[1]=IntToChar_Units(minutes);
+	time[3]=IntToChar_Tens(seconds);
+	time[4]=IntToChar_Units(seconds);
+	LCD_Clear_Display();
+	LCD_Show(time);
+}
+
+
+
