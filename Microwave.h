@@ -1,11 +1,7 @@
 #ifndef Microwave_H_
 #define Microwave_H_
 
-#include <stdbool.h>  
-
 void microwave_Init(void);
-bool Check_Invalid(void);
-void End_Operation(void);
 void cook_Popcorn(void);
 void cook_Beef_or_Chicken(char choose);
 char IntToChar_Tens(int x);
@@ -18,5 +14,5 @@ void pause(void);
 void reset(void);
 
 
-
 #endif
+
