@@ -249,6 +249,9 @@ void cook_Beef_or_Chicken(char choice){
 
 void start(void){
 	Time_Display(time);
+	RedOn();
+	BlueOn();
+	GreenOn();
 }
 
 void pause(void){// used to pause when user want to reset/pause
