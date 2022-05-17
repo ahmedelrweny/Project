@@ -11,3 +11,4 @@
 .\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\main.o: Interrupt.h
 .\main.o: Microwave.h
+.\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h

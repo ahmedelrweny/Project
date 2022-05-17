@@ -10,3 +10,4 @@
 .\microwave.o: C:\Keil\ARM\ARMCC\bin\..\include\inttypes.h
 .\microwave.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\microwave.o: Interrupt.h
+.\microwave.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
