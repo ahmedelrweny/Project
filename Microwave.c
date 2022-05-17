@@ -251,7 +251,7 @@ void start(void){
 	Time_Display(time);
 }
 
-void pause(void){
+void pause(void){// used to pause when user want to reset/pause
 	LCD_Show(time);
 	while((SW2_Input()==0x01) ||(SW1_Input()==0x010))
 		{
