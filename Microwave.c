@@ -12,8 +12,8 @@
 #include <stdbool.h>  
 
 
-
-char time[]={'0','0',':','0','0','\0'};
+char No_kiloes;
+char time[5]={'0','0',':','0','0'};
 
 void microwave_Init(void){
 	System_Init();
@@ -26,36 +26,6 @@ void microwave_Init(void){
 	SW3_Init();
 	interrupt_Init();
 }
-
-void pause(void){
-	
-	LCD_Clear_Display();
-	LCD_Show(time);
-	
-	while(1)
-		{
-			WhiteOn();
-			Systick_Wait_ms(500);
-			LED_Clear();
-			Systick_Wait_ms(500);
-			if((RESET == 1 || START ==1) && (!DOOR_OPEN))
-			{	
-				break;
-			}
-		}
-	PAUSE =0;
-}
-
-void reset(void){
-	time[0] = '0';
-	time[1] = '0';
-	time[3] = '0';
-	time[4] = '0';
-	LED_Clear();
-	RESET=0;
-
-}
-
 
 bool Check_Invalid(void){
 	if(	time[0]>'3' )
@@ -70,39 +40,13 @@ bool Check_Invalid(void){
 		{
 			 return true;
 		}
-	if(time[0]=='0' &&  time[1] =='0' && (time[3] !='0' || time[4] !='0'))
-		{
-			 return true;		
-		}
-	else
-		{
 			 return false;
-		}
-}
-
-void End_Operation(){
-	int i;
-	LCD_Clear_Display();
-	LCD_Show("End");
-	
-	for(i=0; i<3; i++){
-			beep();
-			WhiteOn();
-			Systick_Wait_ms(500);
-			LED_Clear();
-			stop_Beep();
-			Systick_Wait_ms(500);
-			
-		}		
-	LCD_Clear_Display();
 }
 
 void Time_Display(char time[]){
 	LCD_Clear_Display();
 	while(time[0]!='0' || time[1]!='0' || time[3]!='0' ||  time[4]!='0') 	
 		{ 
-			WhiteOn();
-			LCD_Clear_Display();
 			LCD_Show(time);
 			Systick_Wait_ms(1000);
 		
@@ -131,39 +75,27 @@ void Time_Display(char time[]){
 			}
 
 			LCD_Clear_Display();
-			if(PAUSE == 1){	
-				pause();
-			}
-			if(RESET == 1){	
-				reset();
-				break;
-			}
 		}
-	End_Operation();
-}
-
-void start(void){
-	RESET=0;
-	PAUSE =0;
-	Time_Display(time);
-}
-
+		LCD_Show("End");
+		Systick_Wait_ms(1000);
+		LCD_Clear_Display();
+	}
 
 void Cook_Time(void){
 	char x;
 	int i ;
 	bool invalid= false;
-	time[4]='0';
-	time[3]='0';
+	time[0]='0'; 			//Make function to reset array to zero
 	time[1]='0';
-	time[0]='0';
+	time[3]='0';
+	time[4]='0';
 	LCD_Show("Cooking Time?");
 	Systick_Wait_ms(1000);
   for(i=4;i>0;i--)
 	{	
     x= KeyScan();
 		LCD_Clear_Display();
-		if( x<'0' ||  x>'9' )
+		if( x>'9')
 		{
 			invalid= true;
 			break;
@@ -179,12 +111,14 @@ void Cook_Time(void){
   }
 	if(Check_Invalid() || invalid	)
 	{
-		LCD_Clear_Display();
+		
 		LCD_Show("Invalid value");
 		Systick_Wait_ms(2000);
 		LCD_Clear_Display(); 
 		Cook_Time();
 	}
+	//Time_Display(time); // Remove from here, add it to the start button later
+	
 }
 
 int Char_to_int(char x){
@@ -193,33 +127,31 @@ int Char_to_int(char x){
 }
 
 char IntToChar_Tens(int x){
-	int Tens= x/10;
-	char required;
-	required = Tens +'0';
-	return required;
+	 int Tens= x/10;
+	 char required;
+	 required = Tens +'0';
+	 return required;
 }
 
 char IntToChar_Units(int x){
-	int Tens= x/10;
-	int Units= x-(Tens*10);
-	char required;
-	required = Units +'0';
-	return required;
+	 int Tens= x/10;
+	 int Units= x-(Tens*10);
+	 char required;
+	 required = Units +'0';
+	 return required;
 }
 	
 void cook_Popcorn(void){
-	time[3]='6';  // to set time minutes
-	LCD_Show("Popcorn");  // show popcorn in lcd
-	Systick_Wait_ms(1000);  // make a delay 
-	LCD_Clear_Display();
-	LCD_Show(time);
+	    time[3]='6';  // to set time minutes
+	    LCD_Show("Popcorn");  // show popcorn in lcd
+			Systick_Wait_ms(1000);  // make a delay      
+			//Time_Display(time);     / Remove from here, add it to the start button later
 }
  
 void cook_Beef_or_Chicken(char choice){
 	int minutes;
 	int seconds;
 	double TimeInMinutes_d;
-	char No_kiloes;
 	int no_kiloes ;
 	
 	if(choice =='B')
@@ -272,7 +204,18 @@ void cook_Beef_or_Chicken(char choice){
 	time[4]=IntToChar_Units(seconds);
 	LCD_Clear_Display();
 	LCD_Show(time);
+	//Time_Display(time);				 / Remove from here, add it to the start button later
 }
 
 
 
+void start(void){
+	Time_Display(time);	
+    
+}
+void pause(void){
+    //Again please
+}
+void reset(void){
+    //Again please
+}
