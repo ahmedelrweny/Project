@@ -44,6 +44,7 @@ bool Check_Invalid(void){
 }
 
 void Time_Display(char time[]){
+	int i;
 	LCD_Clear_Display();//clear LCD
 	while(time[0]!='0' || time[1]!='0' || time[3]!='0' ||  time[4]!='0') // loop untill 00:00
 		{
@@ -73,7 +74,13 @@ void Time_Display(char time[]){
 				time[1]='9';														//write 9 in units ==> ex:( 19:59	)
 				time[0]--;															//decrease tens of minutes by 1 ==> ex:( 09:59	)	
 			}
-			 LCD_Clear_Display();
+		for(i=0; i<3; i++){
+			beep();
+			Systick_Wait_ms(500);
+			stop_Beep();
+			Systick_Wait_ms(500);
+		}
+		LCD_Clear_Display();
 		}
 	}
 
