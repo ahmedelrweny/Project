@@ -12,6 +12,8 @@
 #include "Microwave.h"
 
 
+char started = 0;
+char SW1_Press_Counts = 0;
 
 int main(void){
 	microwave_Init();
@@ -41,30 +43,48 @@ int main(void){
 				Systick_Wait_ms(1000);
 				LCD_Clear_Display();
 			break;
-		}	
+		}
+		while(1){
+			if(started == 1){
+				start();
+				break;
+			}
+		}
 	}
 }
 
 void GPIOF_Handler(void)
 {	
-  if (GPIO_PORTF_MIS_R & 0x10) /* check if interrupt causes by PF4/SW1*/
+	if ((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==0))
     {   
-      //YOUR CODE HERE MONGED & REDA (SW1)
-      GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
-    } 
-    else if (GPIO_PORTF_MIS_R & 0x01) /* check if interrupt causes by PF0/SW2 */
-    {  
-			start();
-     //YOUR CODE HERE MONGED & REDA (SW2)
-			GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
+      pause();
+			started=0; 
+			SW1_Press_Counts=1;
+      GPIO_PORTF_ICR_R |= 0x10; 
     }
+	else if((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==1))
+		{
+			reset();
+			started=0; 
+			SW1_Press_Counts=0;
+      GPIO_PORTF_ICR_R |= 0x10;
+    }
+	 
+	if((!started) && (GPIO_PORTF_MIS_R & 0x01)) 
+		{
+			started=1;
+			GPIO_PORTF_ICR_R |= 0x01; 
+		}	
+	
 }
 
 void GPIOD_Handler(void)
-{	
-  if (GPIO_PORTD_MIS_R & 0x04) /* check if interrupt causes by PD2/SW3*/
-    {   
-      //YOUR CODE HERE MONGED & REDA (SW3)
-      GPIO_PORTD_ICR_R |= 0x04; /* clear the interrupt flag */
-		}    
+{
+  if (GPIO_PORTD_MIS_R & 0x04) 
+    {
+      pause();
+			started=0; 
+      GPIO_PORTD_ICR_R |= 0x04; 
+    }
 }
+

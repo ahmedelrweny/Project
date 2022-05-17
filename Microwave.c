@@ -43,6 +43,22 @@ bool Check_Invalid(void){
 			 return false;
 }
 
+void End_Operation(){
+	int i;
+	LCD_Show("End");
+	
+	for(i=0; i<3; i++){
+			beep();
+			WhiteOn();
+			Systick_Wait_ms(500);
+			LED_Clear();
+			stop_Beep();
+			Systick_Wait_ms(500);
+			
+		}		
+	LCD_Clear_Display();
+}
+
 void Time_Display(char time[]){
 	LCD_Clear_Display();
 	while(time[0]!='0' || time[1]!='0' || time[3]!='0' ||  time[4]!='0') 	
@@ -76,9 +92,7 @@ void Time_Display(char time[]){
 
 			LCD_Clear_Display();
 		}
-	LCD_Show("End");
-	Systick_Wait_ms(1000);
-	LCD_Clear_Display();
+	End_Operation();
 }
 
 void Cook_Time(void){
@@ -117,8 +131,6 @@ void Cook_Time(void){
 		LCD_Clear_Display(); 
 		Cook_Time();
 	}
-	//Time_Display(time); // Remove from here, add it to the start button later
-	
 }
 
 int Char_to_int(char x){
@@ -145,7 +157,6 @@ void cook_Popcorn(void){
 	time[3]='6';  // to set time minutes
 	LCD_Show("Popcorn");  // show popcorn in lcd
 	Systick_Wait_ms(1000);  // make a delay      
-	//Time_Display(time);     / Remove from here, add it to the start button later
 }
  
 void cook_Beef_or_Chicken(char choice){
@@ -204,18 +215,34 @@ void cook_Beef_or_Chicken(char choice){
 	time[4]=IntToChar_Units(seconds);
 	LCD_Clear_Display();
 	LCD_Show(time);
-	//Time_Display(time);				 / Remove from here, add it to the start button later
 }
 
 
 
 void start(void){
-	Time_Display(time);	
-    
+	Time_Display(time);
 }
+
 void pause(void){
-    //Again please
+	LCD_Show(time);
+	while(1)
+		{
+			RedOn();
+			BlueOn();
+			GreenOn();
+			Systick_Wait_ms(500);
+			LED_Clear();
+			Systick_Wait_ms(500);
+			if((GPIO_PORTF_MIS_R & 0x10) || (GPIO_PORTF_MIS_R & 0x01)){
+				break;
+			}
+		}
 }
+
 void reset(void){
-    //Again please
+	time[0] = '0';
+	time[1] = '0';
+	time[3] = '0';
+	time[4] = '0';
+	LED_Clear();
 }
