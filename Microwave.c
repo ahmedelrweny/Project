@@ -264,7 +264,7 @@ void pause(void){
 		}
 }
 
-void reset(void){
+void reset(void){ // used to reset timer to 0
 	time[0] = '0';
 	time[1] = '0';
 	time[3] = '0';
