@@ -43,8 +43,24 @@ bool Check_Invalid(void){
 			 return false;
 }
 
-void Time_Display(char time[]){
+void End_Operation(){
 	int i;
+	LCD_Show("End");
+	
+	for(i=0; i<3; i++){
+			beep();
+			WhiteOn();
+			Systick_Wait_ms(500);
+			LED_Clear();
+			stop_Beep();
+			Systick_Wait_ms(500);
+			
+		}		
+	LCD_Clear_Display();
+
+}
+
+void Time_Display(char time[]){
 	LCD_Clear_Display();//clear LCD
 	while(time[0]!='0' || time[1]!='0' || time[3]!='0' ||  time[4]!='0') // loop untill 00:00
 		{
@@ -76,15 +92,7 @@ void Time_Display(char time[]){
 			}
 		LCD_Clear_Display();
 		}
-		LCD_Show("End");
-		for(i=0; i<3; i++){
-			beep();
-			Systick_Wait_ms(500);
-			stop_Beep();
-			Systick_Wait_ms(500);
-		}
-			LCD_Clear_Display();
-		
+		End_Operation();	
 	}
 
 /*	
@@ -164,7 +172,7 @@ char IntToChar_Units(int x){ // to transfer the int num to char and get ones
 }
 	
 void cook_Popcorn(){
-	time[3]='6';  																					// to set time minute
+	time[3]='2';  																					// to set time minute
 	LCD_Show("Popcorn");  																	// show popcorn in lcd
 	Systick_Wait_ms(1000);  																// make a delay      
 }
@@ -241,9 +249,6 @@ void cook_Beef_or_Chicken(char choice){
 
 void start(void){
 	Time_Display(time);
-	RedOn();
-	BlueOn();
-	GreenOn();
 }
 
 void pause(void){

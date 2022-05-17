@@ -27,7 +27,9 @@ void BlueOn(void){
 void GreenOn(void){
 		GPIO_PORTF_DATA_R |= 0x8;
 }
-
+void WhiteOn(void){
+		GPIO_PORTF_DATA_R |= 0xE;
+}
 void RedToggle(void){
 		GPIO_PORTF_DATA_R ^= 0x2;
 }
@@ -39,3 +41,4 @@ void BlueToggle(void){
 void GreenToggle(void){
 		GPIO_PORTF_DATA_R ^= 0x8;
 }
+
