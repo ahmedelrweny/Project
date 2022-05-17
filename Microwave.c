@@ -247,13 +247,13 @@ void cook_Beef_or_Chicken(char choice){
 
 }*/
 
-void start(void){
+void Start(void){
 	Time_Display(time);
 }
 
 void pause(void){
 	LCD_Show(time);
-	while((SW2_Input()==0x01) ||(SW1_Input()==0x010)) // not pressed
+	while((SW2_Pressed()==0x01) ||(SW1_Pressed()==0x010)) // not pressed
 		{
 			RedOn();
 			BlueOn();

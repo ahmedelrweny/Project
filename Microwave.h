@@ -13,7 +13,7 @@ char IntToChar_Units(int x);
 int Char_to_int(char x);
 void Cook_Time(void);
 void Time_Display(char time[]);
-void start(void);
+void Start(void);
 void pause(void);
 void reset(void);
 
