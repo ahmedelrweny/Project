@@ -101,6 +101,7 @@ void Time_Display(char time[]){
 	LCD_Clear_Display();
 	while(time[0]!='0' || time[1]!='0' || time[3]!='0' ||  time[4]!='0') 	
 		{ 
+			WhiteOn();
 			LCD_Clear_Display();
 			LCD_Show(time);
 			Systick_Wait_ms(1000);
@@ -144,7 +145,6 @@ void Time_Display(char time[]){
 void start(void){
 	RESET=0;
 	PAUSE =0;
-	WhiteOn();
 	Time_Display(time);
 }
 
