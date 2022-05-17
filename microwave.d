@@ -1,5 +1,6 @@
 .\microwave.o: Microwave.c
 .\microwave.o: Tiva.h
+.\microwave.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
 .\microwave.o: Switch.h
 .\microwave.o: Buzzer.h
 .\microwave.o: keypad.h
@@ -10,4 +11,3 @@
 .\microwave.o: C:\Keil\ARM\ARMCC\bin\..\include\inttypes.h
 .\microwave.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\microwave.o: Interrupt.h
-.\microwave.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
