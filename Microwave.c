@@ -235,17 +235,17 @@ void cook_Beef_or_Chicken(char choice){
 		LCD_Show(time);                 											// to display time
 }
 
-/*int TimetoInteger(void){
+int TimetoInteger(void){
 	int min0 = Char_to_int(time[0]);
 	int min1 = Char_to_int(time[1]);
 	int sec0 = Char_to_int(time[3]);
 	int sec1 = Char_to_int(time[4]);
 	int mins = (min0 * 10 + min1);
 	int secs = (sec0 * 10 + sec1);
-	int time__;
-	return time__ = mins * 60 + secs; // time in seconds
+	int currenttime;
+	return currenttime = mins * 60 + secs; // time in seconds
 
-}*/
+}
 
 void start(void){ // used to start the timer count/cooking
 	Time_Display(time);
