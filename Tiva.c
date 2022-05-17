@@ -3,7 +3,7 @@
 
 void System_Init(void){	
 	
-		SYSCTL_RCGCGPIO_R  |= 0x33;  					//activating ports A B E F
-		while ((SYSCTL_PRGPIO_R &0x33)==0);
+		SYSCTL_RCGCGPIO_R  |= 0x3F;  					//activating ports A B C D E F
+		while ((SYSCTL_PRGPIO_R &0x3F)==0);
 
 }
