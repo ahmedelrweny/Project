@@ -40,7 +40,10 @@ bool Check_Invalid(void){
 		{
 			 return true;
 		}
+	else
+		{
 			 return false;
+		}
 }
 
 void End_Operation(){
@@ -125,7 +128,7 @@ void Cook_Time(void){
   }
 	if(Check_Invalid() || invalid	)
 	{
-		
+		LCD_Clear_Display();
 		LCD_Show("Invalid value");
 		Systick_Wait_ms(2000);
 		LCD_Clear_Display(); 
@@ -156,7 +159,9 @@ char IntToChar_Units(int x){
 void cook_Popcorn(void){
 	time[3]='6';  // to set time minutes
 	LCD_Show("Popcorn");  // show popcorn in lcd
-	Systick_Wait_ms(1000);  // make a delay      
+	Systick_Wait_ms(1000);  // make a delay 
+	LCD_Clear_Display();
+	LCD_Show(time);
 }
  
 void cook_Beef_or_Chicken(char choice){
@@ -220,20 +225,21 @@ void cook_Beef_or_Chicken(char choice){
 
 
 void start(void){
+	
 	Time_Display(time);
 }
 
 void pause(void){
+	LCD_Clear_Display();
 	LCD_Show(time);
+	
 	while(1)
 		{
-			RedOn();
-			BlueOn();
-			GreenOn();
+			WhiteOn();
 			Systick_Wait_ms(500);
 			LED_Clear();
 			Systick_Wait_ms(500);
-			if((GPIO_PORTF_MIS_R & 0x10) || (GPIO_PORTF_MIS_R & 0x01)){
+			if(((GPIO_PORTD_MIS_R & 0x04) != 0x04) && (((GPIO_PORTF_MIS_R & 0x10) == 0x10) || ((GPIO_PORTF_MIS_R & 0x01) == 0x01))){
 				break;
 			}
 		}

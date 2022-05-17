@@ -10,16 +10,20 @@
 #include <inttypes.h>
 #include "Interrupt.h"
 #include "Microwave.h"
+#include "stdbool.h"
 
 
-char started = 0;
+bool STARTED = false;
 char SW1_Press_Counts = 0;
 
 int main(void){
 	microwave_Init();
-	LCD_Show("Enter a Choice");
+	
 	
 	while(1){
+		
+		LCD_Show("Enter a Choice");	
+		
 		switch(KeyScan()){
 			case 'A':
 				LCD_Clear_Display();
@@ -42,10 +46,11 @@ int main(void){
 				LCD_Show("Not valid");
 				Systick_Wait_ms(1000);
 				LCD_Clear_Display();
-			break;
+				break;
 		}
 		while(1){
-			if(started == 1){
+			Systick_Wait_ms(1000);
+			if(STARTED == 1){	
 				start();
 				break;
 			}
@@ -56,23 +61,27 @@ int main(void){
 void GPIOF_Handler(void)
 {	
 	if ((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==0))
-    {   
+    { 
+			STARTED=0; 
+			GPIO_PORTF_ICR_R |= 0x01; 
+			GPIO_PORTD_ICR_R |= 0x04;
+			GPIO_PORTF_ICR_R |= 0x10;
       pause();
-			started=0; 
-			SW1_Press_Counts=1;
-      GPIO_PORTF_ICR_R |= 0x10; 
+			SW1_Press_Counts=1;	
+			
     }
 	else if((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==1))
 		{
 			reset();
-			started=0; 
+			STARTED=0; 
 			SW1_Press_Counts=0;
       GPIO_PORTF_ICR_R |= 0x10;
     }
 	 
-	if((!started) && (GPIO_PORTF_MIS_R & 0x01)) 
+	if((!STARTED) && (GPIO_PORTF_MIS_R & 0x01)) 
 		{
-			started=1;
+			SW1_Press_Counts=0;
+			STARTED=1;
 			GPIO_PORTF_ICR_R |= 0x01; 
 		}	
 	
@@ -82,9 +91,13 @@ void GPIOD_Handler(void)
 {
   if (GPIO_PORTD_MIS_R & 0x04) 
     {
+			GPIO_PORTF_ICR_R |= 0x01; 
+			GPIO_PORTD_ICR_R |= 0x04; 
+			GPIO_PORTF_ICR_R |= 0x10;
       pause();
-			started=0; 
-      GPIO_PORTD_ICR_R |= 0x04; 
+			SW1_Press_Counts=1;
+			STARTED=0; 
+     
     }
 }
 
