@@ -272,7 +272,7 @@ void reset(void){
 	LED_Clear();
 }
 
-void resume(void){ 
+void resume(void){ //resume after pause when resume/start switch is pressed
 	Time_Display(time);
 	RedOn();
 	BlueOn();
