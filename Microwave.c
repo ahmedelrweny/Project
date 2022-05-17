@@ -247,7 +247,7 @@ void cook_Beef_or_Chicken(char choice){
 
 }*/
 
-void start(void){
+void start(void){ // used to start the timer count/cooking
 	Time_Display(time);
 	RedOn();
 	BlueOn();
