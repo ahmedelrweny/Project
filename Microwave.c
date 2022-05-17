@@ -253,7 +253,7 @@ void start(void){
 
 void pause(void){
 	LCD_Show(time);
-	while((SW2_Input()==0x01) ||(SW1_Input()==0x010)) // not pressed
+	while((SW2_Input()==0x01) ||(SW1_Input()==0x010))
 		{
 			RedOn();
 			BlueOn();
@@ -272,7 +272,9 @@ void reset(void){
 	LED_Clear();
 }
 
-void resume(void){ //we don't have to use it as it is the same implementation of start 
+void resume(void){ 
 	Time_Display(time);
-	// leds on
+	RedOn();
+	BlueOn();
+	GreenOn();
 }
