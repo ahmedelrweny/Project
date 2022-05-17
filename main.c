@@ -12,8 +12,10 @@
 #include "Microwave.h"
 #include "stdbool.h"
 
+bool START = 0;
+bool PAUSE = 0;
+bool RESET = 0; 
 
-bool STARTED = false;
 char SW1_Press_Counts = 0;
 
 int main(void){
@@ -49,8 +51,7 @@ int main(void){
 				break;
 		}
 		while(1){
-			Systick_Wait_ms(1000);
-			if(STARTED == 1){	
+			if(START == 1){	
 				start();
 				break;
 			}
@@ -62,26 +63,28 @@ void GPIOF_Handler(void)
 {	
 	if ((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==0))
     { 
-			STARTED=0; 
-			GPIO_PORTF_ICR_R |= 0x01; 
-			GPIO_PORTD_ICR_R |= 0x04;
-			GPIO_PORTF_ICR_R |= 0x10;
-      pause();
+			RESET=0;
+			START=0; 
+			PAUSE=1;
 			SW1_Press_Counts=1;	
+			GPIO_PORTF_ICR_R |= 0x10;
 			
     }
 	else if((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==1))
 		{
-			reset();
-			STARTED=0; 
+			RESET=1;
+			START=0; 
+			PAUSE=0;
 			SW1_Press_Counts=0;
       GPIO_PORTF_ICR_R |= 0x10;
     }
 	 
-	if((!STARTED) && (GPIO_PORTF_MIS_R & 0x01)) 
+	if((!START) && (GPIO_PORTF_MIS_R & 0x01)) 
 		{
+			RESET=0;
+			START=1; 
+			PAUSE=0;
 			SW1_Press_Counts=0;
-			STARTED=1;
 			GPIO_PORTF_ICR_R |= 0x01; 
 		}	
 	
@@ -90,13 +93,13 @@ void GPIOF_Handler(void)
 void GPIOD_Handler(void)
 {
   if (GPIO_PORTD_MIS_R & 0x04) 
-    {
-			GPIO_PORTF_ICR_R |= 0x01; 
-			GPIO_PORTD_ICR_R |= 0x04; 
-			GPIO_PORTF_ICR_R |= 0x10;
-      pause();
+	{
+			RESET=0;
+			START=0; 
+			PAUSE=1;
 			SW1_Press_Counts=1;
-			STARTED=0; 
+			GPIO_PORTD_ICR_R |= 0x04;
+			
      
     }
 }

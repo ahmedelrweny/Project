@@ -1,5 +1,6 @@
 .\main.o: main.c
 .\main.o: Tiva.h
+.\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
 .\main.o: Switch.h
 .\main.o: Buzzer.h
 .\main.o: keypad.h
@@ -11,4 +12,3 @@
 .\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\main.o: Interrupt.h
 .\main.o: Microwave.h
-.\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h

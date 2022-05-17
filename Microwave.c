@@ -12,7 +12,7 @@
 #include <stdbool.h>  
 
 
-char No_kiloes;
+
 char time[]={'0','0',':','0','0','\0'};
 
 void microwave_Init(void){
@@ -26,6 +26,36 @@ void microwave_Init(void){
 	SW3_Init();
 	interrupt_Init();
 }
+
+void pause(void){
+	
+	LCD_Clear_Display();
+	LCD_Show(time);
+	
+	while(1)
+		{
+			WhiteOn();
+			Systick_Wait_ms(500);
+			LED_Clear();
+			Systick_Wait_ms(500);
+			if(RESET == 1 || START ==1)
+			{	
+				break;
+			}
+		}
+	PAUSE =0;
+}
+
+void reset(void){
+	time[0] = '0';
+	time[1] = '0';
+	time[3] = '0';
+	time[4] = '0';
+	LED_Clear();
+	RESET=0;
+
+}
+
 
 bool Check_Invalid(void){
 	if(	time[0]>'3' )
@@ -48,6 +78,7 @@ bool Check_Invalid(void){
 
 void End_Operation(){
 	int i;
+	LCD_Clear_Display();
 	LCD_Show("End");
 	
 	for(i=0; i<3; i++){
@@ -66,6 +97,7 @@ void Time_Display(char time[]){
 	LCD_Clear_Display();
 	while(time[0]!='0' || time[1]!='0' || time[3]!='0' ||  time[4]!='0') 	
 		{ 
+			LCD_Clear_Display();
 			LCD_Show(time);
 			Systick_Wait_ms(1000);
 		
@@ -94,9 +126,23 @@ void Time_Display(char time[]){
 			}
 
 			LCD_Clear_Display();
+			if(PAUSE == 1){	
+				pause();
+			}
+			if(RESET == 1){	
+				reset();
+				break;
+			}
 		}
 	End_Operation();
 }
+
+void start(void){
+	RESET=0;
+	PAUSE =0;
+	Time_Display(time);
+}
+
 
 void Cook_Time(void){
 	char x;
@@ -168,6 +214,7 @@ void cook_Beef_or_Chicken(char choice){
 	int minutes;
 	int seconds;
 	double TimeInMinutes_d;
+	char No_kiloes;
 	int no_kiloes ;
 	
 	if(choice =='B')
@@ -224,31 +271,3 @@ void cook_Beef_or_Chicken(char choice){
 
 
 
-void start(void){
-	
-	Time_Display(time);
-}
-
-void pause(void){
-	LCD_Clear_Display();
-	LCD_Show(time);
-	
-	while(1)
-		{
-			WhiteOn();
-			Systick_Wait_ms(500);
-			LED_Clear();
-			Systick_Wait_ms(500);
-			if(((GPIO_PORTD_MIS_R & 0x04) != 0x04) && (((GPIO_PORTF_MIS_R & 0x10) == 0x10) || ((GPIO_PORTF_MIS_R & 0x01) == 0x01))){
-				break;
-			}
-		}
-}
-
-void reset(void){
-	time[0] = '0';
-	time[1] = '0';
-	time[3] = '0';
-	time[4] = '0';
-	LED_Clear();
-}
