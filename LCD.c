@@ -7,6 +7,7 @@
 #define RW 0x08 //Pin 3 in Port A
 #define EN 0x04 //Pin 2 in Port A
 
+
 //LCD Control
 void LCD_CMD(unsigned char signal){
 		GPIO_PORTA_DATA_R = 0x00; //Set RS,RW to 0 to Enable write
@@ -48,7 +49,6 @@ void LCD_Init(void){
 		LCD_CMD(0x0F);           // Turn on Display
 		LCD_Clear_Display();
 }
-
 
 //LCD_Write a function that writes character on LCD
 void LCD_Write(unsigned char Data){

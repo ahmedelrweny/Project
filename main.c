@@ -12,89 +12,107 @@
 #include "Microwave.h"
 #include "stdbool.h"
 
-char input;
-static int SW1_Press_Counts=0;
-static bool STARTED=false;
+bool START = 0;
+bool PAUSE = 0;
+bool RESET = 0;
+bool DOOR_OPEN =0 ;
+bool SW1_Press_Counts = 0;
 
 int main(void){
 	microwave_Init();
-	LCD_Show("Enter a Choice");
+	
 	
 	while(1){
-	
 		
-	switch(KeyScan())
-	{
-		case 'A':
-			LCD_Clear_Display();
-			cook_Popcorn();
+		LCD_Show("Enter a Choice");	
+		
+		switch(KeyScan()){
+			case 'A':
+				LCD_Clear_Display();
+				cook_Popcorn();
 			break;
-			
-		case 'B':
-			LCD_Clear_Display();
-			cook_Beef_or_Chicken('B');
+			case 'B':
+				LCD_Clear_Display();
+				cook_Beef_or_Chicken('B');
 			break;
-			
-		case 'C':
-			LCD_Clear_Display();
-			cook_Beef_or_Chicken('C');
+			case 'C':
+				LCD_Clear_Display();
+				cook_Beef_or_Chicken('C');
 			break;
-			
-		case 'D':
-			LCD_Clear_Display();
-			Cook_Time();
+			case 'D':
+				LCD_Clear_Display();
+				Cook_Time();
 			break;
-			
-		default:
-			LCD_Clear_Display();
-			LCD_Show("Not valid");
-			Systick_Wait_ms(1000);
-			LCD_Clear_Display();
-			break;
+			default:
+				LCD_Clear_Display();
+				LCD_Show("Not valid");
+				Systick_Wait_ms(1000);
+				LCD_Clear_Display();
+				break;
 		}
-	while(1)
-	{
-		if(STARTED)
-		{
-			Start();
+		while(1){
+			if(START == 1){	
+				start();
+				break;
+			}
 		}
 	}
-	}	
 }
 
 void GPIOF_Handler(void)
 {	
-  /*SW1 interrupts handling*/
-	if ((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==0)) /* check if interrupt causes by PF4/SW1 for one time*/
-    {   
-      pause();
-			STARTED=false; //which means that you are stopped
-			SW1_Press_Counts=1;
-      GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
+	if ((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==0))
+    { 
+			RESET=0;
+			START=0; 
+			PAUSE=1;
+			SW1_Press_Counts=1;	
+			GPIO_PORTF_ICR_R |= 0x10;
+			
     }
-	else if((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==1))/* check if interrupt causes by PF4/SW1 for two successive times*/
+	else if((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==1))
 		{
-			reset();
-			STARTED=false; //which means that you are stopped
+			RESET=1;
+			START=0; 
+			PAUSE=0;
 			SW1_Press_Counts=0;
-      GPIO_PORTF_ICR_R |= 0x10; /* clear the interrupt flag */
+      GPIO_PORTF_ICR_R |= 0x10;
     }
-	 /*SW2 interrupts handling*/	
-	if((!STARTED)&&(GPIO_PORTF_MIS_R & 0x01)) /* check if interrupt is caused by PF0/SW2 and the door is closed*/
+	 
+	if((GPIO_PORTF_MIS_R & 0x01)) 
 		{
-			STARTED=true;
-			GPIO_PORTF_ICR_R |= 0x01; /* clear the interrupt flag */
+			RESET=0;
+			START=1; 
+			PAUSE=0;
+			SW1_Press_Counts=0;
+			GPIO_PORTF_ICR_R |= 0x01; 
 		}	
 	
 }
 
 void GPIOD_Handler(void)
 {
-	/*SW3 interrupts handling*/	
-  if (GPIO_PORTD_MIS_R & 0x04) /* check if interrupt is caused by PD2/SW3*/
-    {
-      pause();
-			STARTED=false; //which means that you are stopped
-      GPIO_PORTD_ICR_R |= 0x04; /* clear the interrupt flag */
-    }
+	if ((GPIO_PORTD_MIS_R & 0x04) && (!DOOR_OPEN)) 
+	{
+			RESET=0;
+			START=0; 
+			PAUSE=1;
+			DOOR_OPEN=1;
+			SW1_Press_Counts=1;
+			GPIO_PORTD_ICR_R |= 0x04;
+			
+     
+  }
+	else if ((GPIO_PORTD_MIS_R & 0x04) && (DOOR_OPEN))
+	{
+			RESET=0;
+			START=0; 
+			PAUSE=1;
+			DOOR_OPEN=0;
+			SW1_Press_Counts=1;
+			GPIO_PORTD_ICR_R |= 0x04;
+			
+     
+	}
 }
+
