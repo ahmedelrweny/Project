@@ -1,6 +1,7 @@
 #include "defines.h"
 #include <inttypes.h>
 
+
 void SysTick_Wait (unsigned int delay) {
 	NVIC_ST_CTRL_R = 0;
 	NVIC_ST_RELOAD_R = delay-1; 
@@ -21,4 +22,6 @@ void Systick_Wait_ms(unsigned int time)
 	{
 		Systick_Wait_1ms();
 	}
+
 }
+
