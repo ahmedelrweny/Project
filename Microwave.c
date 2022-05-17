@@ -235,7 +235,7 @@ void cook_Beef_or_Chicken(char choice){
 		LCD_Show(time);                 											// to display time
 }
 
-int TimetoInteger(void){
+/*int TimetoInteger(void){
 	int min0 = Char_to_int(time[0]);
 	int min1 = Char_to_int(time[1]);
 	int sec0 = Char_to_int(time[3]);
@@ -245,7 +245,7 @@ int TimetoInteger(void){
 	int currenttime;
 	return currenttime = mins * 60 + secs; // time in seconds
 
-}
+}*/
 
 void start(void){ // used to start the timer count/cooking
 	Time_Display(time);
@@ -273,6 +273,7 @@ void reset(void){ // used to reset timer to 0
 	time[3] = '0';
 	time[4] = '0';
 	LED_Clear();
+
 }
 
 void resume(void){ //resume after pause when resume/start switch is pressed
