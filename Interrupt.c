@@ -16,6 +16,5 @@ void interrupt_Init(void){
   GPIO_PORTD_IM_R  |= (1<<2);          /* unmask interrupt */
 	
   NVIC_EN0_R |= (1<<30);  /* enable PORTF interrupts */
-	NVIC_EN0_R |= (1<<3);  /* enable PORTD interrupts */
 
 }
