@@ -69,7 +69,7 @@ bool Check_Invalid(void){
 		{
 			 return true;
 		}
-	if(time[0]=='0' &&  time[1] =='0' && (time[3] !='0' || time[4] !='0'))
+	if(time[0]=='0' &&  time[1] =='0')
 		{
 			 return true;		
 		}
