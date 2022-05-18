@@ -210,7 +210,7 @@ char IntToChar_Units(int x){
 }
 	
 void cook_Popcorn(void){
-	time[3]='6';  // to set time minutes
+	time[1]='1';  // to set time minutes
 	LCD_Show("Popcorn");  // show popcorn in lcd
 	Systick_Wait_ms(1000);  // make a delay 
 	LCD_Clear_Display();
