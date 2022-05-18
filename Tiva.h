@@ -8,7 +8,6 @@ void System_Init(void);
 extern bool START;
 extern bool PAUSE;
 extern bool RESET; 
-extern bool DOOR_OPEN;
 extern bool SW1_Press_Counts;
 
 #endif

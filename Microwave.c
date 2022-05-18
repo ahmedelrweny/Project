@@ -38,7 +38,7 @@ void pause(void){
 			Systick_Wait_ms(500);
 			LED_Clear();
 			Systick_Wait_ms(500);
-			if((RESET == 1 || START ==1) && (!DOOR_OPEN))
+			if((RESET == 1 || START ==1) && (SW3_Input() == 0x04))
 			{	
 				break;
 			}
@@ -53,7 +53,6 @@ void reset(void){
 	time[4] = '0';
 	LED_Clear();
 	RESET=0;
-
 }
 
 
@@ -131,7 +130,8 @@ void Time_Display(char time[]){
 			}
 
 			LCD_Clear_Display();
-			if(PAUSE == 1){	
+			
+			if((PAUSE == 1) || (SW3_Input() !=0x04)){	
 				pause();
 			}
 			if(RESET == 1){	
