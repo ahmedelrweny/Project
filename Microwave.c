@@ -38,7 +38,7 @@ void pause(void){
 			Systick_Wait_ms(500);
 			LED_Clear();
 			Systick_Wait_ms(500);
-			if((RESET == 1 || START ==1) && (SW3_Pressed() == 0x04))
+			if((RESET == 1 || START ==1) && (SW3_Input() == 0x04))
 			{	
 				break;
 			}
@@ -105,7 +105,7 @@ void Time_Display(char time[]){
 			LCD_Clear_Display();
 			LCD_Show(time);
 			
-			if((PAUSE == 1) || (SW3_Pressed() !=0x04)){	
+			if((PAUSE == 1) || (SW3_Input() !=0x04)){	
 				pause();
 			}
 			if(RESET == 1){	
