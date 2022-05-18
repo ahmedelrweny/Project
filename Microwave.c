@@ -38,8 +38,16 @@ void pause(void){
 			Systick_Wait_ms(500);
 			LED_Clear();
 			Systick_Wait_ms(500);
-			if((RESET == 1 || START ==1) && (SW3_Input() == 0x04))
+			if((SW3_Input() != 0x04) && (START ==1) )
+			{
+				LCD_Clear_Display();
+				LCD_Show("Close The Door");
+				START =0;
+			}
+			
+			if(((SW3_Input() == 0x04) && START ==1) || (RESET == 1 ))
 			{	
+				LCD_Clear_Display();
 				break;
 			}
 		}
