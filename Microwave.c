@@ -28,7 +28,7 @@ void microwave_Init(void){
 }
 
 void pause(void){
-	
+	START =0;
 	LCD_Clear_Display();
 	LCD_Show(time);
 	
@@ -38,7 +38,7 @@ void pause(void){
 			Systick_Wait_ms(500);
 			LED_Clear();
 			Systick_Wait_ms(500);
-			if((RESET == 1 || START ==1) && (!DOOR_OPEN))
+			if((RESET == 1 || START ==1) && (SW3_Input() == 0x04))
 			{	
 				break;
 			}
@@ -53,7 +53,6 @@ void reset(void){
 	time[4] = '0';
 	LED_Clear();
 	RESET=0;
-
 }
 
 
@@ -70,7 +69,7 @@ bool Check_Invalid(void){
 		{
 			 return true;
 		}
-	if(time[0]=='0' &&  time[1] =='0' && (time[3] !='0' || time[4] !='0'))
+	if(time[0]=='0' &&  time[1] =='0')
 		{
 			 return true;		
 		}
@@ -98,12 +97,22 @@ void End_Operation(){
 }
 
 void Time_Display(char time[]){
+	
 	LCD_Clear_Display();
 	while(time[0]!='0' || time[1]!='0' || time[3]!='0' ||  time[4]!='0') 	
 		{ 
 			WhiteOn();
 			LCD_Clear_Display();
 			LCD_Show(time);
+			
+			if((PAUSE == 1) || (SW3_Input() !=0x04)){	
+				pause();
+			}
+			if(RESET == 1){	
+				reset();
+				break;
+			}
+			
 			Systick_Wait_ms(1000);
 		
 			if(time[4]!='0' ) 
@@ -131,13 +140,6 @@ void Time_Display(char time[]){
 			}
 
 			LCD_Clear_Display();
-			if(PAUSE == 1){	
-				pause();
-			}
-			if(RESET == 1){	
-				reset();
-				break;
-			}
 		}
 	End_Operation();
 }

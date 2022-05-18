@@ -15,8 +15,8 @@
 bool START = 0;
 bool PAUSE = 0;
 bool RESET = 0;
-bool DOOR_OPEN =0 ;
 bool SW1_Press_Counts = 0;
+bool valid_Input = 0;
 
 int main(void){
 	microwave_Init();
@@ -28,29 +28,34 @@ int main(void){
 		
 		switch(KeyScan()){
 			case 'A':
+				valid_Input = 1;
 				LCD_Clear_Display();
 				cook_Popcorn();
 			break;
 			case 'B':
+				valid_Input = 1;
 				LCD_Clear_Display();
 				cook_Beef_or_Chicken('B');
 			break;
 			case 'C':
+				valid_Input = 1;
 				LCD_Clear_Display();
 				cook_Beef_or_Chicken('C');
 			break;
 			case 'D':
+				valid_Input = 1;
 				LCD_Clear_Display();
 				Cook_Time();
 			break;
 			default:
+				valid_Input = 0;
 				LCD_Clear_Display();
 				LCD_Show("Not valid");
 				Systick_Wait_ms(1000);
 				LCD_Clear_Display();
 				break;
 		}
-		while(1){
+		while(valid_Input){
 			if(START == 1){	
 				start();
 				break;
@@ -88,31 +93,5 @@ void GPIOF_Handler(void)
 			GPIO_PORTF_ICR_R |= 0x01; 
 		}	
 	
-}
-
-void GPIOD_Handler(void)
-{
-	if ((GPIO_PORTD_MIS_R & 0x04) && (!DOOR_OPEN)) 
-	{
-			RESET=0;
-			START=0; 
-			PAUSE=1;
-			DOOR_OPEN=1;
-			SW1_Press_Counts=1;
-			GPIO_PORTD_ICR_R |= 0x04;
-			
-     
-  }
-	else if ((GPIO_PORTD_MIS_R & 0x04) && (DOOR_OPEN))
-	{
-			RESET=0;
-			START=0; 
-			PAUSE=1;
-			DOOR_OPEN=0;
-			SW1_Press_Counts=1;
-			GPIO_PORTD_ICR_R |= 0x04;
-			
-     
-	}
 }
 
