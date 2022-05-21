@@ -29,6 +29,7 @@ void microwave_Init(void){
 
 void pause(void){
 	START =0;
+	SW1_Press_Counts=1;
 	LCD_Clear_Display();
 	LCD_Show(time);
 	
@@ -47,6 +48,7 @@ void pause(void){
 			
 			if(((SW3_Input() == 0x04) && START ==1) || (RESET == 1 ))
 			{	
+				SW1_Press_Counts=0;
 				LCD_Clear_Display();
 				break;
 			}

@@ -38,38 +38,22 @@ void SW3_Init(void){
 
 //*input functions*
 
-unsigned char SW1_Pressed(void){
+unsigned char SW1_Input(void){
 	
-		if((GPIO_PORTF_DATA_R & 0x10) !=0x10)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}	
+	return (GPIO_PORTF_DATA_R & 0x10);
+
 }
 
-unsigned char SW2_Pressed(void){
+unsigned char SW2_Input(void){
 	
-		if((GPIO_PORTF_DATA_R & 0x01) !=0x01)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
+	return (GPIO_PORTF_DATA_R & 0x01);
+		
+
 }
 
-unsigned char SW3_Pressed(void){
-	
-		if((GPIO_PORTF_DATA_R & 0x04) !=0x04)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
+unsigned char SW3_Input(void){
+
+	return (GPIO_PORTD_DATA_R & 0x04);
+
+
 }
