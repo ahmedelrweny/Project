@@ -42,7 +42,7 @@ void pause(void){
 			Systick_Wait_ms(500);
 			LED_Clear();
 			Systick_Wait_ms(500);
-			if((RESET == 1 || START ==1) && (!DOOR_OPEN))
+			if((RESET == 1 || START ==1) && (SW3_Input() == 1))
 			{	
 				break;
 			}

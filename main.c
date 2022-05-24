@@ -84,29 +84,4 @@ void GPIOF_Handler(void)
 	
 }
 
-void GPIOD_Handler(void)
-{
-	if ((GPIO_PORTD_MIS_R & 0x04) && (!DOOR_OPEN)) 
-	{
-			RESET=0;
-			START=0; 
-			PAUSE=1;
-			DOOR_OPEN=1;
-			SW1_Press_Counts=1;
-			GPIO_PORTD_ICR_R |= 0x04;
-			
-     
-  }
-	else if ((GPIO_PORTD_MIS_R & 0x04) && (DOOR_OPEN))
-	{
-			RESET=0;
-			START=0; 
-			PAUSE=1;
-			DOOR_OPEN=0;
-			SW1_Press_Counts=1;
-			GPIO_PORTD_ICR_R |= 0x04;
-			
-     
-	}
-}
 
