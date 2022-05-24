@@ -30,7 +30,7 @@ char KeyScan(){
 	while(1){
 	int i;
 	int j;
-	if(Cook_Time_Again){
+	if(Cook_Time_Again || Start_Cook_Time){
 		return '\0';
 	}
 	for (i=0;i<4;i++){ // set colums 

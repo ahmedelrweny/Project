@@ -11,6 +11,7 @@ extern bool RESET;
 extern bool SW1_Press_Counts;
 extern bool Cook_Time_f;
 extern bool Cook_Time_Again;
+extern bool Start_Cook_Time;
 
 #endif
 

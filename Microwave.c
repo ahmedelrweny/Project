@@ -176,7 +176,7 @@ void Cook_Time(void){
 	{	
     x= KeyScan();
 		LCD_Clear_Display();
-		if(Cook_Time_Again){
+		if(Cook_Time_Again || Start_Cook_Time){
 			LCD_Clear_Display();
 			break;
 		}
