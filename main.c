@@ -14,11 +14,14 @@
 #include "stdbool.h"
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 bool START = 0;
 bool PAUSE = 0;
 bool RESET = 0;
 bool DOOR_OPEN =0 ;
 bool SW1_Press_Counts = 0;
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -44,6 +47,9 @@ int main(void){
 =======
 				valid_Input = 1;
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 				LCD_Clear_Display();
 				Cook_Time();

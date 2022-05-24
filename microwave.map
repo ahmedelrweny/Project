@@ -19,7 +19,11 @@ Section Cross References
     main.o(.text) refers to keypad.o(.text) for KeyScan
     main.o(.text) refers to timer.o(.text) for Systick_Wait_ms
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     main.o(.text) refers to main.o(.data) for START
+=======
+    main.o(.text) refers to tiva.o(.data) for valid_Input
+>>>>>>> Stashed changes
 =======
     main.o(.text) refers to tiva.o(.data) for valid_Input
 >>>>>>> Stashed changes
@@ -38,10 +42,13 @@ Section Cross References
     microwave.o(.text) refers to dfix.o(x$fpl$dfix) for __aeabi_d2iz
     microwave.o(.text) refers to daddsub_clz.o(x$fpl$drsb) for __aeabi_drsub
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     microwave.o(.text) refers to microwave.o(.data) for time
     microwave.o(.text) refers to main.o(.data) for RESET
     lcd.o(.text) refers to timer.o(.text) for Systick_Wait_1ms
 =======
+=======
+>>>>>>> Stashed changes
     lcd.o(.text) refers to timer.o(.text) for SysTick_Wait
 >>>>>>> Stashed changes
     lcd.o(.text) refers to strlen.o(.text) for strlen
@@ -290,6 +297,7 @@ Image Symbol Table
     .text                                    0x00000308   Section      268  startup_tm4c123.o(.text)
     .text                                    0x00000414   Section        0  main.o(.text)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     .text                                    0x000005e0   Section        0  switch.o(.text)
     .text                                    0x0000073c   Section        0  tiva.o(.text)
     .text                                    0x00000760   Section        0  microwave.o(.text)
@@ -323,6 +331,8 @@ Image Symbol Table
     .data                                    0x2000000b   Section       16  keypad.o(.data)
     symbol                                   0x2000000b   Data          16  keypad.o(.data)
 =======
+=======
+>>>>>>> Stashed changes
     .text                                    0x0000058c   Section        0  switch.o(.text)
     .text                                    0x000006e8   Section        0  tiva.o(.text)
     .text                                    0x0000070c   Section        0  microwave.o(.text)
@@ -355,6 +365,9 @@ Image Symbol Table
     .data                                    0x20000006   Section        6  microwave.o(.data)
     .data                                    0x2000000c   Section       16  keypad.o(.data)
     symbol                                   0x2000000c   Data          16  keypad.o(.data)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     .bss                                     0x2000001c   Section       96  libspace.o(.bss)
     HEAP                                     0x20000080   Section        0  startup_tm4c123.o(HEAP)
@@ -563,6 +576,7 @@ Image Symbol Table
     PWM1_FAULT_Handler                       0x000003f5   Thumb Code     2  startup_tm4c123.o(.text)
     __user_initial_stackheap                 0x000003f9   Thumb Code     0  startup_tm4c123.o(.text)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     main                                     0x00000415   Thumb Code   126  main.o(.text)
     GPIOF_Handler                            0x00000493   Thumb Code   156  main.o(.text)
     GPIOD_Handler                            0x0000052f   Thumb Code   120  main.o(.text)
@@ -646,6 +660,8 @@ Image Symbol Table
     SW1_Press_Counts                         0x20000004   Data           1  main.o(.data)
     time                                     0x20000005   Data           6  microwave.o(.data)
 =======
+=======
+>>>>>>> Stashed changes
     main                                     0x00000415   Thumb Code   168  main.o(.text)
     GPIOF_Handler                            0x000004bd   Thumb Code   156  main.o(.text)
     SW1_Init                                 0x0000058d   Thumb Code   104  switch.o(.text)
@@ -728,6 +744,9 @@ Image Symbol Table
     valid_Input                              0x20000004   Data           1  tiva.o(.data)
     z                                        0x20000005   Data           1  tiva.o(.data)
     time                                     0x20000006   Data           6  microwave.o(.data)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     __libspace_start                         0x2000001c   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x2000007c   Data           0  libspace.o(.bss)
@@ -741,9 +760,15 @@ Memory Map of the image
   Image Entry point : 0x00000309
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   Load Region LR_1 (Base: 0x00000000, Size: 0x000017f4, Max: 0xffffffff, ABSOLUTE)
 
     Execution Region ER_RO (Base: 0x00000000, Size: 0x000017d8, Max: 0xffffffff, ABSOLUTE)
+=======
+  Load Region LR_1 (Base: 0x00000000, Size: 0x0000180c, Max: 0xffffffff, ABSOLUTE)
+
+    Execution Region ER_RO (Base: 0x00000000, Size: 0x000017f0, Max: 0xffffffff, ABSOLUTE)
+>>>>>>> Stashed changes
 =======
   Load Region LR_1 (Base: 0x00000000, Size: 0x0000180c, Max: 0xffffffff, ABSOLUTE)
 
@@ -800,6 +825,7 @@ Memory Map of the image
     0x00000306   0x00000002   PAD
     0x00000308   0x0000010c   Code   RO            4  * .text               startup_tm4c123.o
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     0x00000414   0x000001cc   Code   RO           10    .text               main.o
     0x000005e0   0x0000015c   Code   RO           65    .text               switch.o
     0x0000073c   0x00000024   Code   RO           77    .text               tiva.o
@@ -832,6 +858,8 @@ Memory Map of the image
     0x000017b8   0x00000000   Code   RO          220    x$fpl$usenofp       fz_ws.l(usenofp.o)
     0x000017b8   0x00000020   Data   RO          370    Region$$Table       anon$$obj.o
 =======
+=======
+>>>>>>> Stashed changes
     0x00000414   0x00000178   Code   RO           10    .text               main.o
     0x0000058c   0x0000015c   Code   RO           67    .text               switch.o
     0x000006e8   0x00000024   Code   RO           79    .text               tiva.o
@@ -863,6 +891,9 @@ Memory Map of the image
     0x000015fc   0x000001d4   Code   RO          210    x$fpl$dsub          fz_ws.l(daddsub_clz.o)
     0x000017d0   0x00000000   Code   RO          231    x$fpl$usenofp       fz_ws.l(usenofp.o)
     0x000017d0   0x00000020   Data   RO          381    Region$$Table       anon$$obj.o
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 
@@ -894,6 +925,7 @@ Image component sizes
 
        132         18          0          0          0        501   buzzer.o
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
        168         12          0          0          0        377   interrupt.o
        308         36          0         16          0       1042   keypad.o
        392         28          0          0          0       1100   lcd.o
@@ -901,12 +933,17 @@ Image component sizes
        460         58          0          5          0       2562   main.o
       1204        144          0          6          0       3722   microwave.o
 =======
+=======
+>>>>>>> Stashed changes
         84         10          0          0          0        345   interrupt.o
        344         48          0         16          0       1082   keypad.o
        420         28          0          0          0       1100   lcd.o
        256         22          0          0          0       1023   led.o
        376         52          0          0          0       2157   main.o
       1332        170          0          6          0       3818   microwave.o
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
        268         20        620          0        512       5316   startup_tm4c123.o
        348         28          0          0          0        951   switch.o
@@ -915,7 +952,11 @@ Image component sizes
 
     ----------------------------------------------------------------------
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       3640        376        652         28        512      17648   Object Totals
+=======
+      3664        406        652         28        512      17642   Object Totals
+>>>>>>> Stashed changes
 =======
       3664        406        652         28        512      17642   Object Totals
 >>>>>>> Stashed changes
@@ -977,6 +1018,7 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       5452        428        652         28        612      17616   Grand Totals
       5452        428        652         28        612      17616   ELF Image Totals
       5452        428        652         28          0          0   ROM Totals
@@ -987,6 +1029,8 @@ Image component sizes
     Total RW  Size (RW Data + ZI Data)               640 (   0.63kB)
     Total ROM Size (Code + RO Data + RW Data)       6132 (   5.99kB)
 =======
+=======
+>>>>>>> Stashed changes
       5476        458        652         28        612      17610   Grand Totals
       5476        458        652         28        612      17610   ELF Image Totals
       5476        458        652         28          0          0   ROM Totals
@@ -996,6 +1040,9 @@ Image component sizes
     Total RO  Size (Code + RO Data)                 6128 (   5.98kB)
     Total RW  Size (RW Data + ZI Data)               640 (   0.63kB)
     Total ROM Size (Code + RO Data + RW Data)       6156 (   6.01kB)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 ==============================================================================

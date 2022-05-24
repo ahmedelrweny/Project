@@ -12,11 +12,19 @@
 void LCD_CMD(unsigned char signal){
 		GPIO_PORTA_DATA_R = 0x00; //Set RS,RW to 0 to Enable write
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		Systick_Wait_1ms();
 		GPIO_PORTA_DATA_R |= 0x04; //Enable write data
 		Systick_Wait_1ms();
 		GPIO_PORTB_DATA_R = signal; //Set Data of PortB
 		Systick_Wait_1ms();
+=======
+		SysTick_Wait(4000);
+		GPIO_PORTA_DATA_R |= 0x04; //Enable write data
+		SysTick_Wait(4000);
+		GPIO_PORTB_DATA_R = signal; //Set Data of PortB
+		SysTick_Wait(4000);
+>>>>>>> Stashed changes
 =======
 		SysTick_Wait(4000);
 		GPIO_PORTA_DATA_R |= 0x04; //Enable write data
