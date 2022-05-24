@@ -29,6 +29,7 @@ void microwave_Init(void){
 
 void pause(void){
 	START =0;
+	SW1_Press_Counts = 1;
 	LCD_Clear_Display();
 	LCD_Show(time);
 	
@@ -47,6 +48,7 @@ void pause(void){
 			
 			if(((SW3_Input() == 0x04) && START ==1) || (RESET == 1 ))
 			{	
+				SW1_Press_Counts = 0;
 				LCD_Clear_Display();
 				break;
 			}
@@ -163,6 +165,7 @@ void Cook_Time(void){
 	char x;
 	int i ;
 	bool invalid= false;
+	Cook_Time_f = 1;
 	time[4]='0';
 	time[3]='0';
 	time[1]='0';
@@ -173,6 +176,9 @@ void Cook_Time(void){
 	{	
     x= KeyScan();
 		LCD_Clear_Display();
+		if(Cook_Time_Again){
+			break;
+		}
 		if( x<'0' ||  x>'9' )
 		{
 			invalid= true;
@@ -187,6 +193,9 @@ void Cook_Time(void){
 		Systick_Wait_ms(500);
 			
   }
+	
+	Cook_Time_f = 0;
+	
 	if(Check_Invalid() || invalid	)
 	{
 		LCD_Clear_Display();
@@ -195,6 +204,7 @@ void Cook_Time(void){
 		LCD_Clear_Display(); 
 		Cook_Time();
 	}
+	
 }
 
 int Char_to_int(char x){

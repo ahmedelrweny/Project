@@ -9,6 +9,8 @@ extern bool START;
 extern bool PAUSE;
 extern bool RESET; 
 extern bool SW1_Press_Counts;
+extern bool Cook_Time_f;
+extern bool Cook_Time_Again;
 
 #endif
 

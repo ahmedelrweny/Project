@@ -17,6 +17,8 @@ bool PAUSE = 0;
 bool RESET = 0;
 bool SW1_Press_Counts = 0;
 bool valid_Input = 0;
+bool Cook_Time_f = 0;
+bool Cook_Time_Again = 0;
 
 int main(void){
 	microwave_Init();
@@ -45,7 +47,11 @@ int main(void){
 			case 'D':
 				valid_Input = 1;
 				LCD_Clear_Display();
-				Cook_Time();
+				do{
+					Cook_Time_Again = 0;
+					Cook_Time();
+				}
+				while(Cook_Time_Again);
 			break;
 			default:
 				valid_Input = 0;
@@ -83,7 +89,11 @@ void GPIOF_Handler(void)
 			SW1_Press_Counts=0;
       GPIO_PORTF_ICR_R |= 0x10;
     }
-	 
+	else if((GPIO_PORTF_MIS_R & 0x10) && (Cook_Time_f)){
+		Cook_Time_Again = 1;
+		GPIO_PORTF_ICR_R |= 0x10;
+	}
+	
 	if((GPIO_PORTF_MIS_R & 0x01)) 
 		{
 			RESET=0;
