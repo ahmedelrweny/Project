@@ -91,6 +91,8 @@ bool Check_Invalid(void){
 
 void End_Operation(){
 	int i;
+	START=0;
+	SW1_Press_Counts=0;
 	LCD_Clear_Display();
 	LCD_Show("End");
 	
@@ -203,6 +205,7 @@ void Cook_Time(void){
 		LCD_Show("Invalid value");
 		Systick_Wait_ms(2000);
 		LCD_Clear_Display(); 
+		Start_Cook_Time = 0;
 		Cook_Time();
 	}
 	
@@ -246,19 +249,19 @@ void cook_Beef_or_Chicken(char choice){
 	if(choice =='B')
 		{
 			LCD_Show("Beef weight?");    
-			Systick_Wait_ms(1000);
+			Systick_Wait_ms(500);
 			LCD_Clear_Display();
 		}
 	else if(choice =='C')
 		{
 			LCD_Show("Chicken weight?"); 
-			Systick_Wait_ms(1000);
+			Systick_Wait_ms(500);
 			LCD_Clear_Display();
 		}
 	do
 	{
 		LCD_Show("Kiloes? 1 to 9"); 
-		Systick_Wait_ms(1000);
+		Systick_Wait_ms(300);
 		No_kiloes =KeyScan();
 		LCD_Clear_Display();
 		
@@ -273,7 +276,7 @@ void cook_Beef_or_Chicken(char choice){
 
 	LCD_Show("Weight is "); 
 	LCD_Write(No_kiloes);
-	Systick_Wait_ms(2000);
+	Systick_Wait_ms(500);
 		
 	if (choice =='B')
 	{

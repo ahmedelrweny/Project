@@ -34,26 +34,27 @@ int main(void){
 				valid_Input = 1;
 				LCD_Clear_Display();
 				cook_Popcorn();
-			break;
+				break;
 			case 'B':
 				valid_Input = 1;
 				LCD_Clear_Display();
 				cook_Beef_or_Chicken('B');
-			break;
+				break;
 			case 'C':
 				valid_Input = 1;
 				LCD_Clear_Display();
 				cook_Beef_or_Chicken('C');
-			break;
+				break;
 			case 'D':
 				valid_Input = 1;
 				LCD_Clear_Display();
 				do{
 					Cook_Time_Again = 0;
 					Cook_Time();
+					//Start_Cook_Time = 0;
 				}
 				while(Cook_Time_Again);
-			break;
+				break;
 			default:
 				valid_Input = 0;
 				LCD_Clear_Display();
@@ -62,8 +63,10 @@ int main(void){
 				LCD_Clear_Display();
 				break;
 		}
+		START=0;
 		while(valid_Input){
-			if(START == 1){	
+			if(START == 1 || Start_Cook_Time == 1){	
+				Start_Cook_Time = 0;
 				start();
 				break;
 			}
