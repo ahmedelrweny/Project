@@ -3,11 +3,7 @@
 <title>Static Call Graph - [.\microwave.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\microwave.axf</H1><HR>
-<<<<<<< Updated upstream
 <BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Tue May 17 23:45:44 2022
-=======
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Mon May 23 23:36:47 2022
->>>>>>> Stashed changes
 <BR><P>
 <H3>Maximum Stack Usage =         92 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1207,13 +1203,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<<<<<<< Updated upstream
 <P><STRONG><a name="[86]"></a>main</STRONG> (Thumb, 126 bytes, Stack size 0 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = main &rArr; cook_Beef_or_Chicken &rArr; LCD_Show &rArr; LCD_Write &rArr; LCD_CMD &rArr; Systick_Wait_1ms
-=======
-<P><STRONG><a name="[86]"></a>main</STRONG> (Thumb, 168 bytes, Stack size 0 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = main &rArr; cook_Beef_or_Chicken &rArr; __aeabi_dmul
->>>>>>> Stashed changes
 </UL>
 <BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;microwave_Init
@@ -1272,13 +1263,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<<<<<<< Updated upstream
 <P><STRONG><a name="[9e]"></a>pause</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, microwave.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = pause &rArr; LCD_Show &rArr; LCD_Write &rArr; LCD_CMD &rArr; Systick_Wait_1ms
-=======
-<P><STRONG><a name="[9e]"></a>pause</STRONG> (Thumb, 120 bytes, Stack size 8 bytes, microwave.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = pause &rArr; LCD_Show &rArr; LCD_Write &rArr; LCD_CMD
->>>>>>> Stashed changes
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WhiteOn
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Clear
@@ -1294,25 +1280,15 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Clear
 </UL>
-<<<<<<< Updated upstream
 <BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
-=======
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Time_Display
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cook_Time
->>>>>>> Stashed changes
 </UL>
 
 <P><STRONG><a name="[a6]"></a>Check_Invalid</STRONG> (Thumb, 100 bytes, Stack size 0 bytes, microwave.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cook_Time
 </UL>
 
-<<<<<<< Updated upstream
 <P><STRONG><a name="[a2]"></a>End_Operation</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, microwave.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = End_Operation &rArr; LCD_Show &rArr; LCD_Write &rArr; LCD_CMD &rArr; Systick_Wait_1ms
-=======
-<P><STRONG><a name="[a3]"></a>End_Operation</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, microwave.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = End_Operation &rArr; LCD_Show &rArr; LCD_Write &rArr; LCD_CMD
->>>>>>> Stashed changes
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop_Beep
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;beep
@@ -1347,20 +1323,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<<<<<<< Updated upstream
 <P><STRONG><a name="[92]"></a>Cook_Time</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, microwave.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52 + In Cycle
 <LI>Call Chain = Cook_Time &rArr;  Cook_Time (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Check_Invalid
-=======
-<P><STRONG><a name="[92]"></a>Cook_Time</STRONG> (Thumb, 180 bytes, Stack size 16 bytes, microwave.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48 + In Cycle
-<LI>Call Chain = Cook_Time &rArr;  Cook_Time (Cycle)
-</UL>
-<BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Check_Invalid
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reset
->>>>>>> Stashed changes
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait_ms
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Show
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear_Display
@@ -1395,13 +1362,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<<<<<<< Updated upstream
 <P><STRONG><a name="[91]"></a>cook_Beef_or_Chicken</STRONG> (Thumb, 456 bytes, Stack size 56 bytes, microwave.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = cook_Beef_or_Chicken &rArr; LCD_Show &rArr; LCD_Write &rArr; LCD_CMD &rArr; Systick_Wait_1ms
-=======
-<P><STRONG><a name="[91]"></a>cook_Beef_or_Chicken</STRONG> (Thumb, 476 bytes, Stack size 56 bytes, microwave.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = cook_Beef_or_Chicken &rArr; __aeabi_dmul
->>>>>>> Stashed changes
 </UL>
 <BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
@@ -1483,7 +1445,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;microwave_Init
 </UL>
 
-<P><STRONG><a name="[8e]"></a>KeyScan</STRONG> (Thumb, 90 bytes, Stack size 0 bytes, keypad.o(.text))
+<P><STRONG><a name="[8e]"></a>KeyScan</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, keypad.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cook_Beef_or_Chicken
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cook_Time
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
