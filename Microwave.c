@@ -92,6 +92,7 @@ bool Check_Invalid(void){
 void End_Operation(){
 	int i;
 	START=0;
+	Start_Cook_Time = 0;
 	SW1_Press_Counts=0;
 	LCD_Clear_Display();
 	LCD_Show("End");
@@ -197,6 +198,14 @@ void Cook_Time(void){
 			
   }
 	
+	while(1)
+	{
+		if(Cook_Time_Again == 1 || Start_Cook_Time == 1){
+			LCD_Clear_Display();
+			break;
+		}
+	}
+	
 	Cook_Time_f = 0;
 	
 	if((Check_Invalid() || invalid	)&& (!Cook_Time_Again))
@@ -208,7 +217,7 @@ void Cook_Time(void){
 		Start_Cook_Time = 0;
 		Cook_Time();
 	}
-	
+
 }
 
 int Char_to_int(char x){

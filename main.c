@@ -51,7 +51,6 @@ int main(void){
 				do{
 					Cook_Time_Again = 0;
 					Cook_Time();
-					//Start_Cook_Time = 0;
 				}
 				while(Cook_Time_Again);
 				break;
@@ -66,7 +65,6 @@ int main(void){
 		START=0;
 		while(valid_Input){
 			if(START == 1 || Start_Cook_Time == 1){	
-				Start_Cook_Time = 0;
 				start();
 				break;
 			}
