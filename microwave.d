@@ -1,6 +1,7 @@
 .\microwave.o: Microwave.c
-.\microwave.o: Tiva.h
+.\microwave.o: Extern.h
 .\microwave.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
+.\microwave.o: Tiva.h
 .\microwave.o: Switch.h
 .\microwave.o: Buzzer.h
 .\microwave.o: keypad.h

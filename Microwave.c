@@ -1,3 +1,4 @@
+#include "Extern.h"
 #include "Tiva.h"
 #include "Switch.h"
 #include "Buzzer.h"
@@ -28,9 +29,16 @@ void microwave_Init(void){
 }
 
 void pause(void){
+<<<<<<< Updated upstream
 	
 	LCD_Clear_Display();
 	LCD_Show(time);
+=======
+	START =0;
+	SW1_Press_Counts=1;
+	//LCD_Clear_Display();
+	//LCD_Show(time);
+>>>>>>> Stashed changes
 	
 	while(1)
 		{
@@ -58,6 +66,7 @@ void reset(void){
 
 
 bool Check_Invalid(void){
+		
 	if(	time[0]>'3' )
 		{
 			 return true;
@@ -84,7 +93,10 @@ void End_Operation(){
 	int i;
 	LCD_Clear_Display();
 	LCD_Show("End");
-	
+	z=0;
+	START=0;
+	PAUSE=0;
+	RESET=0;
 	for(i=0; i<3; i++){
 			beep();
 			WhiteOn();
@@ -153,6 +165,7 @@ void Cook_Time(void){
 	char x;
 	int i ;
 	bool invalid= false;
+	z=1;
 	time[4]='0';
 	time[3]='0';
 	time[1]='0';
@@ -161,7 +174,20 @@ void Cook_Time(void){
 	Systick_Wait_ms(1000);
   for(i=4;i>0;i--)
 	{	
+		
     x= KeyScan();
+		if(START)
+		{
+			break;
+		}
+		if(SW1_Press_Counts )
+		{
+			LCD_Clear_Display();
+			SW1_Press_Counts = 0;
+			reset();
+			Cook_Time();
+		}
+		
 		LCD_Clear_Display();
 		if( x<'0' ||  x>'9' )
 		{
@@ -183,6 +209,7 @@ void Cook_Time(void){
 		LCD_Show("Invalid value");
 		Systick_Wait_ms(2000);
 		LCD_Clear_Display(); 
+		START=0;
 		Cook_Time();
 	}
 }

@@ -207,12 +207,19 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>2</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <Focus>0</Focus>
+<<<<<<< Updated upstream
       <ColumnNumber>31</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>68</TopLine>
       <CurrentLine>82</CurrentLine>
+=======
+      <ColumnNumber>20</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>10</TopLine>
+      <CurrentLine>25</CurrentLine>
+>>>>>>> Stashed changes
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -225,7 +232,11 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
+<<<<<<< Updated upstream
       <ColumnNumber>1</ColumnNumber>
+=======
+      <ColumnNumber>36</ColumnNumber>
+>>>>>>> Stashed changes
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
@@ -257,10 +268,17 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
+<<<<<<< Updated upstream
       <ColumnNumber>16</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>9</TopLine>
       <CurrentLine>104</CurrentLine>
+=======
+      <ColumnNumber>14</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>70</TopLine>
+      <CurrentLine>165</CurrentLine>
+>>>>>>> Stashed changes
       <bDave2>0</bDave2>
       <PathWithFileName>.\Microwave.c</PathWithFileName>
       <FilenameWithoutPath>Microwave.c</FilenameWithoutPath>
@@ -289,7 +307,11 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
+<<<<<<< Updated upstream
       <ColumnNumber>31</ColumnNumber>
+=======
+      <ColumnNumber>17</ColumnNumber>
+>>>>>>> Stashed changes
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
@@ -305,7 +327,7 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>14</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
@@ -321,7 +343,11 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
+<<<<<<< Updated upstream
       <ColumnNumber>16</ColumnNumber>
+=======
+      <ColumnNumber>38</ColumnNumber>
+>>>>>>> Stashed changes
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
@@ -337,7 +363,11 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
+<<<<<<< Updated upstream
       <ColumnNumber>29</ColumnNumber>
+=======
+      <ColumnNumber>14</ColumnNumber>
+>>>>>>> Stashed changes
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>

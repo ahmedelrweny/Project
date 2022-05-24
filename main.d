@@ -1,6 +1,7 @@
 .\main.o: main.c
 .\main.o: Tiva.h
 .\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
+.\main.o: Extern.h
 .\main.o: Switch.h
 .\main.o: Buzzer.h
 .\main.o: keypad.h
