@@ -29,17 +29,13 @@ void microwave_Init(void){
 }
 
 void pause(void){
-<<<<<<< Updated upstream
-	
 	LCD_Clear_Display();
 	LCD_Show(time);
-=======
 	START =0;
 	SW1_Press_Counts=1;
 	//LCD_Clear_Display();
 	//LCD_Show(time);
->>>>>>> Stashed changes
-	
+
 	while(1)
 		{
 			WhiteOn();

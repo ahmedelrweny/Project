@@ -1,112 +1,71 @@
 Dependencies for Project 'microwave', Target 'Target 1': (DO NOT MODIFY !)
 F (.\startup_TM4C123.s)(0x62686840)(--cpu Cortex-M4 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123--list .\startup_tm4c123.lst --xref -o .\startup_tm4c123.o --depend .\startup_tm4c123.d)
-<<<<<<< Updated upstream
-F (.\main.c)(0x628415DE)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\main.o --omf_browse .\main.crf --depend .\main.d)
-I (Tiva.h)(0x62841371)
+F (.\main.c)(0x628CE389)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+I (Tiva.h)(0x628CE03B)
 I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C819B4)
-I (Switch.h)(0x6283BD67)
-=======
-F (.\main.c)(0x628BFE66)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\main.o --omf_browse .\main.crf --depend .\main.d)
-I (Tiva.h)(0x6288D69E)
-I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C819B4)
-I (Extern.h)(0x628BDFD3)
+I (Extern.h)(0x628CE2EC)
 I (Switch.h)(0x6288D69E)
->>>>>>> Stashed changes
 I (Buzzer.h)(0x62686840)
-I (keypad.h)(0x627E5BBD)
-I (LCD.h)(0x6283BD67)
-I (Timer.h)(0x627E5BC4)
-I (LED.h)(0x6283BD81)
+I (keypad.h)(0x62841D20)
+I (LCD.h)(0x62841EE3)
+I (Timer.h)(0x62841D27)
+I (LED.h)(0x62841EE3)
 I (defines.h)(0x6266B997)
 I (C:\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-<<<<<<< Updated upstream
-I (Interrupt.h)(0x627E5B81)
-I (Microwave.h)(0x6283F446)
-F (.\Switch.c)(0x6283BD67)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\switch.o --omf_browse .\switch.crf --depend .\switch.d)
-I (defines.h)(0x6266B997)
-I (C:\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
-I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-F (.\Tiva.c)(0x627E5B81)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\tiva.o --omf_browse .\tiva.crf --depend .\tiva.d)
-=======
 I (Interrupt.h)(0x62841CDD)
 I (Microwave.h)(0x62841EE3)
-F (.\Switch.c)(0x6288D69E)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\switch.o --omf_browse .\switch.crf --depend .\switch.d)
+F (.\Switch.c)(0x628CE03B)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\switch.o --omf_browse .\switch.crf --depend .\switch.d)
 I (defines.h)(0x6266B997)
 I (C:\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-F (.\Tiva.c)(0x628BDFD3)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\tiva.o --omf_browse .\tiva.crf --depend .\tiva.d)
->>>>>>> Stashed changes
+F (.\Tiva.c)(0x628CE2EC)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\tiva.o --omf_browse .\tiva.crf --depend .\tiva.d)
 I (defines.h)(0x6266B997)
-I (Extern.h)(0x628BDFD3)
+I (Extern.h)(0x628CE2EC)
 I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C819B4)
 I (C:\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-<<<<<<< Updated upstream
-F (.\Microwave.c)(0x62841781)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\microwave.o --omf_browse .\microwave.crf --depend .\microwave.d)
-I (Tiva.h)(0x62841371)
+F (.\Microwave.c)(0x628CE354)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\microwave.o --omf_browse .\microwave.crf --depend .\microwave.d)
+I (Extern.h)(0x628CE2EC)
 I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C819B4)
-I (Switch.h)(0x6283BD67)
-=======
-F (.\Microwave.c)(0x628BE000)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\microwave.o --omf_browse .\microwave.crf --depend .\microwave.d)
-I (Extern.h)(0x628BDFD3)
-I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C819B4)
-I (Tiva.h)(0x6288D69E)
+I (Tiva.h)(0x628CE03B)
 I (Switch.h)(0x6288D69E)
->>>>>>> Stashed changes
 I (Buzzer.h)(0x62686840)
-I (keypad.h)(0x627E5BBD)
-I (LCD.h)(0x6283BD67)
-I (Timer.h)(0x627E5BC4)
-I (LED.h)(0x6283BD81)
+I (keypad.h)(0x62841D20)
+I (LCD.h)(0x62841EE3)
+I (Timer.h)(0x62841D27)
+I (LED.h)(0x62841EE3)
 I (defines.h)(0x6266B997)
 I (C:\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-<<<<<<< Updated upstream
-I (Interrupt.h)(0x627E5B81)
-F (.\LCD.c)(0x6283BD67)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\lcd.o --omf_browse .\lcd.crf --depend .\lcd.d)
-I (defines.h)(0x6266B997)
-I (C:\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
-I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-I (tiva.h)(0x62841371)
-=======
 I (Interrupt.h)(0x62841CDD)
-F (.\LCD.c)(0x628B8632)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\lcd.o --omf_browse .\lcd.crf --depend .\lcd.d)
+F (.\LCD.c)(0x628CE371)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\lcd.o --omf_browse .\lcd.crf --depend .\lcd.d)
 I (defines.h)(0x6266B997)
 I (C:\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-I (tiva.h)(0x6288D69E)
->>>>>>> Stashed changes
+I (tiva.h)(0x628CE03B)
 I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C819B4)
-I (Timer.h)(0x627E5BC4)
+I (Timer.h)(0x62841D27)
 I (C:\Keil\ARM\ARMCC\include\string.h)(0x51C819B4)
-<<<<<<< Updated upstream
-F (.\Keypad.c)(0x627E5BBC)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\keypad.o --omf_browse .\keypad.crf --depend .\keypad.d)
-=======
-F (.\Keypad.c)(0x628BDFD3)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\keypad.o --omf_browse .\keypad.crf --depend .\keypad.d)
->>>>>>> Stashed changes
+F (.\Keypad.c)(0x628CE2EC)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\keypad.o --omf_browse .\keypad.crf --depend .\keypad.d)
 I (defines.h)(0x6266B997)
-I (Extern.h)(0x628BDFD3)
+I (Extern.h)(0x628CE2EC)
 I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C819B4)
 I (C:\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-F (.\Buzzer.c)(0x627E5BBC)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\buzzer.o --omf_browse .\buzzer.crf --depend .\buzzer.d)
+F (.\Buzzer.c)(0x62841CDD)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\buzzer.o --omf_browse .\buzzer.crf --depend .\buzzer.d)
 I (defines.h)(0x6266B997)
 I (C:\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-F (.\Timer.c)(0x6283BD67)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\timer.o --omf_browse .\timer.crf --depend .\timer.d)
+F (.\Timer.c)(0x628CE03B)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\timer.o --omf_browse .\timer.crf --depend .\timer.d)
 I (defines.h)(0x6266B997)
 I (C:\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-F (.\LED.c)(0x6283BD81)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\led.o --omf_browse .\led.crf --depend .\led.d)
+F (.\LED.c)(0x62841EE3)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\led.o --omf_browse .\led.crf --depend .\led.d)
 I (defines.h)(0x6266B997)
 I (C:\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-<<<<<<< Updated upstream
-F (.\Interrupt.c)(0x627E5B81)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\interrupt.o --omf_browse .\interrupt.crf --depend .\interrupt.d)
-=======
-F (.\Interrupt.c)(0x628B82FB)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\interrupt.o --omf_browse .\interrupt.crf --depend .\interrupt.d)
->>>>>>> Stashed changes
+F (.\Interrupt.c)(0x628CE371)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\interrupt.o --omf_browse .\interrupt.crf --depend .\interrupt.d)
 I (defines.h)(0x6266B997)
 I (C:\Keil\ARM\ARMCC\include\inttypes.h)(0x51C819B4)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)

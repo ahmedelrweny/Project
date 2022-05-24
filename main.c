@@ -13,14 +13,7 @@
 #include "Microwave.h"
 #include "stdbool.h"
 
-<<<<<<< Updated upstream
-bool START = 0;
-bool PAUSE = 0;
-bool RESET = 0;
-bool DOOR_OPEN =0 ;
-bool SW1_Press_Counts = 0;
-=======
->>>>>>> Stashed changes
+
 
 int main(void){
 	microwave_Init();	  
@@ -40,11 +33,7 @@ int main(void){
 				cook_Beef_or_Chicken('C');
 			break;
 			case 'D':
-<<<<<<< Updated upstream
-=======
 				valid_Input = 1;
-
->>>>>>> Stashed changes
 				LCD_Clear_Display();
 				Cook_Time();
 			break;
