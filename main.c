@@ -1,4 +1,5 @@
 #include "Tiva.h"
+#include "Extern.h"
 #include "Switch.h"
 #include "Buzzer.h"
 #include "keypad.h"
@@ -12,20 +13,19 @@
 #include "Microwave.h"
 #include "stdbool.h"
 
+<<<<<<< Updated upstream
 bool START = 0;
 bool PAUSE = 0;
 bool RESET = 0;
 bool DOOR_OPEN =0 ;
 bool SW1_Press_Counts = 0;
+=======
+>>>>>>> Stashed changes
 
 int main(void){
-	microwave_Init();
-	
-	
+	microwave_Init();	  
 	while(1){
-		
 		LCD_Show("Enter a Choice");	
-		
 		switch(KeyScan()){
 			case 'A':
 				LCD_Clear_Display();
@@ -40,14 +40,20 @@ int main(void){
 				cook_Beef_or_Chicken('C');
 			break;
 			case 'D':
+<<<<<<< Updated upstream
+=======
+				valid_Input = 1;
+
+>>>>>>> Stashed changes
 				LCD_Clear_Display();
 				Cook_Time();
 			break;
 			default:
 				LCD_Clear_Display();
-				LCD_Show("Not valid");
+		    LCD_Show("Not valid");
 				Systick_Wait_ms(1000);
 				LCD_Clear_Display();
+				START=0;
 				break;
 		}
 		while(1){
@@ -61,15 +67,14 @@ int main(void){
 
 void GPIOF_Handler(void)
 {	
-	if ((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==0))
+	if ((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==0) )
     { 
 			RESET=0;
 			START=0; 
 			PAUSE=1;
 			SW1_Press_Counts=1;	
 			GPIO_PORTF_ICR_R |= 0x10;
-			
-    }
+		}
 	else if((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==1))
 		{
 			RESET=1;

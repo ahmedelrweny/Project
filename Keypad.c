@@ -1,4 +1,5 @@
 #include "defines.h"
+#include "Extern.h"
 #include <inttypes.h>
 
 
@@ -28,6 +29,12 @@ char KeyScan(){
 	while(1){
 	int i;
 	int j;
+	
+	if((SW1_Press_Counts || START) && z==1)
+	{
+		return '\0';
+	}
+	
 	for (i=0;i<4;i++){ // set colums 
 	GPIO_PORTC_DATA_R=(0x10<<i);
 	for(j=0;j<4;j++){ // set rows
