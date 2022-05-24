@@ -177,6 +177,7 @@ void Cook_Time(void){
     x= KeyScan();
 		LCD_Clear_Display();
 		if(Cook_Time_Again){
+			LCD_Clear_Display();
 			break;
 		}
 		if( x<'0' ||  x>'9' )
@@ -196,7 +197,7 @@ void Cook_Time(void){
 	
 	Cook_Time_f = 0;
 	
-	if(Check_Invalid() || invalid	)
+	if((Check_Invalid() || invalid	)&& (!Cook_Time_Again))
 	{
 		LCD_Clear_Display();
 		LCD_Show("Invalid value");

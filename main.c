@@ -72,7 +72,7 @@ int main(void){
 
 void GPIOF_Handler(void)
 {	
-	if ((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==0))
+	if ((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==0) && (!Cook_Time_f) )
     { 
 			RESET=0;
 			START=0; 
