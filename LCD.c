@@ -8,7 +8,7 @@
 #define EN 0x04 //Pin 2 in Port A
 
 
-//LCD Control
+//LCD Control: this function will be called every time you want to give the LCD a command
 void LCD_CMD(unsigned char signal){
 		GPIO_PORTA_DATA_R = 0x00; //Set RS,RW to 0 to Enable write
 		SysTick_Wait(8000);
