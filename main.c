@@ -74,7 +74,7 @@ int main(void){
 }
 // GPIOF_Handler: this function is used to handle interrupts made by SW1 & SW2
 void GPIOF_Handler(void)
-{	
+{	//SW1 interrupts handling
 	if ((GPIO_PORTF_MIS_R & 0x10) && (SW1_Press_Counts==0) && (!Cook_Time_f) )//if the interrupt flag by of is set & SW1 wasn't pressed anytime before this interruption & you aren't at the function Cook_Time
     { //pause
 			RESET=0;
@@ -96,22 +96,22 @@ void GPIOF_Handler(void)
 			Cook_Time_Again = 1; // clear the Cook_Time and call Cook_Time again
 			GPIO_PORTF_ICR_R |= 0x10;//clear interrupt flag of SW1
 	}
-	
-	if((GPIO_PORTF_MIS_R & 0x01) && (!Cook_Time_f)) 
-		{
+	//SW2 interrupts handling
+	if((GPIO_PORTF_MIS_R & 0x01) && (!Cook_Time_f)) //if the interrupt flag of SW2 is set & you aren't at Cook_Time function
+		{//resume
 			RESET=0;
 			START=1; 
 			PAUSE=0;
 			SW1_Press_Counts=0;
-			GPIO_PORTF_ICR_R |= 0x01; 
+			GPIO_PORTF_ICR_R |= 0x01; //clear interrupt flag of SW2
 		}	
-	else if((GPIO_PORTF_MIS_R & 0x01) && (Cook_Time_f)){
-			Start_Cook_Time = 1;
+	else if((GPIO_PORTF_MIS_R & 0x01) && (Cook_Time_f)){//if the interrupt flag of SW2 is set & you are at Cook_Time function
+			Start_Cook_Time = 1;//start cooking time (start the countdown)
 			RESET=0;
 			START=1; 
 			PAUSE=0;
 			SW1_Press_Counts=0;
-			GPIO_PORTF_ICR_R |= 0x01; 
+			GPIO_PORTF_ICR_R |= 0x01; //clear interrupt flag of SW2
 		}
 	
 }
