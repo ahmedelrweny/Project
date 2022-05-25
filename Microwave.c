@@ -164,37 +164,37 @@ void start(void){
 }
 
 
-void Cook_Time(void){
-	char x;
+void Cook_Time(void){ /* take time from user*/
+	char x; 
 	int i ;
-	bool invalid= false;
+	bool invalid= false; 
 	Cook_Time_f = 1;
-	time[4]='0';
-	time[3]='0';
+	time[4]='0'; // reset the time array
+	time[3]='0'; 
 	time[1]='0';
 	time[0]='0';
 	LCD_Show("Cooking Time?");
-	Systick_Wait_ms(1000);
-  for(i=4;i>0;i--)
+	Systick_Wait_ms(1000); //wait 1 second 
+  for(i=4;i>0;i--) 
 	{	
-    x= KeyScan();
+    x= KeyScan(); // take input from user 
 		LCD_Clear_Display();
-		if(Cook_Time_Again || Start_Cook_Time){
-			LCD_Clear_Display();
-			break;
+		if(Cook_Time_Again || Start_Cook_Time){ // check if SW2 or SW1 pressed
+			LCD_Clear_Display(); //clear LCD
+			break; 
 		}
-		if( x<'0' ||  x>'9' )
+		if( x<'0' ||  x>'9' )//check if the input is among 0 to 9 
 		{
-			invalid= true;
+			invalid= true; // set the  invaild flag 
 			break;
 		}
 			
-    time[0]=time[1];
+    time[0]=time[1]; // make shift left to timer array 
     time[1]=time[3];
     time[3]=time[4];
     time[4]=x;
-		LCD_Show(time);
-		Systick_Wait_ms(500);
+		LCD_Show(time); // display time on LCD
+		Systick_Wait_ms(500);//wait 0.5 seconds
 			
   }
 	
