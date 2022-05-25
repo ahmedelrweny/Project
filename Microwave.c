@@ -240,11 +240,11 @@ char IntToChar_Units(int x){/* to convert integer to char and get units*/
 }
 	
 void cook_Popcorn(void){
-	time[1]='1';  // to set time minutes
+	time[1]='1';  // to make time equal 1 min
 	LCD_Show("Popcorn");  // show popcorn in lcd
-	Systick_Wait_ms(1000);  // make a delay 
-	LCD_Clear_Display();
-	LCD_Show(time);
+	Systick_Wait_ms(1000);  // wait 1 second
+	LCD_Clear_Display(); // clear display 
+	LCD_Show(time); // show time on LCD 
 }
  
 void cook_Beef_or_Chicken(char choice){
