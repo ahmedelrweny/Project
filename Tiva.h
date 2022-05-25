@@ -1,10 +1,13 @@
 #ifndef Tiva_H_
 #define Tiva_H_
+
+#include "stdbool.h"
+
 #define popcorn 'A'
 #define beef 'B'
 #define chicken 'C'
 #define cookTime 'D'
-#include "stdbool.h"
+
 
 void System_Init(void);
 

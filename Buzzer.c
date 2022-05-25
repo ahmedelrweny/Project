@@ -10,12 +10,12 @@ void buzzer_Init(void){
 	GPIO_PORTD_DIR_R |= 0x08;						//use PD3 as output
 	GPIO_PORTD_DEN_R |= 0x08;						//digital enable for PD3
 }
-// a function is used when the countdown ends
+/* a function is used when the countdown ends */
 void beep(void){
 	GPIO_PORTD_DATA_R |= 0x08;
 }
 
-// used after function beeb every time 
+/* used after function beeb every time */
 void stop_Beep(void){
 	GPIO_PORTD_DATA_R &= ~0x08;
 }
