@@ -31,14 +31,14 @@ void LCD_Clear_Display(void){
 void LCD_Init(void){
 
     //Enable PortA bits 2-4 for Rs Rw Enable
-    GPIO_PORTA_CR_R |= 0x1C;
-		GPIO_PORTA_AMSEL_R &= ~0x1C;
-		GPIO_PORTA_PCTL_R &= ~0x000FFF00;
-		GPIO_PORTA_AFSEL_R &= ~0x1C;
-		GPIO_PORTA_DIR_R |= 0x1C;						
-		GPIO_PORTA_DEN_R |= 0x1C;	
+    GPIO_PORTA_CR_R |= 0x1C;//enable changes for PA2-4
+		GPIO_PORTA_AMSEL_R &= ~0x1C;// analog disable for PA2-4
+		GPIO_PORTA_PCTL_R &= ~0x000FFF00;//use PA2-4 as GPIO
+		GPIO_PORTA_AFSEL_R &= ~0x1C;//disable alternate function of PA2-4
+		GPIO_PORTA_DIR_R |= 0x1C;	// use PA2-4 as output					
+		GPIO_PORTA_DEN_R |= 0x1C;	//digital enable for PA2-4
 		//Enable port B bits 0-7 for
-		GPIO_PORTB_CR_R |= 0xFF;
+		GPIO_PORTB_CR_R |= 0xFF;//repeat
 		GPIO_PORTB_AMSEL_R &= ~0xFF;
 		GPIO_PORTB_PCTL_R &= ~0xFFFFFFFF;
 		GPIO_PORTB_AFSEL_R &= ~0xFF;

@@ -3,7 +3,7 @@
 
 
 void buzzer_Init(void){
-	GPIO_PORTD_CR_R |= 0x08; 						//repeat without unlocking
+	GPIO_PORTD_CR_R |= 0x08; 						//enable changes for PD3
 	GPIO_PORTD_AMSEL_R &= ~0x08;				//analog disable for PD3
 	GPIO_PORTD_PCTL_R &= ~0x0000F000;		//use PD3 as GPIO
 	GPIO_PORTD_AFSEL_R &= ~0x08;				//disable alternate function of PD3
