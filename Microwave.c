@@ -168,7 +168,7 @@ void Cook_Time(void){ /* take time from user*/
 	char x; 
 	int i ;
 	bool invalid= false; 
-	Cook_Time_f = 1;
+	Cook_Time_f = 1; // set flag (get in function cook time) 
 	time[4]='0'; // reset the time array
 	time[3]='0'; 
 	time[1]='0';
@@ -200,22 +200,22 @@ void Cook_Time(void){ /* take time from user*/
 	
 	while(1)
 	{
-		if(Cook_Time_Again == 1 || Start_Cook_Time == 1){
-			LCD_Clear_Display();
+		if(Cook_Time_Again == 1 || Start_Cook_Time == 1){//check if SW2 or SW1 pressed
+			LCD_Clear_Display();//clear LCD
 			break;
 		}
 	}
 	
-	Cook_Time_f = 0;
+	Cook_Time_f = 0; // reset flag (get out from function cook time) 
 	
-	if((Check_Invalid() || invalid	)&& (!Cook_Time_Again))
+	if((Check_Invalid() || invalid	)&& (!Cook_Time_Again))// check if input is not valid or time is reset
 	{
-		LCD_Clear_Display();
-		LCD_Show("Invalid value");
-		Systick_Wait_ms(2000);
-		LCD_Clear_Display(); 
-		Start_Cook_Time = 0;
-		Cook_Time();
+		LCD_Clear_Display(); // clear LCD 
+		LCD_Show("Invalid value");//display on LCD
+		Systick_Wait_ms(2000);//wait 2 seconds 
+		LCD_Clear_Display(); //clear LCD
+		Start_Cook_Time = 0;//reset the flag
+		Cook_Time(); //back again to function until input is valid 
 	}
 
 }
@@ -247,63 +247,63 @@ void cook_Popcorn(void){
 	LCD_Show(time); // show time on LCD 
 }
  
-void cook_Beef_or_Chicken(char choice){
+void cook_Beef_or_Chicken(char choice){/*take num of kilos and count time to display*/
 	int minutes;
 	int seconds;
 	double TimeInMinutes_d;
-	char No_kiloes;
-	int no_kiloes ;
+	char No_kilos;
+	int no_kilos ;
 	
-	if(choice =='B')
+	if(choice =='B')// check if the choose is B  
 		{
-			LCD_Show("Beef weight?");    
-			Systick_Wait_ms(500);
-			LCD_Clear_Display();
+			LCD_Show("Beef weight?"); // display on LCD
+			Systick_Wait_ms(500); //wait 0.5 second 
+			LCD_Clear_Display();// clear LCD
 		}
-	else if(choice =='C')
+	else if(choice =='C') // check if the choose is C
 		{
-			LCD_Show("Chicken weight?"); 
-			Systick_Wait_ms(500);
-			LCD_Clear_Display();
+			LCD_Show("Chicken weight?"); // display on LCD
+			Systick_Wait_ms(500);//wait 0.5 second 
+			LCD_Clear_Display();// clear LCD
 		}
 	do
 	{
-		LCD_Show("Kiloes? 1 to 9"); 
-		Systick_Wait_ms(300);
-		No_kiloes =KeyScan();
-		LCD_Clear_Display();
+		LCD_Show("Kilos? 1 to 9"); // display on LCD
+		Systick_Wait_ms(300);// wait 0.3 second
+		No_kilos =KeyScan(); // take input from kaypad 
+		LCD_Clear_Display(); // clear LCD
 		
-		if(No_kiloes<'1' || No_kiloes>'9' )
+		if(No_kilos<'1' || No_kilos>'9' ) //check if num of kilos is between 1 and 9
 		{ 
-			LCD_Show("Err");
-			Systick_Wait_ms(2000);
-			LCD_Clear_Display();
+			LCD_Show("Err");// display on LCD
+			Systick_Wait_ms(2000);// wait 2 seconds 
+			LCD_Clear_Display();// clear LCD
 		}
 	}
-	while(No_kiloes<'1' || No_kiloes>'9');
+	while(No_kilos<'1' || No_kilos>'9');
 
-	LCD_Show("Weight is "); 
-	LCD_Write(No_kiloes);
-	Systick_Wait_ms(500);
+	LCD_Show("Weight is "); //display on LCD 
+	LCD_Write(No_kilos); //writes char on LCD
+	Systick_Wait_ms(500);//wait 0.5 second
 		
-	if (choice =='B')
+	if (choice =='B')// check if the choose is B  
 	{
-		no_kiloes=Char_to_int(No_kiloes);
-		TimeInMinutes_d=0.5*no_kiloes;
+		no_kilos=Char_to_int(No_kilos); // convert char to int 
+		TimeInMinutes_d=0.5*no_kilos ; // count time 
 	}
-	else if(choice == 'C')
+	else if(choice == 'C')// check if the choose is C
 	{
-		no_kiloes=Char_to_int(No_kiloes);
-		TimeInMinutes_d=0.2*no_kiloes;
+		no_kilos=Char_to_int(No_kilos);// convert char to int
+		TimeInMinutes_d=0.2*no_kilos;// count time
 	}
-	minutes= (int)TimeInMinutes_d;
-	seconds= (TimeInMinutes_d-minutes) * 60;
-	time[0]=IntToChar_Tens(minutes);
+	minutes= (int)TimeInMinutes_d; // count the num of mins
+	seconds= (TimeInMinutes_d-minutes) * 60;// count the num of seconds
+	time[0]=IntToChar_Tens(minutes); // convert int to char to display it on LCD
 	time[1]=IntToChar_Units(minutes);
 	time[3]=IntToChar_Tens(seconds);
 	time[4]=IntToChar_Units(seconds);
-	LCD_Clear_Display();
-	LCD_Show(time);
+	LCD_Clear_Display(); //clear LCD
+	LCD_Show(time);//display on LCD 
 }
 
 
