@@ -1,7 +1,7 @@
 #include "defines.h"
 #include <inttypes.h>
-//*init functions*
 
+//*init functions*
 void SW1_Init(void){
 	
 		GPIO_PORTF_LOCK_R = 0x4C4F434B; 		//unlocking port f
@@ -16,7 +16,7 @@ void SW1_Init(void){
 
 void SW2_Init(void){
 	
-		GPIO_PORTF_LOCK_R = 0x4C4F434B; 		//repeat
+		GPIO_PORTF_LOCK_R = 0x4C4F434B; 		
 		GPIO_PORTF_CR_R |= 0x01;
 		GPIO_PORTF_AMSEL_R &= ~0x01;
 		GPIO_PORTF_PCTL_R &= ~0x0000000F;
@@ -28,7 +28,7 @@ void SW2_Init(void){
 
 void SW3_Init(void){
 	
-		GPIO_PORTD_CR_R |= 0x04; 						//repeat without unlocking
+		GPIO_PORTD_CR_R |= 0x04; 						
 		GPIO_PORTD_AMSEL_R &= ~0x04;
 		GPIO_PORTD_PCTL_R &= ~0x00000F00;
 		GPIO_PORTD_AFSEL_R &= ~0x04;
