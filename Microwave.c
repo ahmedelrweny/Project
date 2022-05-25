@@ -109,47 +109,47 @@ void End_Operation(){
 	LCD_Clear_Display();
 }
 
-void Time_Display(char time[]){
+void Time_Display(char time[]){ /* disply the countdown timer on LCD*/
 	
-	LCD_Clear_Display();
-	while(time[0]!='0' || time[1]!='0' || time[3]!='0' ||  time[4]!='0') 	
+	LCD_Clear_Display(); 
+	while(time[0]!='0' || time[1]!='0' || time[3]!='0' ||  time[4]!='0') 	//check the timer is not equal zero
 		{ 
-			WhiteOn();
-			LCD_Clear_Display();
-			LCD_Show(time);
+			WhiteOn(); 
+			LCD_Clear_Display(); 
+			LCD_Show(time); 
 			
-			if((PAUSE == 1) || (SW3_Input() !=0x04)){	
-				pause();
+			if((PAUSE == 1) || (SW3_Input() !=0x04)){	//check if SW1 pressed or the door opened  
+				pause(); // pause time on LCD
 			}
 			if(RESET == 1){	
-				reset();
+				reset(); 
 				break;
 			}
 			
-			Systick_Wait_ms(1000);
+			Systick_Wait_ms(1000); //wait 1 second 
 		
-			if(time[4]!='0' ) 
+			if(time[4]!='0' ) // check if units of seconds not equal zero
 			{
-				time[4]--;	
+				time[4]--;	//decrease the units of seconds
 			}
-			else if(time[4]=='0' && time[3]!='0')
+			else if(time[4]=='0' && time[3]!='0')//check if tens of seconds not equal zero and units of seconds equal zero
 			{
-				time[4]='9';
-				time[3]--;
+				time[4]='9'; //units of seconds equal nine
+				time[3]--; //decrease the tens of seconds
 			}
 
-			else if(time[4]=='0' && time[3]=='0' && time[1]!='0')
+			else if(time[4]=='0' && time[3]=='0' && time[1]!='0')//check if seconds equal zero and units of mins not equal zero 
 			{
-				time[4]='9';
-				time[3]='5';
-				time[1]--;
+				time[4]='9';//units of seconds equal nine
+				time[3]='5';//tens of seconds equal five
+				time[1]--;//decrease the units of mins
 			}
-			else if(time[4]=='0' && time[3]=='0' && time[1]=='0' && time[0]!='0')
+			else if(time[4]=='0' && time[3]=='0' && time[1]=='0' && time[0]!='0')//check if seconds equal zero and tens of mins not equal zero 
 			{
-				time[4]='9';
-				time[3]='5';
-				time[1]='9';
-				time[0]--;
+				time[4]='9';//units of seconds equal nine
+				time[3]='5';//tens of seconds equal five
+				time[1]='9';//units of mins equal nine
+				time[0]--;//decrease the tens of mins
 			}
 
 			LCD_Clear_Display();
