@@ -12,6 +12,7 @@
 #include "Microwave.h"
 #include "stdbool.h"
 
+ 
 bool START = 0;
 bool PAUSE = 0;
 bool RESET = 0;
@@ -20,51 +21,51 @@ bool valid_Input = 0;
 bool Cook_Time_f = 0;
 bool Cook_Time_Again = 0;
 bool Start_Cook_Time = 0;
-
+char state;
 int main(void){
 	microwave_Init();
 	
 	
 	while(1){
 		
-		LCD_Show("Enter a Choice");	
-		
-		switch(KeyScan()){
-			case 'A':
-				valid_Input = 1;
-				LCD_Clear_Display();
-				cook_Popcorn();
+		LCD_Show("Enter a Choice");	 //display on LCD
+		state =KeyScan();// take input from kaypad
+		switch(state){ 
+			case popcorn: 
+				valid_Input = 1; //set vaild flag
+				LCD_Clear_Display(); // clear LCD 
+				cook_Popcorn(); 
 				break;
-			case 'B':
-				valid_Input = 1;
-				LCD_Clear_Display();
-				cook_Beef_or_Chicken('B');
+			case beef:
+				valid_Input = 1;//set vaild flag
+				LCD_Clear_Display(); // clear LCD 
+				cook_Beef_or_Chicken(beef);
 				break;
-			case 'C':
-				valid_Input = 1;
-				LCD_Clear_Display();
-				cook_Beef_or_Chicken('C');
+			case chicken:
+				valid_Input = 1;//set vaild flag
+				LCD_Clear_Display(); // clear LCD 
+				cook_Beef_or_Chicken(chicken);
 				break;
-			case 'D':
-				valid_Input = 1;
-				LCD_Clear_Display();
+			case cookTime:
+				valid_Input = 1;//set vaild flag
+				LCD_Clear_Display(); // clear LCD 
 				do{
-					Cook_Time_Again = 0;
+					Cook_Time_Again = 0; // reset the timer reset flag
 					Cook_Time();
 				}
-				while(Cook_Time_Again);
+				while(Cook_Time_Again); // wait until the timer reset flag is reset
 				break;
 			default:
-				valid_Input = 0;
-				LCD_Clear_Display();
-				LCD_Show("Not valid");
-				Systick_Wait_ms(1000);
-				LCD_Clear_Display();
+				valid_Input = 0; //reset vaild flag
+				LCD_Clear_Display(); //clear LCD 
+				LCD_Show("Not valid");//display on LCD 
+				Systick_Wait_ms(1000); // wait 1 second
+				LCD_Clear_Display();//display on LCD 
 				break;
 		}
-		START=0;
-		while(valid_Input){
-			if(START == 1 || Start_Cook_Time == 1){	
+		START=0; //reset start flag
+		while(valid_Input){ // wait valid input 
+			if(START == 1 || Start_Cook_Time == 1){	//check if sw2 is pressed 
 				start();
 				break;
 			}

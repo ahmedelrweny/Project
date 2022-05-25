@@ -12,10 +12,9 @@
 #include <stdbool.h>  
 
 
-
 char time[]={'0','0',':','0','0','\0'};
 
-void microwave_Init(void){
+void microwave_Init(void){ 
 	System_Init();
 	buzzer_Init();
 	keypad_Init();
@@ -254,13 +253,13 @@ void cook_Beef_or_Chicken(char choice){/*take num of kilos and count time to dis
 	char No_kilos;
 	int no_kilos ;
 	
-	if(choice =='B')// check if the choose is B  
+	if(choice ==beef)// check if the choose is B  
 		{
 			LCD_Show("Beef weight?"); // display on LCD
 			Systick_Wait_ms(500); //wait 0.5 second 
 			LCD_Clear_Display();// clear LCD
 		}
-	else if(choice =='C') // check if the choose is C
+	else if(choice ==chicken) // check if the choose is C
 		{
 			LCD_Show("Chicken weight?"); // display on LCD
 			Systick_Wait_ms(500);//wait 0.5 second 
@@ -286,12 +285,12 @@ void cook_Beef_or_Chicken(char choice){/*take num of kilos and count time to dis
 	LCD_Write(No_kilos); //writes char on LCD
 	Systick_Wait_ms(500);//wait 0.5 second
 		
-	if (choice =='B')// check if the choose is B  
+	if (choice ==beef)// check if the choose is B  
 	{
 		no_kilos=Char_to_int(No_kilos); // convert char to int 
 		TimeInMinutes_d=0.5*no_kilos ; // count time 
 	}
-	else if(choice == 'C')// check if the choose is C
+	else if(choice == chicken)// check if the choose is C
 	{
 		no_kilos=Char_to_int(No_kilos);// convert char to int
 		TimeInMinutes_d=0.2*no_kilos;// count time

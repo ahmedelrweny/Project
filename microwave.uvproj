@@ -460,6 +460,56 @@
               <FileType>1</FileType>
               <FilePath>.\Interrupt.c</FilePath>
             </File>
+            <File>
+              <FileName>Buzzer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Buzzer.h</FilePath>
+            </File>
+            <File>
+              <FileName>defines.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\defines.h</FilePath>
+            </File>
+            <File>
+              <FileName>Interrupt.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Interrupt.h</FilePath>
+            </File>
+            <File>
+              <FileName>Keypad.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Keypad.h</FilePath>
+            </File>
+            <File>
+              <FileName>LCD.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\LCD.h</FilePath>
+            </File>
+            <File>
+              <FileName>LED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>Microwave.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Microwave.h</FilePath>
+            </File>
+            <File>
+              <FileName>Switch.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Switch.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Tiva.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Tiva.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
