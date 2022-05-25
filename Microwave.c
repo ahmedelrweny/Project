@@ -27,42 +27,42 @@ void microwave_Init(void){
 	interrupt_Init();
 }
 
-void pause(void){
-	START =0;
+void pause(void){ /*pause time on LCD*/
+	START =0; // reset start flag
 	SW1_Press_Counts = 1;
-	LCD_Clear_Display();
-	LCD_Show(time);
+	LCD_Clear_Display();//clear LCD 
+	LCD_Show(time); //display on LCD 
 	
 	while(1)
 		{
-			WhiteOn();
-			Systick_Wait_ms(500);
-			LED_Clear();
-			Systick_Wait_ms(500);
-			if((SW3_Input() != 0x04) && (START ==1) )
+			WhiteOn(); // turns leds on 
+			Systick_Wait_ms(500); // wait 0.5 second
+			LED_Clear(); // clear LCD 
+			Systick_Wait_ms(500);// wait 0.5 second
+			if((SW3_Input() != 0x04) && (START ==1) )//check if sw2 and sw3 pressed together
 			{
-				LCD_Clear_Display();
-				LCD_Show("Close The Door");
-				START =0;
+				LCD_Clear_Display(); //clear LCD
+				LCD_Show("Close The Door");//display on LCD 
+				START =0; // reset start flag
 			}
 			
-			if(((SW3_Input() == 0x04) && START ==1) || (RESET == 1 ))
+			if(((SW3_Input() == 0x04) && START ==1) || (RESET == 1 ))//check if sw2 pressed and sw3 not pressed or reset flag is set
 			{	
-				SW1_Press_Counts = 0;
-				LCD_Clear_Display();
+				SW1_Press_Counts = 0;// reset count flag
+				LCD_Clear_Display();// clear LCD
 				break;
 			}
 		}
-	PAUSE =0;
+	PAUSE =0;// reset pause flag
 }
 
-void reset(void){
+void reset(void){/*reset timer array */
 	time[0] = '0';
 	time[1] = '0';
 	time[3] = '0';
 	time[4] = '0';
-	LED_Clear();
-	RESET=0;
+	LED_Clear();// clear LCD
+	RESET=0; // Reset the flag
 }
 
 
@@ -114,15 +114,15 @@ void Time_Display(char time[]){ /* disply the countdown timer on LCD*/
 	LCD_Clear_Display(); 
 	while(time[0]!='0' || time[1]!='0' || time[3]!='0' ||  time[4]!='0') 	//check the timer is not equal zero
 		{ 
-			WhiteOn(); 
-			LCD_Clear_Display(); 
-			LCD_Show(time); 
+			WhiteOn();  // turn leds on
+			LCD_Clear_Display();  //clear LCD
+			LCD_Show(time);  //  display time on LCD
 			
 			if((PAUSE == 1) || (SW3_Input() !=0x04)){	//check if SW1 pressed or the door opened  
 				pause(); // pause time on LCD
 			}
-			if(RESET == 1){	
-				reset(); 
+			if(RESET == 1){	 // check if sw1 pressed twice
+				reset();  // reset the timer array 
 				break;
 			}
 			
@@ -152,7 +152,7 @@ void Time_Display(char time[]){ /* disply the countdown timer on LCD*/
 				time[0]--;//decrease the tens of mins
 			}
 
-			LCD_Clear_Display();
+			LCD_Clear_Display(); //clear LCD 
 		}
 	End_Operation();
 }
@@ -273,14 +273,14 @@ void cook_Beef_or_Chicken(char choice){/*take num of kilos and count time to dis
 		No_kilos =KeyScan(); // take input from kaypad 
 		LCD_Clear_Display(); // clear LCD
 		
-		if(No_kilos<'1' || No_kilos>'9' ) //check if num of kilos is between 1 and 9
+		if(No_kilos<'1' || No_kilos>'9' ) //check if num of kilos not is between 1 and 9
 		{ 
 			LCD_Show("Err");// display on LCD
 			Systick_Wait_ms(2000);// wait 2 seconds 
 			LCD_Clear_Display();// clear LCD
 		}
 	}
-	while(No_kilos<'1' || No_kilos>'9');
+	while(No_kilos<'1' || No_kilos>'9'); // wait until num of kilos is between 1 and 9
 
 	LCD_Show("Weight is "); //display on LCD 
 	LCD_Write(No_kilos); //writes char on LCD
