@@ -89,24 +89,24 @@ bool Check_Invalid(void){ /*check if the input is vaild or not */
 		}
 }
 
-void End_Operation(){
+void End_Operation(){ 
 	int i;
-	START=0;
+	START=0; // reset the value of flags 
 	Start_Cook_Time = 0;
 	SW1_Press_Counts=0;
-	LCD_Clear_Display();
-	LCD_Show("End");
+	LCD_Clear_Display(); // clear LCD 
+	LCD_Show("End");    // display end on LCD 
 	
-	for(i=0; i<3; i++){
-			beep();
-			WhiteOn();
-			Systick_Wait_ms(500);
-			LED_Clear();
-			stop_Beep();
-			Systick_Wait_ms(500);
+	for(i=0; i<3; i++){ 
+			beep(); // turn buzzer on 
+			WhiteOn(); // turn leds on 
+			Systick_Wait_ms(500); // wait 0.5 second 
+			LED_Clear(); // clear LCD 
+			stop_Beep(); //turn buzzer off
+			Systick_Wait_ms(500);//wait 0.5 second 
 			
 		}		
-	LCD_Clear_Display();
+	LCD_Clear_Display();//clear LCD
 }
 
 void Time_Display(char time[]){ /* disply the countdown timer on LCD*/
@@ -157,8 +157,8 @@ void Time_Display(char time[]){ /* disply the countdown timer on LCD*/
 	End_Operation();
 }
 
-void start(void){
-	RESET=0;
+void start(void){ /*start countdown of timer*/
+	RESET=0; 
 	PAUSE =0;
 	Time_Display(time);
 }
