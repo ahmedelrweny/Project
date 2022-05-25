@@ -66,20 +66,20 @@ void reset(void){
 }
 
 
-bool Check_Invalid(void){
-	if(	time[0]>'3' )
+bool Check_Invalid(void){ /*check if the input is vaild or not */
+	if(	time[0]>'3' ) //  check if tens of mins is more than 3 
 		{
 			 return true;
 		}
-	if(	time[0]=='3' && ( time[1]!='0' || time[3] !='0' || time[4] !='0') 	)
+	if(	time[0]=='3' && ( time[1]!='0' || time[3] !='0' || time[4] !='0') 	)// check if time is more than 30 min
 		{
 			 return true;
 		}
-	if(	time[3]>'5'	 )
+	if(	time[3]>'5'	 )// check if tens of seconds is more than five
 		{
 			 return true;
 		}
-	if(time[0]=='0' &&  time[1] =='0')
+	if(time[0]=='0' &&  time[1] =='0')//check if time is less than 1 min 
 		{
 			 return true;		
 		}
