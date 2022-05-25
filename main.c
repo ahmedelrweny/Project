@@ -16,12 +16,12 @@
 bool START = 0;
 bool PAUSE = 0;
 bool RESET = 0;
-bool SW1_Press_Counts = 0;
-bool valid_Input = 0;
-bool Cook_Time_f = 0;
-bool Cook_Time_Again = 0;
-bool Start_Cook_Time = 0;
-char state;
+bool SW1_Press_Counts = 0;// a flag checks if SW1 is pushed before or not
+bool valid_Input = 0; // this flag is used to check if the user entered a valid input (A or B or C or D) or not
+bool Cook_Time_f = 0;// a flag checks if you at Cook_Time function or not
+bool Cook_Time_Again = 0;// when this flag is set: clear the cook time and call Cook_Time function again
+bool Start_Cook_Time = 0;//when this flag is set: start the countdown
+char state;// this variable is used in switch case to determine which state will be performed (popcorn or beef or chicken or cookTime or none of them)
 int main(void){
 	microwave_Init();
 	
