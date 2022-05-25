@@ -220,23 +220,22 @@ void Cook_Time(void){ /* take time from user*/
 
 }
 
-int Char_to_int(char x){
-	int number = x-'0';
+int Char_to_int(char x){/* to convert char to integer */
+	int number = x-'0'; //to get the number that is between 0 and 9 
 	return number;
 }
 
-char IntToChar_Tens(int x){
-	int Tens= x/10;
-	char required;
-	required = Tens +'0';
+char IntToChar_Tens(int x){/* to convert integer to char and get tens*/
+	int Tens= x/10;  // to get tens
+	char required;  
+	required = Tens +'0'; //convert to char
 	return required;
 }
 
-char IntToChar_Units(int x){
-	int Tens= x/10;
-	int Units= x-(Tens*10);
+char IntToChar_Units(int x){/* to convert integer to char and get units*/
+	int Units= x%10; //to get ones 
 	char required;
-	required = Units +'0';
+	required = Units +'0';//convert to char
 	return required;
 }
 	
