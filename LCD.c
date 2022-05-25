@@ -22,7 +22,7 @@ void LCD_CMD(unsigned char signal){
 		if(signal < 4) SysTick_Wait(160000); // 2ms
 		else SysTick_Wait(3200); // 40 micro sec
 }
-
+//this function will be used every time we want to show something on LCD
 void LCD_Clear_Display(void){
 	LCD_CMD(0x01);             //Remove Chars
 	LCD_CMD(0x02);             //Return cursor to zero position
@@ -47,7 +47,7 @@ void LCD_Init(void){
 
 		LCD_CMD(0x38);           // Enable 8 bit mode
 		LCD_CMD(0x0F);           // Turn on Display
-		LCD_Clear_Display();
+		LCD_Clear_Display();     // calling this function in order to clear the LCD at beginning
 }
 
 //LCD_Write a function that writes character on LCD
@@ -69,7 +69,7 @@ void LCD_Show(char *str){   // write a string on LCD
   int i=0;                    //itterator
   while(i<l){
 		LCD_Write(str[i]);        // call the function LCD_Write 
-		i++;
+		i++; 											// increment the itterator
     }
 }
 
